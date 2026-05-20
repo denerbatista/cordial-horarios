@@ -160,6 +160,8 @@ EXTRA_ALIASES = {
     "vista linda x cohab iv": "Vista Linda",
     "biriricas via mucurata": "Biriricas",
     "biriricas via mucuruta": "Biriricas",
+    "nova consquista": "Nova Conquista",
+    "nova conqusita": "Nova Conquista",
 }
 ALIASES.update(EXTRA_ALIASES)
 _NORM_TO_CANON.update(EXTRA_ALIASES)
