@@ -7,6 +7,7 @@ on:
   push:
     branches: [main]
     paths:
+      - "site/**"
       - "scripts/**"
       - ".github/workflows/update-schedules.yml"
 
