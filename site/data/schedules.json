@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-05-20T14:25:25+00:00",
+  "generatedAt": "2026-05-20T14:29:18+00:00",
   "source": "web",
   "sectors": {
     "aracruz": {
@@ -9050,7 +9050,7 @@
         {
           "sector": "aracruz",
           "line": "029",
-          "origin": "Nova Consquista",
+          "origin": "Nova Conquista",
           "destination": "Itaputera",
           "time": "05:25",
           "days": [
@@ -9063,7 +9063,7 @@
           "via": "Jardins (saindo do Bairro Morada Park)",
           "school_only": false,
           "note": null,
-          "raw_section": null,
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
           "raw_line": "029 05:25 Nova Consquista X Itaputera Jardins (saindo do bairro Morada Park)",
           "sector_label": "Setor Aracruz",
           "id": "ar-00455"
@@ -9071,7 +9071,7 @@
         {
           "sector": "aracruz",
           "line": "029",
-          "origin": "Nova Consquista",
+          "origin": "Nova Conquista",
           "destination": "Itaputera",
           "time": "06:30",
           "days": [
@@ -9084,7 +9084,7 @@
           "via": "Jardins x Hospital",
           "school_only": false,
           "note": null,
-          "raw_section": null,
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
           "raw_line": "029 06:30 Nova Consquista X Itaputera Jardins X Hospital",
           "sector_label": "Setor Aracruz",
           "id": "ar-00456"
@@ -9092,7 +9092,7 @@
         {
           "sector": "aracruz",
           "line": "029",
-          "origin": "Nova Consquista",
+          "origin": "Nova Conquista",
           "destination": "Centro",
           "time": "06:00",
           "days": [
@@ -9105,7 +9105,7 @@
           "via": "Jardins",
           "school_only": true,
           "note": null,
-          "raw_section": null,
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
           "raw_line": "029 06:00* Nova Consquista X Centro Jardins",
           "sector_label": "Setor Aracruz",
           "id": "ar-00457"
@@ -9113,7 +9113,7 @@
         {
           "sector": "aracruz",
           "line": "029",
-          "origin": "Nova Consquista",
+          "origin": "Nova Conquista",
           "destination": "Itaputera",
           "time": "07:40",
           "days": [
@@ -9126,7 +9126,7 @@
           "via": "Jardins",
           "school_only": false,
           "note": null,
-          "raw_section": null,
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
           "raw_line": "029 07:40 Nova Consquista X Itaputera Jardins",
           "sector_label": "Setor Aracruz",
           "id": "ar-00458"
@@ -9147,7 +9147,7 @@
           "via": "Jardins",
           "school_only": false,
           "note": null,
-          "raw_section": null,
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
           "raw_line": "029 08:50 Nova Conquista X Itaputera Jardins",
           "sector_label": "Setor Aracruz",
           "id": "ar-00459"
@@ -9155,7 +9155,7 @@
         {
           "sector": "aracruz",
           "line": "029",
-          "origin": "Nova Consquista",
+          "origin": "Nova Conquista",
           "destination": "Itaputera",
           "time": "11:00",
           "days": [
@@ -9168,7 +9168,7 @@
           "via": "Jardins + Hospital",
           "school_only": false,
           "note": null,
-          "raw_section": null,
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
           "raw_line": "029 11:00 Nova Consquista X Itaputera Jardins + Hospital",
           "sector_label": "Setor Aracruz",
           "id": "ar-00460"
@@ -9176,7 +9176,7 @@
         {
           "sector": "aracruz",
           "line": "029",
-          "origin": "Nova Consquista",
+          "origin": "Nova Conquista",
           "destination": "Itaputera",
           "time": "12:30",
           "days": [
@@ -9189,7 +9189,7 @@
           "via": "Jardins + Hospital",
           "school_only": false,
           "note": null,
-          "raw_section": null,
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
           "raw_line": "029 12:30 Nova Consquista X Itaputera Jardins + Hospital",
           "sector_label": "Setor Aracruz",
           "id": "ar-00461"
@@ -9197,7 +9197,7 @@
         {
           "sector": "aracruz",
           "line": "029",
-          "origin": "Nova Consquista",
+          "origin": "Nova Conquista",
           "destination": "Centro",
           "time": "14:00",
           "days": [
@@ -9210,7 +9210,7 @@
           "via": "Jardins + Hospital",
           "school_only": false,
           "note": null,
-          "raw_section": null,
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
           "raw_line": "029 14:00 Nova Consquista X Centro Jardins + Hospital",
           "sector_label": "Setor Aracruz",
           "id": "ar-00462"
@@ -9231,7 +9231,7 @@
           "via": "Jadins",
           "school_only": false,
           "note": null,
-          "raw_section": null,
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
           "raw_line": "029 15:20 Nova Conquista X Itaputera Jadins",
           "sector_label": "Setor Aracruz",
           "id": "ar-00463"
@@ -9252,7 +9252,7 @@
           "via": "Jardins",
           "school_only": false,
           "note": null,
-          "raw_section": null,
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
           "raw_line": "029 17:00 Nova Conquista X Itaputera Jardins",
           "sector_label": "Setor Aracruz",
           "id": "ar-00464"
@@ -9273,7 +9273,7 @@
           "via": "Jardins",
           "school_only": false,
           "note": null,
-          "raw_section": null,
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
           "raw_line": "029 18:10 Nova Conquista X Itaputera Jardins",
           "sector_label": "Setor Aracruz",
           "id": "ar-00465"
@@ -9294,7 +9294,7 @@
           "via": "Até Praça da Paz",
           "school_only": false,
           "note": null,
-          "raw_section": null,
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
           "raw_line": "029 19:05 Nova Conquista X Centro Até praça da Paz",
           "sector_label": "Setor Aracruz",
           "id": "ar-00466"
@@ -9894,16 +9894,13 @@
           "destination": "Itaputera",
           "time": "06:00",
           "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
+            "sun",
+            "holiday"
           ],
           "via": "Jardins",
           "school_only": false,
           "note": null,
-          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
           "raw_line": "029 06:00 Nova Conquista X Itaputera Jardins",
           "sector_label": "Setor Aracruz",
           "id": "ar-00497"
@@ -9915,16 +9912,13 @@
           "destination": "Limão",
           "time": "06:30",
           "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
+            "sun",
+            "holiday"
           ],
           "via": "Centro + Shoping",
           "school_only": false,
           "note": null,
-          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
           "raw_line": "029 06:30 Itaputera x Limão Centro + Shoping",
           "sector_label": "Setor Aracruz",
           "id": "ar-00498"
@@ -9936,16 +9930,13 @@
           "destination": "Nova Conquista",
           "time": "07:15",
           "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
+            "sun",
+            "holiday"
           ],
           "via": "Centro +shopping",
           "school_only": false,
           "note": null,
-          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
           "raw_line": "029 07:15 Limão X Nova Conquista Centro +Shopping",
           "sector_label": "Setor Aracruz",
           "id": "ar-00499"
@@ -9957,16 +9948,13 @@
           "destination": "Por do Sol",
           "time": "11:10",
           "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
+            "sun",
+            "holiday"
           ],
           "via": "Centro +shopping",
           "school_only": false,
           "note": null,
-          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
           "raw_line": "029 11:10 Nova Conquista X Por do Sol Centro +Shopping",
           "sector_label": "Setor Aracruz",
           "id": "ar-00500"
@@ -9978,16 +9966,13 @@
           "destination": "Nova Conquista",
           "time": "11:50",
           "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
+            "sun",
+            "holiday"
           ],
           "via": "Centro +shopping",
           "school_only": false,
           "note": null,
-          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
           "raw_line": "029 11:50 Por do Sol X Nova Conquista Centro +Shopping",
           "sector_label": "Setor Aracruz",
           "id": "ar-00501"
@@ -9999,16 +9984,13 @@
           "destination": "Nova Conquista",
           "time": "13:30",
           "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
+            "sun",
+            "holiday"
           ],
           "via": "Professor Lobo",
           "school_only": false,
           "note": null,
-          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
           "raw_line": "029 13:30 Itaputera X Nova Conquista Professor Lobo",
           "sector_label": "Setor Aracruz",
           "id": "ar-00502"
@@ -10020,16 +10002,13 @@
           "destination": "Limão",
           "time": "17:30",
           "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
+            "sun",
+            "holiday"
           ],
           "via": "Centro +shopping",
           "school_only": false,
           "note": null,
-          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
           "raw_line": "029 17:30 Nova Conquista X Limão Centro +Shopping",
           "sector_label": "Setor Aracruz",
           "id": "ar-00503"
@@ -10041,16 +10020,13 @@
           "destination": "Nova Conquista",
           "time": "18:00",
           "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
+            "sun",
+            "holiday"
           ],
           "via": "Centro +shopping",
           "school_only": false,
           "note": null,
-          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
           "raw_line": "029 18:00 Limão X Nova Conquista Centro +Shopping",
           "sector_label": "Setor Aracruz",
           "id": "ar-00504"
@@ -10062,16 +10038,13 @@
           "destination": "Itaputera",
           "time": "18:30",
           "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
+            "sun",
+            "holiday"
           ],
           "via": "Jardins",
           "school_only": false,
           "note": null,
-          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
           "raw_line": "029 18:30 Nova Conquista X Itaputera Jardins",
           "sector_label": "Setor Aracruz",
           "id": "ar-00505"
@@ -10083,16 +10056,13 @@
           "destination": "Nova Conquista",
           "time": "19:00",
           "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
+            "sun",
+            "holiday"
           ],
           "via": "Professor Lobo",
           "school_only": false,
           "note": null,
-          "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+          "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
           "raw_line": "029 19:00 Itaputera X Nova Conquista Professor Lobo",
           "sector_label": "Setor Aracruz",
           "id": "ar-00506"
@@ -14925,7 +14895,6 @@
     "Mar Azul",
     "Marechal Floriano",
     "Nova Conquista",
-    "Nova Consquista",
     "Pau Brasil",
     "Peróbas",
     "Por do Sol",
@@ -23988,7 +23957,7 @@
     {
       "sector": "aracruz",
       "line": "029",
-      "origin": "Nova Consquista",
+      "origin": "Nova Conquista",
       "destination": "Itaputera",
       "time": "05:25",
       "days": [
@@ -24001,7 +23970,7 @@
       "via": "Jardins (saindo do Bairro Morada Park)",
       "school_only": false,
       "note": null,
-      "raw_section": null,
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
       "raw_line": "029 05:25 Nova Consquista X Itaputera Jardins (saindo do bairro Morada Park)",
       "sector_label": "Setor Aracruz",
       "id": "ar-00455"
@@ -24009,7 +23978,7 @@
     {
       "sector": "aracruz",
       "line": "029",
-      "origin": "Nova Consquista",
+      "origin": "Nova Conquista",
       "destination": "Itaputera",
       "time": "06:30",
       "days": [
@@ -24022,7 +23991,7 @@
       "via": "Jardins x Hospital",
       "school_only": false,
       "note": null,
-      "raw_section": null,
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
       "raw_line": "029 06:30 Nova Consquista X Itaputera Jardins X Hospital",
       "sector_label": "Setor Aracruz",
       "id": "ar-00456"
@@ -24030,7 +23999,7 @@
     {
       "sector": "aracruz",
       "line": "029",
-      "origin": "Nova Consquista",
+      "origin": "Nova Conquista",
       "destination": "Centro",
       "time": "06:00",
       "days": [
@@ -24043,7 +24012,7 @@
       "via": "Jardins",
       "school_only": true,
       "note": null,
-      "raw_section": null,
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
       "raw_line": "029 06:00* Nova Consquista X Centro Jardins",
       "sector_label": "Setor Aracruz",
       "id": "ar-00457"
@@ -24051,7 +24020,7 @@
     {
       "sector": "aracruz",
       "line": "029",
-      "origin": "Nova Consquista",
+      "origin": "Nova Conquista",
       "destination": "Itaputera",
       "time": "07:40",
       "days": [
@@ -24064,7 +24033,7 @@
       "via": "Jardins",
       "school_only": false,
       "note": null,
-      "raw_section": null,
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
       "raw_line": "029 07:40 Nova Consquista X Itaputera Jardins",
       "sector_label": "Setor Aracruz",
       "id": "ar-00458"
@@ -24085,7 +24054,7 @@
       "via": "Jardins",
       "school_only": false,
       "note": null,
-      "raw_section": null,
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
       "raw_line": "029 08:50 Nova Conquista X Itaputera Jardins",
       "sector_label": "Setor Aracruz",
       "id": "ar-00459"
@@ -24093,7 +24062,7 @@
     {
       "sector": "aracruz",
       "line": "029",
-      "origin": "Nova Consquista",
+      "origin": "Nova Conquista",
       "destination": "Itaputera",
       "time": "11:00",
       "days": [
@@ -24106,7 +24075,7 @@
       "via": "Jardins + Hospital",
       "school_only": false,
       "note": null,
-      "raw_section": null,
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
       "raw_line": "029 11:00 Nova Consquista X Itaputera Jardins + Hospital",
       "sector_label": "Setor Aracruz",
       "id": "ar-00460"
@@ -24114,7 +24083,7 @@
     {
       "sector": "aracruz",
       "line": "029",
-      "origin": "Nova Consquista",
+      "origin": "Nova Conquista",
       "destination": "Itaputera",
       "time": "12:30",
       "days": [
@@ -24127,7 +24096,7 @@
       "via": "Jardins + Hospital",
       "school_only": false,
       "note": null,
-      "raw_section": null,
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
       "raw_line": "029 12:30 Nova Consquista X Itaputera Jardins + Hospital",
       "sector_label": "Setor Aracruz",
       "id": "ar-00461"
@@ -24135,7 +24104,7 @@
     {
       "sector": "aracruz",
       "line": "029",
-      "origin": "Nova Consquista",
+      "origin": "Nova Conquista",
       "destination": "Centro",
       "time": "14:00",
       "days": [
@@ -24148,7 +24117,7 @@
       "via": "Jardins + Hospital",
       "school_only": false,
       "note": null,
-      "raw_section": null,
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
       "raw_line": "029 14:00 Nova Consquista X Centro Jardins + Hospital",
       "sector_label": "Setor Aracruz",
       "id": "ar-00462"
@@ -24169,7 +24138,7 @@
       "via": "Jadins",
       "school_only": false,
       "note": null,
-      "raw_section": null,
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
       "raw_line": "029 15:20 Nova Conquista X Itaputera Jadins",
       "sector_label": "Setor Aracruz",
       "id": "ar-00463"
@@ -24190,7 +24159,7 @@
       "via": "Jardins",
       "school_only": false,
       "note": null,
-      "raw_section": null,
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
       "raw_line": "029 17:00 Nova Conquista X Itaputera Jardins",
       "sector_label": "Setor Aracruz",
       "id": "ar-00464"
@@ -24211,7 +24180,7 @@
       "via": "Jardins",
       "school_only": false,
       "note": null,
-      "raw_section": null,
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
       "raw_line": "029 18:10 Nova Conquista X Itaputera Jardins",
       "sector_label": "Setor Aracruz",
       "id": "ar-00465"
@@ -24232,7 +24201,7 @@
       "via": "Até Praça da Paz",
       "school_only": false,
       "note": null,
-      "raw_section": null,
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
       "raw_line": "029 19:05 Nova Conquista X Centro Até praça da Paz",
       "sector_label": "Setor Aracruz",
       "id": "ar-00466"
@@ -24832,16 +24801,13 @@
       "destination": "Itaputera",
       "time": "06:00",
       "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
+        "sun",
+        "holiday"
       ],
       "via": "Jardins",
       "school_only": false,
       "note": null,
-      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
       "raw_line": "029 06:00 Nova Conquista X Itaputera Jardins",
       "sector_label": "Setor Aracruz",
       "id": "ar-00497"
@@ -24853,16 +24819,13 @@
       "destination": "Limão",
       "time": "06:30",
       "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
+        "sun",
+        "holiday"
       ],
       "via": "Centro + Shoping",
       "school_only": false,
       "note": null,
-      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
       "raw_line": "029 06:30 Itaputera x Limão Centro + Shoping",
       "sector_label": "Setor Aracruz",
       "id": "ar-00498"
@@ -24874,16 +24837,13 @@
       "destination": "Nova Conquista",
       "time": "07:15",
       "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
+        "sun",
+        "holiday"
       ],
       "via": "Centro +shopping",
       "school_only": false,
       "note": null,
-      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
       "raw_line": "029 07:15 Limão X Nova Conquista Centro +Shopping",
       "sector_label": "Setor Aracruz",
       "id": "ar-00499"
@@ -24895,16 +24855,13 @@
       "destination": "Por do Sol",
       "time": "11:10",
       "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
+        "sun",
+        "holiday"
       ],
       "via": "Centro +shopping",
       "school_only": false,
       "note": null,
-      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
       "raw_line": "029 11:10 Nova Conquista X Por do Sol Centro +Shopping",
       "sector_label": "Setor Aracruz",
       "id": "ar-00500"
@@ -24916,16 +24873,13 @@
       "destination": "Nova Conquista",
       "time": "11:50",
       "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
+        "sun",
+        "holiday"
       ],
       "via": "Centro +shopping",
       "school_only": false,
       "note": null,
-      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
       "raw_line": "029 11:50 Por do Sol X Nova Conquista Centro +Shopping",
       "sector_label": "Setor Aracruz",
       "id": "ar-00501"
@@ -24937,16 +24891,13 @@
       "destination": "Nova Conquista",
       "time": "13:30",
       "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
+        "sun",
+        "holiday"
       ],
       "via": "Professor Lobo",
       "school_only": false,
       "note": null,
-      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
       "raw_line": "029 13:30 Itaputera X Nova Conquista Professor Lobo",
       "sector_label": "Setor Aracruz",
       "id": "ar-00502"
@@ -24958,16 +24909,13 @@
       "destination": "Limão",
       "time": "17:30",
       "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
+        "sun",
+        "holiday"
       ],
       "via": "Centro +shopping",
       "school_only": false,
       "note": null,
-      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
       "raw_line": "029 17:30 Nova Conquista X Limão Centro +Shopping",
       "sector_label": "Setor Aracruz",
       "id": "ar-00503"
@@ -24979,16 +24927,13 @@
       "destination": "Nova Conquista",
       "time": "18:00",
       "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
+        "sun",
+        "holiday"
       ],
       "via": "Centro +shopping",
       "school_only": false,
       "note": null,
-      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
       "raw_line": "029 18:00 Limão X Nova Conquista Centro +Shopping",
       "sector_label": "Setor Aracruz",
       "id": "ar-00504"
@@ -25000,16 +24945,13 @@
       "destination": "Itaputera",
       "time": "18:30",
       "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
+        "sun",
+        "holiday"
       ],
       "via": "Jardins",
       "school_only": false,
       "note": null,
-      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
       "raw_line": "029 18:30 Nova Conquista X Itaputera Jardins",
       "sector_label": "Setor Aracruz",
       "id": "ar-00505"
@@ -25021,16 +24963,13 @@
       "destination": "Nova Conquista",
       "time": "19:00",
       "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
+        "sun",
+        "holiday"
       ],
       "via": "Professor Lobo",
       "school_only": false,
       "note": null,
-      "raw_section": "NOVA CONQUISTA X ITAPUTERA VIA JARDINS / HOSPITAL - SEGUNDA A SEXTA",
+      "raw_section": "NOVA CONQUISTA X ITAPUTERA X LIMÃO X POR DO SOL - DOMINGO E FERIADO",
       "raw_line": "029 19:00 Itaputera X Nova Conquista Professor Lobo",
       "sector_label": "Setor Aracruz",
       "id": "ar-00506"
