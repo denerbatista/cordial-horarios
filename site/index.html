@@ -566,6 +566,13 @@
     .support-actions { flex-direction: column; align-items: stretch; gap: 8px; }
     .support-btn { justify-content: center; padding: 12px 16px; font-size: 14px; }
   }
+
+  /* Toda a area do .field abre o select (chevron/dot nao bloqueiam clique) */
+  .field { cursor: pointer; }
+  .field-dot, .field-chev, .field-prefix { pointer-events: none; }
+  .field-label { pointer-events: none; }
+  /* Em fields que tem select/input dentro, ainda permitimos texto selecionavel */
+  .field-input { pointer-events: auto; }
 </style>
 </head>
 <body>
@@ -820,6 +827,17 @@ function fmtRelMinutes(m){
   return mm ? `em ${h}h${String(mm).padStart(2,"0")}` : `em ${h}h`;
 }
 function escapeHTML(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+const BR_TZ = "America/Sao_Paulo";
+function fmtDateShort(d){
+  const dt = d.toLocaleDateString("pt-BR", { timeZone: BR_TZ, day: "2-digit", month: "2-digit" });
+  const tm = d.toLocaleTimeString("pt-BR", { timeZone: BR_TZ, hour: "2-digit", minute: "2-digit", hour12: false });
+  return `${dt} ${tm}`;
+}
+function fmtDateLong(d){
+  const dt = d.toLocaleDateString("pt-BR", { timeZone: BR_TZ, day: "2-digit", month: "2-digit", year: "numeric" });
+  const tm = d.toLocaleTimeString("pt-BR", { timeZone: BR_TZ, hour: "2-digit", minute: "2-digit", hour12: false });
+  return `${dt} às ${tm}`;
+}
 function fmtDateRelative(d){
   const now = new Date(); const diffMs = now - d; const diffMin = Math.round(diffMs / 60000);
   if (diffMin < 60) return "agora há pouco";
@@ -827,7 +845,7 @@ function fmtDateRelative(d){
   const diffD = Math.round(diffH / 24);
   if (diffD === 1) return "ontem";
   if (diffD < 7) return `há ${diffD} dias`;
-  return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
+  return fmtDateShort(d);
 }
 
 async function load(){
@@ -849,8 +867,10 @@ async function load(){
 
 function renderMeta(){
   const u = new Date(DATA.generatedAt);
-  document.getElementById("updated-date").textContent = fmtDateRelative(u);
-  document.getElementById("updated-long").textContent = u.toLocaleDateString("pt-BR", { day:"2-digit", month:"2-digit", year:"numeric" });
+  document.getElementById("updated-date").textContent = fmtDateShort(u);
+  const chip = document.getElementById("status-chip");
+  if (chip) chip.title = `Ultima atualizacao: ${fmtDateLong(u)} (${fmtDateRelative(u)})`;
+  document.getElementById("updated-long").textContent = fmtDateLong(u);
   document.getElementById("foot-trips").textContent = DATA.totalTrips;
   document.getElementById("foot-places").textContent = DATA.places.length;
   document.getElementById("foot-sectors").textContent = Object.keys(DATA.sectors).length;
@@ -1182,6 +1202,25 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.remove("copied");
       if (label) label.textContent = "Copiar chave PIX";
     }, 2200);
+  });
+});
+
+// Faz o field inteiro abrir o dropdown ao clicar (mesmo no chevron/label)
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".field").forEach((f) => {
+    const ctrl = f.querySelector("select, input");
+    if (!ctrl) return;
+    f.addEventListener("mousedown", (e) => {
+      // se ja clicou direto no controle nativo, deixa o browser cuidar
+      if (e.target === ctrl) return;
+      // ignorar clique no botao swap (que ta dentro do route-picker, nao do field)
+      if (e.target.closest && e.target.closest(".swap-btn")) return;
+      e.preventDefault();
+      ctrl.focus();
+      if (ctrl.tagName === "SELECT" && typeof ctrl.showPicker === "function") {
+        try { ctrl.showPicker(); } catch (_) {}
+      }
+    });
   });
 });
 
