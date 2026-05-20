@@ -3,11 +3,94 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<meta name="theme-color" content="#0024F8" media="(prefers-color-scheme: light)" />
-<title>Horários Cordial Turismo — Consulta</title>
-<meta name="description" content="Consulta de horários da Cordial Turismo (ES). Busque por origem, destino, dia da semana e veja os próximos ônibus saindo agora." />
+<meta name="theme-color" content="#0024F8" />
+<title>Cordial Horários — consulta de ônibus | Aracruz, S. Mateus, Domingos Martins</title>
+<meta name="description" content="Consulta rápida dos horários da Cordial Turismo (ES). Busque por origem, destino, dia da semana, próximos ônibus e linhas. Atualizado diariamente a partir dos PDFs oficiais." />
+<meta name="keywords" content="cordial turismo, horário ônibus aracruz, horário cordial, ônibus aracruz, ônibus são mateus, ônibus domingos martins, ônibus joão neiva, ônibus jacupemba, próximos ônibus, linha 001 cordial, horário ônibus es, espírito santo ônibus, coqueiral, vila do riacho, praia formosa" />
+<meta name="author" content="Dener Gomes Batista" />
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+<meta name="googlebot" content="index,follow" />
+<link rel="canonical" href="https://denerbatista.github.io/cordial-horarios/" />
+<meta http-equiv="Content-Language" content="pt-BR" />
+<meta name="format-detection" content="telephone=no" />
 
-<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230024F8'/><path d='M16 22c0-3.3 2.7-6 6-6h20c3.3 0 6 2.7 6 6v18c0 1.7-1.3 3-3 3v3c0 1.7-1.3 3-3 3s-3-1.3-3-3v-2H25v2c0 1.7-1.3 3-3 3s-3-1.3-3-3v-3c-1.7 0-3-1.3-3-3V22zm6 0v10h20V22H22zm2 16a3 3 0 100 6 3 3 0 000-6zm16 0a3 3 0 100 6 3 3 0 000-6z' fill='%23fff'/></svg>" />
+<!-- Open Graph (Facebook, WhatsApp, Telegram, LinkedIn) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Cordial Horários" />
+<meta property="og:title" content="Cordial Horários — consulta de ônibus" />
+<meta property="og:description" content="Busque horários da Cordial Turismo por origem, destino e dia. Veja os próximos ônibus saindo agora — atualizado diariamente a partir dos PDFs oficiais." />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:url" content="https://denerbatista.github.io/cordial-horarios/" />
+<meta property="og:image" content="https://denerbatista.github.io/cordial-horarios/og-image.png" />
+<meta property="og:image:secure_url" content="https://denerbatista.github.io/cordial-horarios/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Cordial Horários — consulta de horários da Cordial Turismo" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Cordial Horários — consulta de ônibus" />
+<meta name="twitter:description" content="Busque horários da Cordial Turismo por origem, destino e dia. Próximos ônibus em tempo real." />
+<meta name="twitter:image" content="https://denerbatista.github.io/cordial-horarios/og-image.png" />
+<meta name="twitter:image:alt" content="Cordial Horários — consulta de horários" />
+
+<!-- PWA / icons -->
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+<link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Cordial Horários" />
+
+<!-- Structured data: WebSite + Service + SiteNavigation -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://denerbatista.github.io/cordial-horarios/#website",
+      "url": "https://denerbatista.github.io/cordial-horarios/",
+      "name": "Cordial Horários",
+      "description": "Consulta independente dos horários da Cordial Turismo (ES).",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://denerbatista.github.io/cordial-horarios/#person" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://denerbatista.github.io/cordial-horarios/#mode=search&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://denerbatista.github.io/cordial-horarios/#person",
+      "name": "Dener Gomes Batista",
+      "url": "https://denerbatista.github.io/cordial-horarios/"
+    },
+    {
+      "@type": "Service",
+      "name": "Consulta de horários de ônibus — Cordial Turismo",
+      "serviceType": "BusSchedule",
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Aracruz - ES" },
+        { "@type": "AdministrativeArea", "name": "São Mateus - ES" },
+        { "@type": "AdministrativeArea", "name": "Domingos Martins - ES" },
+        { "@type": "AdministrativeArea", "name": "João Neiva - ES" }
+      ],
+      "provider": { "@id": "https://denerbatista.github.io/cordial-horarios/#person" },
+      "url": "https://denerbatista.github.io/cordial-horarios/",
+      "isRelatedTo": {
+        "@type": "Organization",
+        "name": "Cordial Transportes e Turismo Ltda",
+        "url": "http://www.cordialturismo.com.br/portal/"
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="icon"  href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230024F8'/><path d='M16 22c0-3.3 2.7-6 6-6h20c3.3 0 6 2.7 6 6v18c0 1.7-1.3 3-3 3v3c0 1.7-1.3 3-3 3s-3-1.3-3-3v-2H25v2c0 1.7-1.3 3-3 3s-3-1.3-3-3v-3c-1.7 0-3-1.3-3-3V22zm6 0v10h20V22H22zm2 16a3 3 0 100 6 3 3 0 000-6zm16 0a3 3 0 100 6 3 3 0 000-6z' fill='%23fff'/></svg>" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

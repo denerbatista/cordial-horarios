@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://denerbatista.github.io/cordial-horarios/sitemap.xml
