@@ -22,8 +22,8 @@
 <meta property="og:description" content="Busque horários da Cordial Turismo por origem, destino e dia. Veja os próximos ônibus saindo agora — atualizado diariamente a partir dos PDFs oficiais." />
 <meta property="og:locale" content="pt_BR" />
 <meta property="og:url" content="https://denerbatista.github.io/cordial-horarios/" />
-<meta property="og:image" content="https://denerbatista.github.io/cordial-horarios/og-image.png" />
-<meta property="og:image:secure_url" content="https://denerbatista.github.io/cordial-horarios/og-image.png" />
+<meta property="og:image" content="https://denerbatista.github.io/cordial-horarios/og-image-v2.png" />
+<meta property="og:image:secure_url" content="https://denerbatista.github.io/cordial-horarios/og-image-v2.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -33,7 +33,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Cordial Horários — consulta de ônibus" />
 <meta name="twitter:description" content="Busque horários da Cordial Turismo por origem, destino e dia. Próximos ônibus em tempo real." />
-<meta name="twitter:image" content="https://denerbatista.github.io/cordial-horarios/og-image.png" />
+<meta name="twitter:image" content="https://denerbatista.github.io/cordial-horarios/og-image-v2.png" />
 <meta name="twitter:image:alt" content="Cordial Horários — consulta de horários" />
 
 <!-- PWA / icons -->
@@ -54,6 +54,7 @@
       "@id": "https://denerbatista.github.io/cordial-horarios/#website",
       "url": "https://denerbatista.github.io/cordial-horarios/",
       "name": "Cordial Horários",
+      "alternateName": "Consulta de horários da Cordial Turismo",
       "description": "Consulta independente dos horários da Cordial Turismo (ES).",
       "inLanguage": "pt-BR",
       "publisher": { "@id": "https://denerbatista.github.io/cordial-horarios/#person" },
@@ -67,25 +68,90 @@
       "@type": "Person",
       "@id": "https://denerbatista.github.io/cordial-horarios/#person",
       "name": "Dener Gomes Batista",
-      "url": "https://denerbatista.github.io/cordial-horarios/"
+      "url": "https://denerbatista.github.io/cordial-horarios/",
+      "image": "https://denerbatista.github.io/cordial-horarios/icon-512.png"
     },
     {
       "@type": "Service",
-      "name": "Consulta de horários de ônibus — Cordial Turismo",
+      "name": "Consulta de horarios de onibus - Cordial Turismo",
       "serviceType": "BusSchedule",
       "areaServed": [
-        { "@type": "AdministrativeArea", "name": "Aracruz - ES" },
-        { "@type": "AdministrativeArea", "name": "São Mateus - ES" },
-        { "@type": "AdministrativeArea", "name": "Domingos Martins - ES" },
-        { "@type": "AdministrativeArea", "name": "João Neiva - ES" }
+        { "@type": "City", "name": "Aracruz", "addressRegion": "ES" },
+        { "@type": "City", "name": "Sao Mateus", "addressRegion": "ES" },
+        { "@type": "City", "name": "Domingos Martins", "addressRegion": "ES" },
+        { "@type": "City", "name": "Joao Neiva", "addressRegion": "ES" },
+        { "@type": "City", "name": "Marechal Floriano", "addressRegion": "ES" }
       ],
       "provider": { "@id": "https://denerbatista.github.io/cordial-horarios/#person" },
       "url": "https://denerbatista.github.io/cordial-horarios/",
+      "audience": { "@type": "Audience", "audienceType": "passageiros de onibus" },
       "isRelatedTo": {
         "@type": "Organization",
         "name": "Cordial Transportes e Turismo Ltda",
         "url": "http://www.cordialturismo.com.br/portal/"
       }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Cordial Horarios", "item": "https://denerbatista.github.io/cordial-horarios/" },
+        { "@type": "ListItem", "position": 2, "name": "Buscar", "item": "https://denerbatista.github.io/cordial-horarios/#mode=search" },
+        { "@type": "ListItem", "position": 3, "name": "Proximos onibus", "item": "https://denerbatista.github.io/cordial-horarios/#mode=next" },
+        { "@type": "ListItem", "position": 4, "name": "Linhas", "item": "https://denerbatista.github.io/cordial-horarios/#mode=lines" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Como consultar o horario do onibus da Cordial Turismo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Escolha a cidade de origem e o destino na busca, ou use o modo Proximos onibus para ver o que sai a partir do horario atual. Os filtros por dia da semana mostram os horarios validos para utiltis, sabado, domingo ou feriado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais cidades e bairros estao no site?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cobertura dos PDFs oficiais da Cordial: setor Aracruz (Coqueiral, Santa Cruz, Itaparica, Praia Formosa, Mar Azul, Saue, Iraja, Barra do Sahy, Barra do Riacho, Vila do Riacho, Jacupemba, Guarana, Pau Brasil, entre outros), setor Sao Mateus (Boa Esperanca, Sobradinho, Sao Joao do Sobrado) e setor Domingos Martins (Marechal Floriano, Araguaia, Perobas, Biriricas, Santa Isabel). Tambem inclui a linha intermunicipal Aracruz x Joao Neiva."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Os horarios sao oficiais?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O site nao e oficial. Os dados sao extraidos automaticamente dos PDFs publicados pela Cordial Turismo todos os dias. Em caso de divergencia, sempre confira a pagina oficial da empresa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Com que frequencia os horarios sao atualizados?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Diariamente, durante a madrugada. Quando a Cordial publica um PDF novo, o site captura e atualiza o banco de horarios sozinho."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O site funciona no celular?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, foi feito mobile-first. Voce pode adicionar a tela inicial para usar como um aplicativo (PWA), com icone e abertura em tela cheia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que significam os horarios marcados com asterisco?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sao horarios que circulam apenas em dias letivos (escola aberta). O site mostra essa observacao em cada viagem com a tag 'so dias letivos'."
+          }
+        }
+      ]
     }
   ]
 }
@@ -95,7 +161,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
 
 <style>
   :root {
@@ -574,6 +642,82 @@
   .field-label { pointer-events: none; }
   /* Em fields que tem select/input dentro, ainda permitimos texto selecionavel */
   .field-input { pointer-events: auto; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* Secoes de conteudo SEO */
+  .seo-section {
+    margin-top: 32px;
+    padding: 0 4px;
+  }
+  .seo-section h2 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--c-ink);
+    letter-spacing: -.01em;
+    margin: 0 0 14px;
+  }
+  .seo-section p {
+    color: var(--c-ink-2);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 12px;
+  }
+  .seo-section .cities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .seo-section .city-card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--c-ink-2);
+  }
+  .seo-section details {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    transition: box-shadow var(--ease) 120ms;
+  }
+  .seo-section details[open] {
+    box-shadow: var(--shadow-sm);
+    border-color: var(--c-line-strong);
+  }
+  .seo-section details summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14.5px;
+    color: var(--c-ink);
+    list-style: none;
+    position: relative;
+    padding-right: 28px;
+  }
+  .seo-section details summary::-webkit-details-marker { display: none; }
+  .seo-section details summary::after {
+    content: "+";
+    position: absolute;
+    right: 4px; top: -2px;
+    font-size: 20px;
+    color: var(--c-muted);
+    transition: transform var(--ease) 150ms;
+  }
+  .seo-section details[open] summary::after { content: "-"; }
+  .seo-section details p {
+    margin-top: 10px; margin-bottom: 0;
+    font-size: 13.5px; line-height: 1.55;
+  }
 </style>
 </head>
 <body>
@@ -600,6 +744,8 @@
 </header>
 
 <main>
+  <h1 class="sr-only">Cordial Horarios - consulta de horarios de onibus da Cordial Turismo (ES)</h1>
+
   <div class="notice" role="note">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
     <div>
@@ -757,6 +903,82 @@
       <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
     </div>
   </div>
+
+  <section class="seo-section" aria-labelledby="about-title">
+    <h2 id="about-title">Sobre a consulta</h2>
+    <p>Este site agrega os horarios dos onibus da <strong>Cordial Transportes e Turismo</strong> (Espirito Santo) em um unico lugar pesquisavel. Os PDFs oficiais sao baixados todos os dias e o conteudo eh estruturado em um banco de horarios consultavel por origem, destino, dia da semana e linha. Voce pode ver os <strong>proximos onibus saindo agora</strong> de qualquer cidade ou bairro coberto, sem precisar abrir o PDF da empresa.</p>
+  </section>
+
+  <section class="seo-section" aria-labelledby="cities-title">
+    <h2 id="cities-title">Cidades e bairros atendidos</h2>
+    <p>Cobertura completa dos PDFs da Cordial Turismo, divididos em tres setores:</p>
+    <div class="cities-grid">
+      <div class="city-card">Aracruz</div>
+      <div class="city-card">Coqueiral</div>
+      <div class="city-card">Santa Cruz</div>
+      <div class="city-card">Praia Formosa</div>
+      <div class="city-card">Itaparica</div>
+      <div class="city-card">Mar Azul</div>
+      <div class="city-card">Saue</div>
+      <div class="city-card">Iraja</div>
+      <div class="city-card">Barra do Sahy</div>
+      <div class="city-card">Barra do Riacho</div>
+      <div class="city-card">Vila do Riacho</div>
+      <div class="city-card">Jacupemba</div>
+      <div class="city-card">Guarana</div>
+      <div class="city-card">Pau Brasil</div>
+      <div class="city-card">Joao Neiva</div>
+      <div class="city-card">Sao Mateus</div>
+      <div class="city-card">Boa Esperanca</div>
+      <div class="city-card">Sobradinho</div>
+      <div class="city-card">Sao Joao do Sobrado</div>
+      <div class="city-card">Domingos Martins</div>
+      <div class="city-card">Marechal Floriano</div>
+      <div class="city-card">Araguaia</div>
+      <div class="city-card">Perobas</div>
+      <div class="city-card">Biriricas</div>
+      <div class="city-card">Santa Isabel</div>
+    </div>
+  </section>
+
+  <section class="seo-section" aria-labelledby="faq-title">
+    <h2 id="faq-title">Perguntas frequentes</h2>
+
+    <details>
+      <summary>Como consultar o horario do onibus da Cordial?</summary>
+      <p>Escolha a cidade de origem e o destino no formulario do topo. Para ver o que sai agora, troque para a aba <em>Proximos onibus</em>. O filtro de dia da semana ajusta a lista para dias uteis, sabado, domingo ou feriado.</p>
+    </details>
+
+    <details>
+      <summary>Os horarios sao oficiais?</summary>
+      <p>Este site eh independente. Os dados sao extraidos automaticamente dos PDFs publicados pela Cordial Turismo. Em caso de divergencia, sempre confira a <a href="http://www.cordialturismo.com.br/portal/horarios_geral/" target="_blank" rel="noopener">pagina oficial</a>.</p>
+    </details>
+
+    <details>
+      <summary>Com que frequencia os horarios sao atualizados?</summary>
+      <p>Todos os dias, durante a madrugada (cerca de 03h horario de Brasilia). Quando a Cordial publica um PDF novo, o site captura e atualiza o banco de horarios sozinho.</p>
+    </details>
+
+    <details>
+      <summary>O site funciona no celular?</summary>
+      <p>Sim, foi desenhado primeiro para celular. Voce pode salvar como aplicativo na tela inicial (PWA) para abrir mais rapido, sem precisar do navegador.</p>
+    </details>
+
+    <details>
+      <summary>O que significam os horarios marcados com asterisco?</summary>
+      <p>Sao horarios que circulam apenas em <strong>dias letivos</strong> (com aulas). No site, essas viagens recebem a etiqueta <em>so dias letivos</em>.</p>
+    </details>
+
+    <details>
+      <summary>Posso saber qual linha passa em determinado lugar?</summary>
+      <p>Sim. Use a aba <em>Linhas</em> para ver todas as linhas em operacao (001, 002, 003 e assim por diante) com os bairros que cada uma cobre.</p>
+    </details>
+
+    <details>
+      <summary>Por que algumas opcoes de destino somem quando escolho a origem?</summary>
+      <p>O formulario filtra automaticamente os destinos para mostrar apenas pares <strong>validos</strong>. Se um onibus nao sai de X para Y nos PDFs oficiais, a opcao nem aparece para evitar confusao.</p>
+    </details>
+  </section>
 
   <section class="support-card" aria-label="Apoie o projeto">
     <div class="support-emoji" aria-hidden="true">☕</div>
