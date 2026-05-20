@@ -81,9 +81,12 @@ def discover_pdf_urls() -> dict[str, str]:
     html = http_get(HORARIOS_PAGE)
     candidates: dict[str, list[str]] = {"aracruz": [], "sao_mateus": [],
                                         "domingos_martins": []}
-    for m in re.finditer(r'href="([^"]+\.pdf)"[^>]*>([^<]+)</a>',
-                         html, re.IGNORECASE):
-        href, label = m.group(1), m.group(2).strip()
+    for m in re.finditer(r'href="([^"]+\.pdf)"[^>]*>(.*?)</a>',
+                         html, re.IGNORECASE | re.DOTALL):
+        href = m.group(1)
+        # remove tags HTML internas (ex.: <i>) e normaliza espaços
+        label = re.sub(r'<[^>]+>', ' ', m.group(2))
+        label = re.sub(r'\s+', ' ', label).strip()
         sec = _classify(label)
         if not sec:
             continue
