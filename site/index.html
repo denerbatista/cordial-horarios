@@ -1,10 +1,9 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" style="color-scheme: light;">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <meta name="theme-color" content="#0024F8" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#0B0F2C" media="(prefers-color-scheme: dark)" />
 <title>Horários Cordial Turismo — Consulta</title>
 <meta name="description" content="Consulta de horários da Cordial Turismo (ES). Busque por origem, destino, dia da semana e veja os próximos ônibus saindo agora." />
 
@@ -36,20 +35,6 @@
     --safe-top:env(safe-area-inset-top,0px);
     --safe-bottom:env(safe-area-inset-bottom,0px);
     --gutter:16px; --max-w:980px;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --c-primary:#5B79FF; --c-primary-600:#4A68F4; --c-primary-700:#3B58E0;
-      --c-primary-100:#1B2147; --c-primary-50:#131835;
-      --c-ink:#EAEEFB; --c-ink-2:#C4CBE3; --c-muted:#8C95B3; --c-muted-2:#707997;
-      --c-line:#232A47; --c-line-strong:#313A5E;
-      --c-surface:#131835; --c-surface-hover:#1A2046;
-      --c-bg:#0B0F2C; --c-bg-deep:#080B22;
-      --shadow-sm:0 1px 2px rgba(0,0,0,.35);
-      --shadow-md:0 4px 14px rgba(0,0,0,.45);
-      --shadow-lg:0 16px 40px rgba(0,0,0,.55);
-      --shadow-focus:0 0 0 4px rgba(91,121,255,.25);
-    }
   }
   *,*::before,*::after { box-sizing: border-box; }
   html,body { margin:0; padding:0; }
@@ -104,7 +89,6 @@
     border-radius:var(--radius-full); padding:5px 10px;
     font-size:11px; font-weight:600; line-height:1; white-space:nowrap;
   }
-  @media (prefers-color-scheme: dark) { .status-chip { background:rgba(35,192,79,.15); color:#5BE08A; } }
   .status-chip::before {
     content:""; width:6px; height:6px; border-radius:50%;
     background:currentColor;
@@ -128,7 +112,6 @@
     border-radius:var(--radius-lg); padding:12px 14px;
     font-size:13px; line-height:1.45; margin-bottom:16px;
   }
-  @media (prefers-color-scheme: dark) { .notice { background:rgba(255,138,0,.10); color:var(--c-ink); } }
   .notice svg { color:var(--c-warning-600); flex-shrink:0; margin-top:1px; }
   .notice a {
     color:var(--c-ink); text-decoration:underline;
@@ -276,9 +259,6 @@
     border-color:var(--c-success);
     background:linear-gradient(180deg, var(--c-success-100) 0%, var(--c-surface) 40%);
   }
-  @media (prefers-color-scheme: dark) {
-    .trip.is-next { background:linear-gradient(180deg, rgba(35,192,79,.12) 0%, var(--c-surface) 60%); }
-  }
   .trip-time-col {
     display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
     min-width:64px; border-right:1px solid var(--c-line); padding-right:14px;
@@ -288,11 +268,8 @@
     color:var(--c-ink); font-variant-numeric:tabular-nums; letter-spacing:-.02em;
   }
   .trip.is-next .trip-time { color:var(--c-success-600); }
-  @media (prefers-color-scheme: dark) { .trip.is-next .trip-time { color:#5BE08A; } }
   .trip-countdown { margin-top:4px; font-size:11px; font-weight:600; color:var(--c-muted); letter-spacing:.01em; }
   .trip.is-next .trip-countdown { color:var(--c-success-600); }
-  @media (prefers-color-scheme: dark) { .trip.is-next .trip-countdown { color:#5BE08A; } }
-
   .trip-route { min-width:0; display:flex; flex-direction:column; justify-content:center; gap:4px; }
   .trip-od { display:grid; grid-template-columns:auto 1fr; gap:0 10px; align-items:center; position:relative; }
   .trip-od::before {
@@ -326,12 +303,6 @@
   .badge-line { background:var(--c-primary-100); color:var(--c-primary); }
   .badge-school { background:var(--c-warning-100); color:var(--c-warning-600); }
   .badge-next { background:var(--c-success); color:#fff; }
-  @media (prefers-color-scheme: dark) {
-    .badge { background:rgba(255,255,255,.06); color:var(--c-ink-2); }
-    .badge-line { background:rgba(91,121,255,.18); color:#A8B8FF; }
-    .badge-school { background:rgba(255,138,0,.18); color:#FFB766; }
-  }
-
   .day-pills { display:flex; gap:3px; flex-wrap:nowrap; }
   .day-pill {
     font-size:9.5px; font-weight:700; color:var(--c-muted-2);
@@ -340,11 +311,6 @@
     letter-spacing:0; text-transform:uppercase;
   }
   .day-pill.on { background:var(--c-primary-100); color:var(--c-primary); }
-  @media (prefers-color-scheme: dark) {
-    .day-pill { background:rgba(255,255,255,.05); color:var(--c-muted-2); }
-    .day-pill.on { background:rgba(91,121,255,.18); color:#A8B8FF; }
-  }
-
   @media (max-width:560px) {
     .trip { grid-template-columns:auto 1fr; gap:12px; }
     .trip-time-col { min-width:56px; padding-right:12px; }
