@@ -17,6 +17,11 @@ import re
 import unicodedata
 from dataclasses import asdict, dataclass
 
+try:
+    from places import canonicalize, split_place_and_via
+except ImportError:
+    from .places import canonicalize, split_place_and_via  # type: ignore
+
 DAYS_ALL = ["mon", "tue", "wed", "thu", "fri", "sat", "sun", "holiday"]
 DAYS_WEEK = ["mon", "tue", "wed", "thu", "fri"]
 
@@ -143,35 +148,13 @@ KNOWN_PLACES = {
 
 
 def _split_dest_via(rest: str) -> tuple[str, str | None]:
+    """Separa destino e via usando o catálogo canônico em places.py."""
     rest = (rest or "").strip()
     if not rest:
         return rest, None
-    tokens = rest.split(" ")
-    for n in (5, 4, 3, 2, 1):
-        if n > len(tokens):
-            continue
-        dest_candidate = " ".join(tokens[:n])
-        if _norm(dest_candidate) in KNOWN_PLACES:
-            via = " ".join(tokens[n:]).strip() or None
-            return dest_candidate, via
-    if "+" in rest or "/" in rest:
-        for i, tk in enumerate(tokens):
-            if "+" in tk or "/" in tk:
-                if i >= 1:
-                    dest = " ".join(tokens[:i]).strip()
-                    via = " ".join(tokens[i:]).strip()
-                    return dest, via
-    m = re.match(r"^(.*?)\s+via\s+(.+)$", rest, re.IGNORECASE)
-    if m:
-        return m.group(1).strip(), m.group(2).strip()
-    if len(tokens) > 2:
-        last = tokens[-1].lower()
-        if last in {"direto", "shopping", "hospital", "centro", "barra",
-                    "ibiraçu", "ibiracu", "guaraná", "guarana", "câmara",
-                    "camara", "sauê", "saue", "iraja", "irajá", "fábrica",
-                    "fabrica", "coqueiral"}:
-            return " ".join(tokens[:-1]).strip(), tokens[-1].strip()
-    return rest, None
+    # remove pontuação à direita
+    rest = rest.rstrip(" .,;-")
+    return split_place_and_via(rest)
 
 
 def _parse_data_line(line: str) -> dict | None:
@@ -186,7 +169,7 @@ def _parse_data_line(line: str) -> dict | None:
         dest, via = _split_dest_via(rest)
         return {
             "line": line_num, "time": time, "star": star,
-            "origin": _title(origin), "destination": _title(dest),
+            "origin": canonicalize(origin), "destination": canonicalize(dest),
             "via": _title(via) if via else None, "raw": line,
         }
     m = RE_LINE_PLAIN.match(line)
@@ -198,7 +181,7 @@ def _parse_data_line(line: str) -> dict | None:
         dest, via = _split_dest_via(rest)
         return {
             "line": None, "time": time, "star": star,
-            "origin": _title(origin), "destination": _title(dest),
+            "origin": canonicalize(origin), "destination": canonicalize(dest),
             "via": _title(via) if via else None, "raw": line,
         }
     return None

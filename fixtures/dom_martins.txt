@@ -26,9 +26,43 @@ HORÁRIO ORIGEM X DESTINO VIA
 08:30 Araguaia X Domingos Martins Marechal/Santa Maria
 12:00 Araguaia X Domingos Martins Marechal/Santa Maria
 16:00 Araguaia X Domingos Martins Marechal/Santa Maria
+HORÁRIO ORIGEM X DESTINO VIA
+09:30 Domingos Martins X Peróbas Paraju/Marechal
+12:10 Domingos Martins X Peróbas Paraju/Marechal
+16:10 Domingos Martins X Peróbas Paraju/Marechal
+18:00 Domingos Martins X Peróbas Paraju/Marechal
+HORÁRIO ORIGEM X DESTINO VIA
+05:30 Peróbas X Domingos Martins Paraju/Marechal
+06:30 Peróbas X Domingos Martins Paraju/Marechal
+10:50 Peróbas X Domingos Martins Paraju/Marechal
+13:30 Peróbas X Domingos Martins Paraju/Marechal
+HORÁRIO ORIGEM X DESTINO VIA
+11:00 Domingos Martins X Biriricas Santa Isabel
+17:10 Domingos Martins X Biriricas Santa Isabel
+HORÁRIO ORIGEM X DESTINO VIA
+05:50 Biriricas X Domingos Martins Santa Isabel
+12:00 Biriricas X Domingos Martins Santa Isabel
+HORÁRIO ORIGEM X DESTINO VIA
+07:20 Domingos Martins X Santa Isabel Direto
+09:00 Domingos Martins X Santa Isabel Marechal
+11:00 Domingos Martins X Santa Isabel Biriricas
+16:10 Domingos Martins X Santa Isabel Direto
+17:10 Domingos Martins X Santa Isabel Biriricas
+HORÁRIO ORIGEM X DESTINO VIA
+06:20 Santa Isabel X Domingos Martins Biriricas
+07:30 Santa Isabel X Domingos Martins Direto
+10:10 Santa Isabel X Domingos Martins Direto
+12:30 Santa Isabel X Domingos Martins Biriricas
+16:15 Santa Isabel X Domingos Martins Direto
 DOMINGO MARTINS X MARECHAL FLORIANO - SEGUNDA X SEXTA FEIRA
 MARECHAL FLORIANO X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA
 DOMINGO MARTINS X MARECHAL FLORIANO - SÁBADO
 MARECHAL FLORIANO X DOMINGOS MARTINS - SÁBADO
 DOMINGO MARTINS X ARAGUAIA - SEGUNDA X SEXTA FEIRA
 ARAGUAIA X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA
+DOMINGO MARTINS X PERÓBAS - SEGUNDA X SEXTA FEIRA
+PERÓBAS X DOMINGO MARTINS - SEGUNDA X SEXTA FEIRA
+DOMINGOS MARTINS X BIRIRICAS - SEGUNDA X SEXTA FEIRA
+BIRIRICAS X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA
+DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA
+SANTA ISABEL X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA
