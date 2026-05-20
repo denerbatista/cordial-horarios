@@ -1,0 +1,1561 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-20T12:17:40Z",
+  "source": "fixtures",
+  "sectors": {
+    "aracruz": {
+      "label": "Setor Aracruz",
+      "source_url": null,
+      "trip_count": 0,
+      "text_hash": null,
+      "trips": []
+    },
+    "sao_mateus": {
+      "label": "Setor São Mateus",
+      "source_url": null,
+      "trip_count": 18,
+      "text_hash": "09b2c185dc64",
+      "trips": [
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "São Mateus",
+          "destination": "Boa Esperança",
+          "time": "05:00",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Segunda a Sexta",
+          "raw_section": null,
+          "raw_line": "05:00 P/ Boa Esperança (Segunda a Sexta)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00000"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "São Mateus",
+          "destination": "Boa Esperança",
+          "time": "12:00",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Segunda a Sexta",
+          "raw_section": null,
+          "raw_line": "12:00 P/ Boa Esperança (Segunda a Sexta)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00001"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "São Mateus",
+          "destination": "São João do Sobrado",
+          "time": "15:30",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Segunda a Sexta",
+          "raw_section": null,
+          "raw_line": "15:30 P/ São João do Sobrado (Segunda a Sexta)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00002"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "São Mateus",
+          "destination": "Boa Esperança",
+          "time": "09:30",
+          "days": [
+            "mon",
+            "fri",
+            "sat"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Segunda, Sexta e Sabado",
+          "raw_section": null,
+          "raw_line": "09:30 P/ Boa Esperança (Segunda, Sexta e Sabado)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00003"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "São Mateus",
+          "destination": "Boa Esperança",
+          "time": "05:00",
+          "days": [
+            "sat"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Sábado",
+          "raw_section": null,
+          "raw_line": "05:00 P/ Boa Esperança (Sábado)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00004"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "São Mateus",
+          "destination": "Sobradinho",
+          "time": "09:30",
+          "days": [
+            "sat"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Sábado",
+          "raw_section": null,
+          "raw_line": "09:30 P/ Sobradinho (Sábado)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00005"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "São Mateus",
+          "destination": "Boa Esperança",
+          "time": "12:00",
+          "days": [
+            "sat"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Sábado",
+          "raw_section": null,
+          "raw_line": "12:00 P/ Boa Esperança (Sábado)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00006"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "São Mateus",
+          "destination": "São João do Sobrado",
+          "time": "14:00",
+          "days": [
+            "sat"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Sábado",
+          "raw_section": null,
+          "raw_line": "14:00 P/ São João do Sobrado ( Sábado)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00007"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "São Mateus",
+          "destination": "Boa Esperança",
+          "time": "05:30",
+          "days": [
+            "sun",
+            "holiday"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Domingos e Feriados",
+          "raw_section": null,
+          "raw_line": "05:30/14:00 P/ Boa Esperança (Domingos e Feriados)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00008"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "São Mateus",
+          "destination": "Boa Esperança",
+          "time": "14:00",
+          "days": [
+            "sun",
+            "holiday"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Domingos e Feriados",
+          "raw_section": null,
+          "raw_line": "05:30/14:00 P/ Boa Esperança (Domingos e Feriados)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00009"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "São João do Sobrado",
+          "destination": "São Mateus",
+          "time": "05:50",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Segunda a Sábado",
+          "raw_section": null,
+          "raw_line": "05:50 P/ São Mateus (Segunda a Sábado)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00010"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "Boa Esperança",
+          "destination": "São Mateus",
+          "time": "06:30",
+          "days": [
+            "mon",
+            "fri",
+            "sat"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Segunda, Sexta e Sábado",
+          "raw_section": null,
+          "raw_line": "06:30/07:40 P/ São Mateus (Segunda, Sexta e Sábado)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00011"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "Boa Esperança",
+          "destination": "São Mateus",
+          "time": "07:40",
+          "days": [
+            "mon",
+            "fri",
+            "sat"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Segunda, Sexta e Sábado",
+          "raw_section": null,
+          "raw_line": "06:30/07:40 P/ São Mateus (Segunda, Sexta e Sábado)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00012"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "Boa Esperança",
+          "destination": "São Mateus",
+          "time": "07:05",
+          "days": [
+            "tue",
+            "wed",
+            "thu"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Terça, Quarta e Quinta",
+          "raw_section": null,
+          "raw_line": "07:05 P/ São Mateus (Terça, Quarta e Quinta)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00013"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "Boa Esperança",
+          "destination": "São Mateus",
+          "time": "12:00",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Segunda a Sábado",
+          "raw_section": null,
+          "raw_line": "12:00 P/ São Mateus (Segunda a Sábado)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00014"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "Boa Esperança",
+          "destination": "São Mateus",
+          "time": "16:00",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun",
+            "holiday"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Segunda a Domingo",
+          "raw_section": null,
+          "raw_line": "16:00 P/ São Mateus (Segunda a Domingo)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00015"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "Boa Esperança",
+          "destination": "São Mateus",
+          "time": "07:00",
+          "days": [
+            "sun",
+            "holiday"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Domingos e Feriados",
+          "raw_section": null,
+          "raw_line": "07:00/16:00 P/ São Mateus (Domingos e Feriados)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00016"
+        },
+        {
+          "sector": "sao_mateus",
+          "line": null,
+          "origin": "Boa Esperança",
+          "destination": "São Mateus",
+          "time": "16:00",
+          "days": [
+            "sun",
+            "holiday"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": "Domingos e Feriados",
+          "raw_section": null,
+          "raw_line": "07:00/16:00 P/ São Mateus (Domingos e Feriados)",
+          "sector_label": "Setor São Mateus",
+          "id": "sa-00017"
+        }
+      ]
+    },
+    "domingos_martins": {
+      "label": "Setor Domingos Martins",
+      "source_url": null,
+      "trip_count": 20,
+      "text_hash": "77474c97d65b",
+      "trips": [
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Marechal Floriano",
+          "time": "06:40",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Direto",
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "06:40 Domingos Martins X Marechal Floriano Direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00018"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Marechal Floriano",
+          "time": "09:00",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Santa Isabel",
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "09:00 Domingos Martins X Marechal Floriano Santa Isabel",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00019"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Marechal Floriano",
+          "time": "15:30",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Direto",
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "15:30 Domingos Martins X Marechal Floriano Direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00020"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Marechal Floriano",
+          "time": "16:40",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Direto",
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "16:40 Domingos Martins X Marechal Floriano Direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00021"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Marechal Floriano",
+          "destination": "Domingos Martins",
+          "time": "07:10",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Direto",
+          "school_only": false,
+          "note": null,
+          "raw_section": "MARECHAL FLORIANO X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+          "raw_line": "07:10 Marechal Floriano X Domingos Martins Direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00022"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Marechal Floriano",
+          "destination": "Domingos Martins",
+          "time": "10:00",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Santa Isabel",
+          "school_only": false,
+          "note": null,
+          "raw_section": "MARECHAL FLORIANO X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+          "raw_line": "10:00 Marechal Floriano X Domingos Martins Santa Isabel",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00023"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Marechal Floriano",
+          "destination": "Domingos Martins",
+          "time": "15:50",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Direto",
+          "school_only": false,
+          "note": null,
+          "raw_section": "MARECHAL FLORIANO X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+          "raw_line": "15:50 Marechal Floriano X Domingos Martins Direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00024"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Marechal Floriano",
+          "destination": "Domingos Martins",
+          "time": "17:10",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Direto",
+          "school_only": false,
+          "note": null,
+          "raw_section": "MARECHAL FLORIANO X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+          "raw_line": "17:10 Marechal Floriano X Domingos Martins Direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00025"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Marechal Floriano",
+          "time": "06:40",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Direto",
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "06:40 Domingos Martins X Marechal Floriano Direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00026"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Marechal Floriano",
+          "time": "09:00",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Santa Isabel",
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "09:00 Domingos Martins X Marechal Floriano Santa Isabel",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00027"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Marechal Floriano",
+          "destination": "Domingos Martins",
+          "time": "07:10",
+          "days": [
+            "sat"
+          ],
+          "via": "Direto",
+          "school_only": false,
+          "note": null,
+          "raw_section": "MARECHAL FLORIANO X DOMINGOS MARTINS - SÁBADO",
+          "raw_line": "07:10 Marechal Floriano X Domingos Martins Direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00028"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Marechal Floriano",
+          "destination": "Domingos Martins",
+          "time": "10:00",
+          "days": [
+            "sat"
+          ],
+          "via": "Santa Isabel",
+          "school_only": false,
+          "note": null,
+          "raw_section": "MARECHAL FLORIANO X DOMINGOS MARTINS - SÁBADO",
+          "raw_line": "10:00 Marechal Floriano X Domingos Martins Santa Isabel",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00029"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Araguaia",
+          "time": "07:10",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Marechal/santa Maria",
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "07:10 Domingos Martins X Araguaia Marechal/Santa Maria",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00030"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Araguaia",
+          "time": "11:00",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Marechal/santa Maria",
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "11:00 Domingos Martins X Araguaia Marechal/Santa Maria",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00031"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Araguaia",
+          "time": "14:30",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Marechal/santa Maria",
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "14:30 Domingos Martins X Araguaia Marechal/Santa Maria",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00032"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Araguaia",
+          "time": "17:10",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Marechal/santa Maria",
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "17:10 Domingos Martins X Araguaia Marechal/Santa Maria",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00033"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Araguaia",
+          "destination": "Domingos Martins",
+          "time": "05:40",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Marechal/santa Maria",
+          "school_only": false,
+          "note": null,
+          "raw_section": "ARAGUAIA X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+          "raw_line": "05:40 Araguaia X Domingos Martins Marechal/Santa Maria",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00034"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Araguaia",
+          "destination": "Domingos Martins",
+          "time": "08:30",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Marechal/santa Maria",
+          "school_only": false,
+          "note": null,
+          "raw_section": "ARAGUAIA X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+          "raw_line": "08:30 Araguaia X Domingos Martins Marechal/Santa Maria",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00035"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Araguaia",
+          "destination": "Domingos Martins",
+          "time": "12:00",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Marechal/santa Maria",
+          "school_only": false,
+          "note": null,
+          "raw_section": "ARAGUAIA X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+          "raw_line": "12:00 Araguaia X Domingos Martins Marechal/Santa Maria",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00036"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Araguaia",
+          "destination": "Domingos Martins",
+          "time": "16:00",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Marechal/santa Maria",
+          "school_only": false,
+          "note": null,
+          "raw_section": "ARAGUAIA X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+          "raw_line": "16:00 Araguaia X Domingos Martins Marechal/Santa Maria",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00037"
+        }
+      ]
+    }
+  },
+  "totalTrips": 38,
+  "places": [
+    "Araguaia",
+    "Boa Esperança",
+    "Domingos Martins",
+    "Marechal Floriano",
+    "Sobradinho",
+    "São João do Sobrado",
+    "São Mateus"
+  ],
+  "trips": [
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "São Mateus",
+      "destination": "Boa Esperança",
+      "time": "05:00",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Segunda a Sexta",
+      "raw_section": null,
+      "raw_line": "05:00 P/ Boa Esperança (Segunda a Sexta)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00000"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "São Mateus",
+      "destination": "Boa Esperança",
+      "time": "12:00",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Segunda a Sexta",
+      "raw_section": null,
+      "raw_line": "12:00 P/ Boa Esperança (Segunda a Sexta)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00001"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "São Mateus",
+      "destination": "São João do Sobrado",
+      "time": "15:30",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Segunda a Sexta",
+      "raw_section": null,
+      "raw_line": "15:30 P/ São João do Sobrado (Segunda a Sexta)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00002"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "São Mateus",
+      "destination": "Boa Esperança",
+      "time": "09:30",
+      "days": [
+        "mon",
+        "fri",
+        "sat"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Segunda, Sexta e Sabado",
+      "raw_section": null,
+      "raw_line": "09:30 P/ Boa Esperança (Segunda, Sexta e Sabado)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00003"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "São Mateus",
+      "destination": "Boa Esperança",
+      "time": "05:00",
+      "days": [
+        "sat"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Sábado",
+      "raw_section": null,
+      "raw_line": "05:00 P/ Boa Esperança (Sábado)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00004"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "São Mateus",
+      "destination": "Sobradinho",
+      "time": "09:30",
+      "days": [
+        "sat"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Sábado",
+      "raw_section": null,
+      "raw_line": "09:30 P/ Sobradinho (Sábado)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00005"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "São Mateus",
+      "destination": "Boa Esperança",
+      "time": "12:00",
+      "days": [
+        "sat"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Sábado",
+      "raw_section": null,
+      "raw_line": "12:00 P/ Boa Esperança (Sábado)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00006"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "São Mateus",
+      "destination": "São João do Sobrado",
+      "time": "14:00",
+      "days": [
+        "sat"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Sábado",
+      "raw_section": null,
+      "raw_line": "14:00 P/ São João do Sobrado ( Sábado)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00007"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "São Mateus",
+      "destination": "Boa Esperança",
+      "time": "05:30",
+      "days": [
+        "sun",
+        "holiday"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Domingos e Feriados",
+      "raw_section": null,
+      "raw_line": "05:30/14:00 P/ Boa Esperança (Domingos e Feriados)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00008"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "São Mateus",
+      "destination": "Boa Esperança",
+      "time": "14:00",
+      "days": [
+        "sun",
+        "holiday"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Domingos e Feriados",
+      "raw_section": null,
+      "raw_line": "05:30/14:00 P/ Boa Esperança (Domingos e Feriados)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00009"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "São João do Sobrado",
+      "destination": "São Mateus",
+      "time": "05:50",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Segunda a Sábado",
+      "raw_section": null,
+      "raw_line": "05:50 P/ São Mateus (Segunda a Sábado)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00010"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "Boa Esperança",
+      "destination": "São Mateus",
+      "time": "06:30",
+      "days": [
+        "mon",
+        "fri",
+        "sat"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Segunda, Sexta e Sábado",
+      "raw_section": null,
+      "raw_line": "06:30/07:40 P/ São Mateus (Segunda, Sexta e Sábado)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00011"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "Boa Esperança",
+      "destination": "São Mateus",
+      "time": "07:40",
+      "days": [
+        "mon",
+        "fri",
+        "sat"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Segunda, Sexta e Sábado",
+      "raw_section": null,
+      "raw_line": "06:30/07:40 P/ São Mateus (Segunda, Sexta e Sábado)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00012"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "Boa Esperança",
+      "destination": "São Mateus",
+      "time": "07:05",
+      "days": [
+        "tue",
+        "wed",
+        "thu"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Terça, Quarta e Quinta",
+      "raw_section": null,
+      "raw_line": "07:05 P/ São Mateus (Terça, Quarta e Quinta)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00013"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "Boa Esperança",
+      "destination": "São Mateus",
+      "time": "12:00",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Segunda a Sábado",
+      "raw_section": null,
+      "raw_line": "12:00 P/ São Mateus (Segunda a Sábado)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00014"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "Boa Esperança",
+      "destination": "São Mateus",
+      "time": "16:00",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun",
+        "holiday"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Segunda a Domingo",
+      "raw_section": null,
+      "raw_line": "16:00 P/ São Mateus (Segunda a Domingo)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00015"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "Boa Esperança",
+      "destination": "São Mateus",
+      "time": "07:00",
+      "days": [
+        "sun",
+        "holiday"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Domingos e Feriados",
+      "raw_section": null,
+      "raw_line": "07:00/16:00 P/ São Mateus (Domingos e Feriados)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00016"
+    },
+    {
+      "sector": "sao_mateus",
+      "line": null,
+      "origin": "Boa Esperança",
+      "destination": "São Mateus",
+      "time": "16:00",
+      "days": [
+        "sun",
+        "holiday"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": "Domingos e Feriados",
+      "raw_section": null,
+      "raw_line": "07:00/16:00 P/ São Mateus (Domingos e Feriados)",
+      "sector_label": "Setor São Mateus",
+      "id": "sa-00017"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Marechal Floriano",
+      "time": "06:40",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Direto",
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "06:40 Domingos Martins X Marechal Floriano Direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00018"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Marechal Floriano",
+      "time": "09:00",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Santa Isabel",
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "09:00 Domingos Martins X Marechal Floriano Santa Isabel",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00019"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Marechal Floriano",
+      "time": "15:30",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Direto",
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "15:30 Domingos Martins X Marechal Floriano Direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00020"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Marechal Floriano",
+      "time": "16:40",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Direto",
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "16:40 Domingos Martins X Marechal Floriano Direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00021"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Marechal Floriano",
+      "destination": "Domingos Martins",
+      "time": "07:10",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Direto",
+      "school_only": false,
+      "note": null,
+      "raw_section": "MARECHAL FLORIANO X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+      "raw_line": "07:10 Marechal Floriano X Domingos Martins Direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00022"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Marechal Floriano",
+      "destination": "Domingos Martins",
+      "time": "10:00",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Santa Isabel",
+      "school_only": false,
+      "note": null,
+      "raw_section": "MARECHAL FLORIANO X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+      "raw_line": "10:00 Marechal Floriano X Domingos Martins Santa Isabel",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00023"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Marechal Floriano",
+      "destination": "Domingos Martins",
+      "time": "15:50",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Direto",
+      "school_only": false,
+      "note": null,
+      "raw_section": "MARECHAL FLORIANO X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+      "raw_line": "15:50 Marechal Floriano X Domingos Martins Direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00024"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Marechal Floriano",
+      "destination": "Domingos Martins",
+      "time": "17:10",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Direto",
+      "school_only": false,
+      "note": null,
+      "raw_section": "MARECHAL FLORIANO X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+      "raw_line": "17:10 Marechal Floriano X Domingos Martins Direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00025"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Marechal Floriano",
+      "time": "06:40",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Direto",
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "06:40 Domingos Martins X Marechal Floriano Direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00026"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Marechal Floriano",
+      "time": "09:00",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Santa Isabel",
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "09:00 Domingos Martins X Marechal Floriano Santa Isabel",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00027"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Marechal Floriano",
+      "destination": "Domingos Martins",
+      "time": "07:10",
+      "days": [
+        "sat"
+      ],
+      "via": "Direto",
+      "school_only": false,
+      "note": null,
+      "raw_section": "MARECHAL FLORIANO X DOMINGOS MARTINS - SÁBADO",
+      "raw_line": "07:10 Marechal Floriano X Domingos Martins Direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00028"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Marechal Floriano",
+      "destination": "Domingos Martins",
+      "time": "10:00",
+      "days": [
+        "sat"
+      ],
+      "via": "Santa Isabel",
+      "school_only": false,
+      "note": null,
+      "raw_section": "MARECHAL FLORIANO X DOMINGOS MARTINS - SÁBADO",
+      "raw_line": "10:00 Marechal Floriano X Domingos Martins Santa Isabel",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00029"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Araguaia",
+      "time": "07:10",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Marechal/santa Maria",
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "07:10 Domingos Martins X Araguaia Marechal/Santa Maria",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00030"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Araguaia",
+      "time": "11:00",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Marechal/santa Maria",
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "11:00 Domingos Martins X Araguaia Marechal/Santa Maria",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00031"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Araguaia",
+      "time": "14:30",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Marechal/santa Maria",
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "14:30 Domingos Martins X Araguaia Marechal/Santa Maria",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00032"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Araguaia",
+      "time": "17:10",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Marechal/santa Maria",
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "17:10 Domingos Martins X Araguaia Marechal/Santa Maria",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00033"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Araguaia",
+      "destination": "Domingos Martins",
+      "time": "05:40",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Marechal/santa Maria",
+      "school_only": false,
+      "note": null,
+      "raw_section": "ARAGUAIA X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+      "raw_line": "05:40 Araguaia X Domingos Martins Marechal/Santa Maria",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00034"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Araguaia",
+      "destination": "Domingos Martins",
+      "time": "08:30",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Marechal/santa Maria",
+      "school_only": false,
+      "note": null,
+      "raw_section": "ARAGUAIA X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+      "raw_line": "08:30 Araguaia X Domingos Martins Marechal/Santa Maria",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00035"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Araguaia",
+      "destination": "Domingos Martins",
+      "time": "12:00",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Marechal/santa Maria",
+      "school_only": false,
+      "note": null,
+      "raw_section": "ARAGUAIA X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+      "raw_line": "12:00 Araguaia X Domingos Martins Marechal/Santa Maria",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00036"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Araguaia",
+      "destination": "Domingos Martins",
+      "time": "16:00",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Marechal/santa Maria",
+      "school_only": false,
+      "note": null,
+      "raw_section": "ARAGUAIA X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+      "raw_line": "16:00 Araguaia X Domingos Martins Marechal/Santa Maria",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00037"
+    }
+  ],
+  "sourceUrls": {}
+}

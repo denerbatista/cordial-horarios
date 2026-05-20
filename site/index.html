@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#0f5fa8" />
+<title>Horários Cordial Turismo — Consulta</title>
+<meta name="description" content="Consulta de horários da Cordial Turismo (não-oficial). Busca por origem, destino, dia da semana e próximos ônibus." />
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f5fa8'/><text x='16' y='22' font-family='Arial' font-size='18' font-weight='bold' text-anchor='middle' fill='white'>C</text></svg>" />
+<style>
+  :root{
+    --bg:#f6f8fb; --panel:#ffffff; --ink:#0f1b2d; --ink-2:#42526e;
+    --muted:#6b7a90; --accent:#0f5fa8; --accent-2:#0d4d8a;
+    --line:#e3e8f0; --chip:#eef3fb; --chip-ink:#1d4ed8;
+    --ok:#0a7a3f; --warn:#b45309; --rad:14px;
+    --shadow:0 1px 2px rgba(15,27,45,.06), 0 8px 24px rgba(15,27,45,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0b1220; --panel:#101a2d; --ink:#e6eefb; --ink-2:#a8b6cf;
+      --muted:#7a8aa6; --accent:#3b8bd6; --accent-2:#2b6fb2;
+      --line:#1c2842; --chip:#142239; --chip-ink:#7fb4ec;
+      --ok:#6dd49c; --warn:#f7c267;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--ink); min-height:100vh;}
+  header.top{background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; padding:18px 16px; box-shadow:0 1px 0 rgba(0,0,0,.05);}
+  header.top .wrap{max-width:1100px; margin:0 auto;}
+  header.top h1{font-size:18px; margin:0; font-weight:600; letter-spacing:.2px}
+  header.top p{margin:4px 0 0; opacity:.85; font-size:13px}
+  header.top .meta{font-size:12px; opacity:.8; margin-top:6px}
+  main{max-width:1100px; margin:0 auto; padding:18px 14px 40px;}
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:var(--rad); box-shadow:var(--shadow); padding:16px; margin-bottom:16px;}
+  .panel h2{font-size:14px; margin:0 0 12px; color:var(--ink-2); text-transform:uppercase; letter-spacing:.8px; font-weight:600;}
+  .row{display:grid; gap:10px; grid-template-columns:1fr 1fr;}
+  .row3{display:grid; gap:10px; grid-template-columns:1fr 1fr auto;}
+  @media (max-width:640px){ .row, .row3{grid-template-columns:1fr;} }
+  label{display:block; font-size:12px; color:var(--muted); margin-bottom:4px;}
+  select, input[type=text], input[type=search]{width:100%; padding:10px 12px; border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:10px; font:inherit; transition:border-color .15s, box-shadow .15s;}
+  select:focus, input:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(15,95,168,.18);}
+  button.ghost{background:transparent; color:var(--accent); border:1px solid var(--line); padding:8px 12px; border-radius:8px; font:inherit; cursor:pointer;}
+  .tabs{display:flex; gap:4px; flex-wrap:wrap; margin-bottom:12px}
+  .tab{padding:8px 14px; border-radius:999px; background:var(--chip); color:var(--ink-2); cursor:pointer; font-size:13px; font-weight:500; user-select:none; border:1px solid transparent;}
+  .tab.active{background:var(--accent); color:#fff;}
+  .tab:hover:not(.active){background:var(--line)}
+  .badge{display:inline-block; padding:2px 8px; border-radius:999px; background:var(--chip); color:var(--chip-ink); font-size:11px; font-weight:600;}
+  .badge.school{background:rgba(180,83,9,.12); color:var(--warn)}
+  .badge.next{background:rgba(10,122,63,.15); color:var(--ok)}
+  ul.trips{list-style:none; padding:0; margin:0;}
+  ul.trips li{display:grid; grid-template-columns:80px 1fr auto; align-items:center; gap:12px; padding:11px 8px; border-bottom:1px solid var(--line);}
+  ul.trips li:last-child{border-bottom:0;}
+  .trip-time{font-size:22px; font-weight:700; color:var(--accent); font-variant-numeric:tabular-nums; letter-spacing:-.5px;}
+  .trip-meta{font-size:13px; color:var(--ink);}
+  .trip-via{color:var(--muted); font-size:12px; margin-top:2px;}
+  .trip-badges{display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;}
+  .empty{padding:36px 12px; text-align:center; color:var(--muted);}
+  .empty .icon{font-size:32px; opacity:.5; margin-bottom:8px;}
+  .grid-routes{display:grid; gap:10px; grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}
+  .route-card{padding:12px 14px; border:1px solid var(--line); border-radius:12px; cursor:pointer; background:var(--panel); transition:transform .12s, box-shadow .12s;}
+  .route-card:hover{transform:translateY(-1px); box-shadow:var(--shadow);}
+  .route-card .from-to{font-weight:600; font-size:13px;}
+  .route-card .meta{color:var(--muted); font-size:12px; margin-top:4px;}
+  footer{text-align:center; padding:16px; color:var(--muted); font-size:12px;}
+  footer a{color:var(--accent); text-decoration:none;}
+  .day-pills{display:flex; flex-wrap:wrap; gap:4px; margin-top:6px;}
+  .day-pill{font-size:10px; padding:2px 6px; border-radius:6px; background:var(--chip); color:var(--chip-ink); font-weight:600;}
+  .day-pill.off{opacity:.35;}
+  .countdown{font-size:11px; color:var(--muted); margin-top:2px;}
+  .alert{padding:10px 14px; border:1px solid var(--line); border-left:3px solid var(--warn); background:rgba(180,83,9,.06); border-radius:8px; font-size:13px; margin-bottom:12px;}
+  .stats{display:flex; gap:14px; flex-wrap:wrap;}
+  .stat{font-size:12px; color:var(--muted);}
+  .stat b{color:var(--ink); font-size:14px;}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>Horários Cordial Turismo</h1>
+    <p>Consulta de ônibus por origem, destino e dia — dados extraídos dos PDFs oficiais.</p>
+    <div class="meta" id="meta">Carregando dados…</div>
+  </div>
+</header>
+
+<main>
+  <div class="alert">
+    Consulta <strong>não-oficial</strong>. Os dados são atualizados automaticamente a partir dos PDFs da Cordial Turismo. Em caso de dúvida, consulte a <a href="http://www.cordialturismo.com.br/portal/horarios_geral/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">página oficial</a>.
+  </div>
+
+  <section class="panel">
+    <div class="tabs" id="tabs">
+      <div class="tab active" data-mode="search">Buscar</div>
+      <div class="tab" data-mode="next">Próximos ônibus</div>
+      <div class="tab" data-mode="lines">Linhas</div>
+    </div>
+
+    <div id="view-search">
+      <h2>De → Para</h2>
+      <div class="row3">
+        <div>
+          <label for="from">Origem</label>
+          <select id="from"><option value="">Qualquer</option></select>
+        </div>
+        <div>
+          <label for="to">Destino</label>
+          <select id="to"><option value="">Qualquer</option></select>
+        </div>
+        <div style="align-self:end">
+          <label>&nbsp;</label>
+          <button class="ghost" id="swap" title="Inverter origem e destino" style="height:42px;">↕ Trocar</button>
+        </div>
+      </div>
+      <div class="row" style="margin-top:10px;">
+        <div>
+          <label for="day">Dia da semana</label>
+          <select id="day">
+            <option value="">Qualquer dia</option>
+            <option value="today">Hoje</option>
+            <option value="mon">Segunda</option>
+            <option value="tue">Terça</option>
+            <option value="wed">Quarta</option>
+            <option value="thu">Quinta</option>
+            <option value="fri">Sexta</option>
+            <option value="sat">Sábado</option>
+            <option value="sun">Domingo</option>
+            <option value="holiday">Feriado</option>
+          </select>
+        </div>
+        <div>
+          <label for="sector">Setor</label>
+          <select id="sector">
+            <option value="">Todos</option>
+            <option value="aracruz">Setor Aracruz</option>
+            <option value="sao_mateus">Setor São Mateus</option>
+            <option value="domingos_martins">Setor Domingos Martins</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="view-next" hidden>
+      <h2>Próximos ônibus saindo de…</h2>
+      <div class="row">
+        <div>
+          <label for="from-next">Origem</label>
+          <select id="from-next"></select>
+        </div>
+        <div>
+          <label for="from-time">A partir de</label>
+          <input type="text" id="from-time" placeholder="agora" />
+        </div>
+      </div>
+    </div>
+
+    <div id="view-lines" hidden>
+      <h2>Por linha</h2>
+      <div>
+        <label for="line">Número da linha (Aracruz)</label>
+        <select id="line"><option value="">— escolha —</option></select>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 id="results-title">Resultados</h2>
+    <div id="results"></div>
+  </section>
+</main>
+
+<footer>
+  <p>Consulta independente • dados via <a href="http://www.cordialturismo.com.br/portal/horarios_geral/" target="_blank" rel="noopener">cordialturismo.com.br</a> •
+  atualizado <span id="updated">—</span></p>
+</footer>
+
+<script>
+const DAY_KEYS = ["mon","tue","wed","thu","fri","sat","sun","holiday"];
+const DAY_LABELS = {mon:"Seg",tue:"Ter",wed:"Qua",thu:"Qui",fri:"Sex",sat:"Sáb",sun:"Dom",holiday:"Fer"};
+const SECTOR_LABELS = { aracruz:"Aracruz", sao_mateus:"S. Mateus", domingos_martins:"D. Martins" };
+const JS_DAY_TO_KEY = ["sun","mon","tue","wed","thu","fri","sat"];
+
+let DATA = null;
+
+function todayKey(){ return JS_DAY_TO_KEY[new Date().getDay()]; }
+function fmtRelMinutes(m){
+  if (m < 1) return "agora";
+  if (m < 60) return `em ${Math.round(m)} min`;
+  const h = Math.floor(m/60), mm = Math.round(m%60);
+  return mm ? `em ${h}h${mm.toString().padStart(2,"0")}` : `em ${h}h`;
+}
+function timeNow(){ const d = new Date(); return d.getHours()*60 + d.getMinutes(); }
+function timeToMin(t){ const [h,m] = t.split(":").map(Number); return h*60 + m; }
+function escapeHTML(s){
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function sortByTime(a,b){ return timeToMin(a.time) - timeToMin(b.time); }
+function uniqueSorted(arr){ return Array.from(new Set(arr)).sort((a,b)=>a.localeCompare(b,"pt-BR")); }
+
+async function load(){
+  try{
+    const r = await fetch("data/schedules.json", {cache:"no-cache"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    DATA = await r.json();
+  } catch(e){
+    document.getElementById("results").innerHTML =
+      `<div class="empty"><div class="icon">!</div>Não consegui carregar os dados.<br><small>${e.message}</small></div>`;
+    return;
+  }
+  hydrateUI();
+  renderMeta();
+  applyURLState();
+  doSearch();
+}
+
+function renderMeta(){
+  const u = new Date(DATA.generatedAt);
+  const f = u.toLocaleDateString("pt-BR", {day:"2-digit",month:"2-digit",year:"numeric"});
+  const stats = `<div class="stats">
+    <span class="stat"><b>${DATA.totalTrips}</b> viagens</span>
+    <span class="stat"><b>${DATA.places.length}</b> locais</span>
+    <span class="stat"><b>${Object.keys(DATA.sectors).length}</b> setores</span>
+  </div>`;
+  document.getElementById("meta").innerHTML = `Atualizado em ${f} • ${stats}`;
+  document.getElementById("updated").textContent = f;
+}
+
+function hydrateUI(){
+  const places = DATA.places;
+  function fillSelect(id){
+    const s = document.getElementById(id);
+    if(!s) return;
+    if (id !== "to" && id !== "from") s.innerHTML = '<option value="">— escolha —</option>';
+    else s.innerHTML = '<option value="">Qualquer</option>';
+    for(const p of places){
+      const o = document.createElement("option");
+      o.value = p; o.textContent = p; s.appendChild(o);
+    }
+  }
+  fillSelect("from"); fillSelect("to"); fillSelect("from-next");
+
+  const lines = uniqueSorted(DATA.trips.map(t=>t.line).filter(Boolean));
+  const lsel = document.getElementById("line");
+  for(const ln of lines){
+    const o = document.createElement("option");
+    o.value = ln; o.textContent = "Linha "+ln; lsel.appendChild(o);
+  }
+
+  document.getElementById("tabs").addEventListener("click", (e)=>{
+    const t = e.target.closest(".tab"); if(!t) return;
+    setMode(t.dataset.mode);
+  });
+  ["from","to","day","sector","from-next","from-time","line"].forEach(id=>{
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.addEventListener("input", ()=>{ writeURLState(); doSearch(); });
+    el.addEventListener("change", ()=>{ writeURLState(); doSearch(); });
+  });
+  document.getElementById("swap").addEventListener("click", ()=>{
+    const a = document.getElementById("from").value;
+    const b = document.getElementById("to").value;
+    document.getElementById("from").value = b;
+    document.getElementById("to").value = a;
+    writeURLState(); doSearch();
+  });
+}
+
+function setMode(mode){
+  document.querySelectorAll("#tabs .tab").forEach(t=>{
+    t.classList.toggle("active", t.dataset.mode === mode);
+  });
+  document.getElementById("view-search").hidden = mode !== "search";
+  document.getElementById("view-next").hidden = mode !== "next";
+  document.getElementById("view-lines").hidden = mode !== "lines";
+  writeURLState(); doSearch();
+}
+function currentMode(){ return document.querySelector("#tabs .tab.active")?.dataset.mode || "search"; }
+
+function applyURLState(){
+  const params = new URLSearchParams(location.hash.slice(1));
+  if(params.has("mode")) setMode(params.get("mode"));
+  for(const id of ["from","to","day","sector","from-next","from-time","line"]){
+    const v = params.get(id);
+    if(v !== null){ const el = document.getElementById(id); if(el) el.value = v; }
+  }
+}
+function writeURLState(){
+  const params = new URLSearchParams();
+  params.set("mode", currentMode());
+  for(const id of ["from","to","day","sector","from-next","from-time","line"]){
+    const el = document.getElementById(id);
+    if(el && el.value) params.set(id, el.value);
+  }
+  history.replaceState(null,"", "#"+params.toString());
+}
+function doSearch(){
+  const mode = currentMode();
+  if(mode === "search") renderSearch();
+  else if(mode === "next") renderNext();
+  else if(mode === "lines") renderLines();
+}
+function dayFromSelect(v){ if(!v) return null; if(v === "today") return todayKey(); return v; }
+
+function filterTrips({from, to, day, sector, line, originOnly=false}){
+  return DATA.trips.filter(t=>{
+    if(originOnly){ if(from && t.origin !== from) return false; }
+    else { if(from && t.origin !== from) return false; if(to && t.destination !== to) return false; }
+    if(day && !t.days.includes(day)) return false;
+    if(sector && t.sector !== sector) return false;
+    if(line && t.line !== line) return false;
+    return true;
+  });
+}
+
+function tripCard(t, opts={}){
+  const days = DAY_KEYS.map(k=>{
+    const on = t.days.includes(k);
+    return `<span class="day-pill ${on?"":"off"}">${DAY_LABELS[k]}</span>`;
+  }).join("");
+  const badges = [];
+  if(t.school_only) badges.push(`<span class="badge school">só dias letivos</span>`);
+  badges.push(`<span class="badge">${SECTOR_LABELS[t.sector] || t.sector}</span>`);
+  if(t.line) badges.push(`<span class="badge">linha ${t.line}</span>`);
+  if(opts.nextLabel) badges.push(`<span class="badge next">${opts.nextLabel}</span>`);
+  const viaPart = t.via ? `<div class="trip-via">via ${escapeHTML(t.via)}</div>` : "";
+  const note = t.note ? `<div class="trip-via">${escapeHTML(t.note)}</div>` : "";
+  return `<li>
+    <div>
+      <div class="trip-time">${t.time}</div>
+      ${opts.countdown ? `<div class="countdown">${opts.countdown}</div>` : ""}
+    </div>
+    <div>
+      <div class="trip-meta"><strong>${escapeHTML(t.origin)}</strong> → ${escapeHTML(t.destination)}</div>
+      ${viaPart}${note}
+      <div class="day-pills">${days}</div>
+    </div>
+    <div class="trip-badges">${badges.join("")}</div>
+  </li>`;
+}
+
+function renderSearch(){
+  const from = document.getElementById("from").value;
+  const to = document.getElementById("to").value;
+  const day = dayFromSelect(document.getElementById("day").value);
+  const sector = document.getElementById("sector").value;
+  const trips = filterTrips({from, to, day, sector}).slice().sort(sortByTime);
+  const title = (from || to)
+    ? `${from||"qualquer origem"} → ${to||"qualquer destino"}`
+    : "Todos os horários";
+  document.getElementById("results-title").textContent = `${title} — ${trips.length} viagens`;
+  const root = document.getElementById("results");
+  if(!trips.length){
+    root.innerHTML = `<div class="empty"><div class="icon">∅</div>Nenhuma viagem nesse filtro.</div>`;
+    return;
+  }
+  root.innerHTML = `<ul class="trips">${trips.map(t=>tripCard(t)).join("")}</ul>`;
+}
+
+function renderNext(){
+  const from = document.getElementById("from-next").value;
+  const timeStr = (document.getElementById("from-time").value || "").trim();
+  let baseTime = timeNow();
+  if(timeStr){
+    const m = timeStr.match(/^(\d{1,2}):?(\d{2})?$/);
+    if(m) baseTime = (+m[1])*60 + (m[2] ? +m[2] : 0);
+  }
+  const day = todayKey();
+  const root = document.getElementById("results");
+  if(!from){
+    root.innerHTML = `<div class="empty"><div class="icon">→</div>Escolha uma origem.</div>`;
+    document.getElementById("results-title").textContent = "Próximos ônibus";
+    return;
+  }
+  const trips = filterTrips({from, day, originOnly:true})
+    .filter(t => timeToMin(t.time) >= baseTime)
+    .slice().sort(sortByTime).slice(0, 30);
+  document.getElementById("results-title").textContent =
+    `Saindo de ${from} a partir das ${String(Math.floor(baseTime/60)).padStart(2,"0")}:${String(baseTime%60).padStart(2,"0")} — ${trips.length}`;
+  if(!trips.length){
+    root.innerHTML = `<div class="empty"><div class="icon">🌙</div>Sem ônibus a partir desse horário hoje.</div>`;
+    return;
+  }
+  root.innerHTML = `<ul class="trips">${trips.map((t,i)=>{
+    const delta = timeToMin(t.time) - baseTime;
+    const nextLabel = i === 0 ? "próximo" : null;
+    return tripCard(t, {countdown: fmtRelMinutes(delta), nextLabel});
+  }).join("")}</ul>`;
+}
+
+function renderLines(){
+  const line = document.getElementById("line").value;
+  const root = document.getElementById("results");
+  if(!line){
+    const byLine = {};
+    DATA.trips.forEach(t=>{
+      if(!t.line) return;
+      byLine[t.line] = byLine[t.line] || {count:0, sectors:new Set(), routes:new Set()};
+      byLine[t.line].count++;
+      byLine[t.line].sectors.add(t.sector);
+      byLine[t.line].routes.add(`${t.origin} → ${t.destination}`);
+    });
+    const lines = Object.keys(byLine).sort();
+    document.getElementById("results-title").textContent = `Linhas (${lines.length})`;
+    root.innerHTML = `<div class="grid-routes">${lines.map(ln=>{
+      const info = byLine[ln];
+      const routes = Array.from(info.routes).slice(0,2).join(", ");
+      return `<div class="route-card" data-line="${ln}">
+        <div class="from-to">Linha ${ln}</div>
+        <div class="meta">${info.count} viagens • ${routes}${info.routes.size>2?"…":""}</div>
+      </div>`;
+    }).join("")}</div>`;
+    root.querySelectorAll(".route-card").forEach(c=>{
+      c.addEventListener("click", ()=>{
+        document.getElementById("line").value = c.dataset.line;
+        writeURLState(); doSearch();
+      });
+    });
+    return;
+  }
+  const trips = filterTrips({line}).slice().sort((a,b)=>{
+    if(a.origin !== b.origin) return a.origin.localeCompare(b.origin);
+    if(a.destination !== b.destination) return a.destination.localeCompare(b.destination);
+    return sortByTime(a,b);
+  });
+  document.getElementById("results-title").textContent = `Linha ${line} — ${trips.length} viagens`;
+  if(!trips.length){
+    root.innerHTML = `<div class="empty"><div class="icon">∅</div>Sem viagens.</div>`;
+    return;
+  }
+  root.innerHTML = `<ul class="trips">${trips.map(t=>tripCard(t)).join("")}</ul>`;
+}
+
+load();
+</script>
+</body>
+</html>
