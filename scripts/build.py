@@ -14,6 +14,7 @@ import datetime as dt
 import hashlib
 import json
 import sys
+import traceback
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -40,19 +41,13 @@ def _hash(text: str) -> str:
 
 def build_from_fixtures(out_path: Path) -> dict:
     fixtures_dir = ROOT / "fixtures"
-    sectors_out = {}
-    all_trips = []
+    sectors_out: dict = {}
+    all_trips: list = []
     for sec in SECTORS:
         fix = fixtures_dir / FIXTURE_NAMES[sec]
         if not fix.exists():
             print(f"[!] sem fixture pra {sec}: {fix}", file=sys.stderr)
-            sectors_out[sec] = {
-                "label": SECTOR_LABELS[sec],
-                "source_url": None,
-                "trip_count": 0,
-                "text_hash": None,
-                "trips": [],
-            }
+            sectors_out[sec] = _empty_sector(sec)
             continue
         text = fix.read_text(encoding="utf-8")
         trips = parse_sector(text, sec)
@@ -72,23 +67,27 @@ def build_from_fixtures(out_path: Path) -> dict:
 
 def build_from_web(out_path: Path) -> dict:
     from extractor import discover_pdf_urls, build_sector  # type: ignore
-    sectors_out = {}
-    all_trips = []
-    urls = discover_pdf_urls()
+    sectors_out: dict = {}
+    all_trips: list = []
+    try:
+        urls = discover_pdf_urls()
+    except Exception as e:
+        print(f"[!!] discover_pdf_urls falhou: {e}", file=sys.stderr)
+        urls = {}
     print(f"URLs descobertos: {urls}", file=sys.stderr)
     for sec in SECTORS:
         url = urls.get(sec)
         if not url:
             print(f"[!] URL não encontrado pra {sec}", file=sys.stderr)
-            sectors_out[sec] = {
-                "label": SECTOR_LABELS[sec],
-                "source_url": None,
-                "trip_count": 0,
-                "text_hash": None,
-                "trips": [],
-            }
+            sectors_out[sec] = _empty_sector(sec)
             continue
-        result = build_sector(sec, url)
+        try:
+            result = build_sector(sec, url)
+        except Exception as e:
+            print(f"[!!] falha em {sec} ({url}): {e}", file=sys.stderr)
+            traceback.print_exc(file=sys.stderr)
+            sectors_out[sec] = _empty_sector(sec, source_url=url, error=str(e))
+            continue
         for t in result["trips"]:
             t["sector_label"] = SECTOR_LABELS[sec]
         all_trips.extend(result["trips"])
@@ -102,6 +101,20 @@ def build_from_web(out_path: Path) -> dict:
     return _assemble(sectors_out, all_trips, source="web", urls=urls)
 
 
+def _empty_sector(sec: str, source_url: str | None = None,
+                  error: str | None = None) -> dict:
+    out = {
+        "label": SECTOR_LABELS[sec],
+        "source_url": source_url,
+        "trip_count": 0,
+        "text_hash": None,
+        "trips": [],
+    }
+    if error:
+        out["error"] = error
+    return out
+
+
 def _assemble(sectors_out: dict, all_trips: list[dict], *, source: str,
               urls: dict | None = None) -> dict:
     for i, t in enumerate(all_trips):
@@ -112,7 +125,7 @@ def _assemble(sectors_out: dict, all_trips: list[dict], *, source: str,
         places.add(t["destination"])
     return {
         "schemaVersion": 1,
-        "generatedAt": dt.datetime.utcnow().isoformat(timespec="seconds") + "Z",
+        "generatedAt": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
         "source": source,
         "sectors": sectors_out,
         "totalTrips": len(all_trips),
@@ -143,6 +156,10 @@ def main():
     print(f"   sectors: {len(payload['sectors'])}")
     print(f"   trips:   {payload['totalTrips']}")
     print(f"   places:  {len(payload['places'])}")
+    if payload["totalTrips"] == 0:
+        # se nada foi parseado, sinaliza falha mas mantém o JSON parcial
+        print("AVISO: nenhuma viagem extraída", file=sys.stderr)
+        sys.exit(3)
 
 
 if __name__ == "__main__":
