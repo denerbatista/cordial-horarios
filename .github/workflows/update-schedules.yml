@@ -1,15 +1,18 @@
 name: Atualizar horários
 
+# Source code (parser, build, extractor) NÃO vive neste repo público.
+# Ele fica em ~/cordial-source/ no PC do dono, junto com o self-hosted runner.
+# Este workflow apenas orquestra: runner executa o build localmente e commita
+# só o resultado (schedules.json + sitemap.xml) de volta no repo.
+
 on:
   schedule:
-    - cron: "0 12 * * *"  # diariamente às 12:00 UTC = 09:00 BRT (PC provavelmente ligado)
+    - cron: "0 12 * * *"   # 09:00 BRT - PC provavelmente ligado
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths:
-      - "site/**"
-      - "scripts/**"
-      - ".github/workflows/update-schedules.yml"
+    paths-ignore:
+      - "**/*.md"
 
 permissions:
   contents: write
@@ -17,68 +20,73 @@ permissions:
   id-token: write
   issues: write
 
-# cancel-in-progress: true → se já tem um job queued no runner (ex: PC ficou off
-# alguns dias e o cron disparou várias vezes), só o mais recente sobrevive.
 concurrency:
   group: "update-schedules"
   cancel-in-progress: true
 
 jobs:
   update:
-    name: Baixar PDFs e gerar schedules.json
-    # Self-hosted: roda no PC do dono do repo (que não está bloqueado pela Cordial).
-    # Pra registrar um runner, ver Settings -> Actions -> Runners -> New self-hosted runner.
-    # O runner precisa estar etiquetado com "cordial".
+    name: Build no PC e commitar schedules.json
+    if: github.event_name != 'push'
     runs-on: [self-hosted, cordial]
     timeout-minutes: 30
     defaults:
       run:
         shell: bash
-    if: github.event_name != 'push'
     outputs:
-      changed: ${{ steps.commit.outputs.changed }}
+      total_trips: ${{ steps.build.outputs.total_trips }}
+      exit_code:   ${{ steps.build.outputs.exit_code }}
     steps:
-      - name: Checkout
+      - name: Checkout (repo público)
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: pip
+      - name: Validar source local
+        run: |
+          if [ -z "${HOME:-}" ] || [ ! -d "$HOME/cordial-source/scripts" ]; then
+            echo "::error::Faltando $HOME/cordial-source/scripts no PC. Clone seu source pra lá."
+            exit 1
+          fi
+          # symlink temporário pra build.py poder importar tudo
+          ln -sfn "$HOME/cordial-source/scripts" scripts
+          ln -sfn "$HOME/cordial-source/fixtures" fixtures
+          cp -f "$HOME/cordial-source/requirements.txt" .
 
       - name: Instalar dependências
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python3 -m pip install --upgrade pip --quiet
+          pip install -r requirements.txt --quiet
 
-      - name: Rodar build
+      - name: Rodar build (com IP residencial)
         id: build
         env:
           PYTHONUNBUFFERED: "1"
         run: |
           set +e
-          python scripts/build.py --out site/data/schedules.json
+          python3 scripts/build.py --out site/data/schedules.json
           status=$?
           set -e
+          trips=0
           if [ -f site/data/schedules.json ]; then
-            trips=$(python -c "import json; print(json.load(open('site/data/schedules.json'))['totalTrips'])")
+            trips=$(python3 -c "import json; print(json.load(open('site/data/schedules.json'))['totalTrips'])")
             echo "--- resumo ---"
-            python - <<'PY'
+            python3 - <<'PY'
           import json
           d = json.load(open("site/data/schedules.json"))
           print(f"trips: {d['totalTrips']}")
           print(f"places: {len(d['places'])}")
           for s, info in d["sectors"].items():
-              print(f"  {s}: {info['trip_count']} viagens (url={info['source_url']})")
+              print(f"  {s}: {info['trip_count']} viagens")
           PY
-          else
-            trips=0
           fi
           echo "exit_code=$status" >> "$GITHUB_OUTPUT"
           echo "total_trips=$trips" >> "$GITHUB_OUTPUT"
 
-      - name: Commit (se houver mudança)
+      - name: Limpar artefatos do source (não commitar)
+        if: always()
+        run: |
+          rm -f scripts fixtures requirements.txt
+
+      - name: Commit + push (se mudou)
         id: commit
         if: steps.build.outputs.total_trips != '0'
         run: |
@@ -103,45 +111,22 @@ jobs:
             const exitCode = '${{ steps.build.outputs.exit_code }}';
             const totalTrips = '${{ steps.build.outputs.total_trips }}';
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const title = "⚠️ Build dos horários falhou (Cordial PDFs)";
             const label = "build-failed";
-
-            // Garante que a label existe
             try { await github.rest.issues.getLabel({ ...context.repo, name: label }); }
-            catch (e) {
-              if (e.status === 404) {
-                await github.rest.issues.createLabel({ ...context.repo, name: label, color: "d73a4a",
-                  description: "build do schedules.json falhou (provavelmente extração da Cordial)" });
-              }
-            }
-
-            const body = [
-              `O workflow "Atualizar horários" não conseguiu gerar um \`schedules.json\` válido.`,
-              ``,
-              `- exit_code do build.py: \`${exitCode}\``,
-              `- total_trips extraído: \`${totalTrips}\``,
-              `- run: ${runUrl}`,
-              ``,
-              `**Causa mais provável:** servidor da Cordial Turismo passou a bloquear o IP do runner do GitHub Actions (\`x-deny-reason: host_not_allowed\`). O cron diário continuará tentando até o problema ser resolvido.`,
-              ``,
-              `**Próximos passos sugeridos:**`,
-              `1. Conferir os logs da step "Rodar build" no run acima.`,
-              `2. Se for 403 da Cordial, considerar self-hosted runner ou proxy de IP brasileiro.`,
-              `3. Quando o build voltar a ter sucesso, esta issue é fechada automaticamente.`,
-            ].join("\n");
-
-            // Procura issue aberta existente com a label
+            catch (e) { if (e.status === 404) {
+              await github.rest.issues.createLabel({ ...context.repo, name: label, color: "d73a4a" });
+            } }
             const open = await github.rest.issues.listForRepo({
               ...context.repo, state: "open", labels: label, per_page: 5,
             });
             if (open.data.length) {
-              const num = open.data[0].number;
-              await github.rest.issues.createComment({ ...context.repo, issue_number: num,
-                body: `Falha novamente em ${new Date().toISOString()}.\nrun: ${runUrl}\nexit_code=\`${exitCode}\` total_trips=\`${totalTrips}\`` });
-              core.notice(`Comentário adicionado na issue #${num}.`);
+              await github.rest.issues.createComment({ ...context.repo, issue_number: open.data[0].number,
+                body: `Falha em ${new Date().toISOString()}.\nrun: ${runUrl}\nexit=${exitCode} trips=${totalTrips}` });
             } else {
-              const created = await github.rest.issues.create({ ...context.repo, title, body, labels: [label] });
-              core.notice(`Issue criada: #${created.data.number}.`);
+              await github.rest.issues.create({ ...context.repo,
+                title: "⚠️ Build dos horários falhou",
+                body: `exit=${exitCode} trips=${totalTrips}\nrun: ${runUrl}`,
+                labels: [label] });
             }
             core.setFailed(`Build falhou (exit=${exitCode}, trips=${totalTrips})`);
 
@@ -159,15 +144,12 @@ jobs:
               await github.rest.issues.createComment({ ...context.repo, issue_number: it.number,
                 body: `✅ Build voltou a ter sucesso em ${new Date().toISOString()}.\nrun: ${runUrl}` });
               await github.rest.issues.update({ ...context.repo, issue_number: it.number, state: "closed" });
-              core.notice(`Issue #${it.number} fechada.`);
             }
 
   deploy:
     name: Publicar GitHub Pages
-    # Roda em hosted runner (Pages só precisa publicar; não toca em Cordial).
     runs-on: ubuntu-latest
     needs: update
-    # Roda em push (update foi skipped) ou após update com sucesso.
     if: |
       always() && (
         github.event_name == 'push' ||
@@ -177,19 +159,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout (após commit)
-        uses: actions/checkout@v4
-        with:
-          ref: main
-
-      - name: Configurar Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload do site
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: site
-
-      - name: Deploy
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
