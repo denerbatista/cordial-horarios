@@ -1,0 +1,141 @@
+# Workflow do repo PRIVADO (cordial-horarios-src).
+#
+# O que faz:
+# 1. Builda schedules.json a partir dos PDFs da Cordial (com IP do runner).
+# 2. Gera dist/ com tudo minificado + ofuscado.
+# 3. Faz push do dist/ pro repo PÚBLICO via deploy key.
+#
+# Pré-requisitos no GitHub do repo privado:
+# - Secret DEPLOY_KEY com a CHAVE PRIVADA SSH (gerada com ssh-keygen).
+# - A chave PÚBLICA equivalente cadastrada como "Deploy key" no repo público
+#   com permissão de WRITE.
+# - Self-hosted runner instalado e etiquetado "cordial".
+#
+# Variáveis abaixo:
+PUBLIC_REPO: &public_repo "denerbatista/cordial-horarios"
+
+name: Build, ofuscar e publicar
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - "fixtures/**"
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: "build-and-deploy"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build + minify + push pro público
+    runs-on: [self-hosted, cordial]
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout source (privado)
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Instalar deps Python
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Rodar build (gera site/data/schedules.json)
+        id: build
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          set +e
+          python scripts/build.py --out site/data/schedules.json
+          status=$?
+          set -e
+          trips=0
+          if [ -f site/data/schedules.json ]; then
+            trips=$(python -c "import json; print(json.load(open('site/data/schedules.json'))['totalTrips'])")
+          fi
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          echo "total_trips=$trips" >> "$GITHUB_OUTPUT"
+
+      - name: Gerar dist/ minificado e ofuscado
+        if: steps.build.outputs.total_trips != '0'
+        run: |
+          python migration/build-dist.py --src site --out dist --obfuscate
+          ls -la dist/
+
+      - name: Setup SSH (deploy key do repo público)
+        if: steps.build.outputs.total_trips != '0'
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Push dist/ pro repo público
+        if: steps.build.outputs.total_trips != '0'
+        env:
+          PUBLIC_REPO: "denerbatista/cordial-horarios"
+        run: |
+          git config --global user.name  "cordial-horarios-bot"
+          git config --global user.email "bot@cordial-horarios.local"
+          tmp=$(mktemp -d)
+          git clone --depth 1 git@github.com:$PUBLIC_REPO.git "$tmp/public"
+          rsync -a --delete \
+            --exclude='.git' --exclude='.github' --exclude='CNAME' \
+            dist/ "$tmp/public/"
+          cd "$tmp/public"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "Sem mudanças no dist."
+          else
+            ts=$(date -u +"%Y-%m-%d %H:%M UTC")
+            git commit -m "data: atualizar horários ($ts)"
+            git push origin main
+          fi
+
+      - name: Abrir issue em caso de falha
+        if: steps.build.outputs.exit_code != '0' || steps.build.outputs.total_trips == '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const exitCode = '${{ steps.build.outputs.exit_code }}';
+            const totalTrips = '${{ steps.build.outputs.total_trips }}';
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const label = "build-failed";
+            try { await github.rest.issues.getLabel({ ...context.repo, name: label }); }
+            catch (e) { if (e.status === 404) {
+              await github.rest.issues.createLabel({ ...context.repo, name: label, color: "d73a4a" });
+            } }
+            const open = await github.rest.issues.listForRepo({
+              ...context.repo, state: "open", labels: label, per_page: 5,
+            });
+            if (open.data.length) {
+              await github.rest.issues.createComment({ ...context.repo, issue_number: open.data[0].number,
+                body: `Falha em ${new Date().toISOString()}.\nexit=${exitCode} trips=${totalTrips}\n${runUrl}` });
+            } else {
+              await github.rest.issues.create({ ...context.repo,
+                title: "⚠️ Build dos horários falhou",
+                body: `exit=${exitCode} trips=${totalTrips}\nrun: ${runUrl}`,
+                labels: [label] });
+            }
+            core.setFailed(`Build falhou (exit=${exitCode}, trips=${totalTrips})`);
