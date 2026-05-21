@@ -24,7 +24,15 @@ concurrency:
 jobs:
   update:
     name: Baixar PDFs e gerar schedules.json
-    runs-on: ubuntu-latest
+    # Self-hosted: roda no PC do dono do repo (que não está bloqueado pela Cordial).
+    # Pra registrar um runner, ver Settings -> Actions -> Runners -> New self-hosted runner.
+    # O runner precisa estar etiquetado com "cordial".
+    runs-on: [self-hosted, cordial]
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    if: github.event_name != 'push'
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
     steps:
@@ -154,8 +162,15 @@ jobs:
 
   deploy:
     name: Publicar GitHub Pages
+    # Roda em hosted runner (Pages só precisa publicar; não toca em Cordial).
     runs-on: ubuntu-latest
     needs: update
+    # Roda em push (update foi skipped) ou após update com sucesso.
+    if: |
+      always() && (
+        github.event_name == 'push' ||
+        needs.update.result == 'success'
+      )
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

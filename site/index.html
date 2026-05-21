@@ -740,6 +740,51 @@
     background: var(--c-bg-deep); padding: 1px 6px; border-radius: 4px;
     font-size: 12px;
   }
+  .sync-head {
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    margin-bottom: 4px;
+  }
+  .sync-section {
+    margin-top: 18px; padding-top: 18px;
+    border-top: 1px solid var(--c-line);
+  }
+  .sync-section:first-of-type {
+    margin-top: 8px; padding-top: 12px; border-top: 0;
+  }
+  .sync-section h3 {
+    font-family: var(--font-display);
+    font-size: 14.5px; font-weight: 600; margin: 0 0 4px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .sync-section .sync-sub { margin: 0 0 12px; font-size: 12.5px; color: var(--c-muted); }
+  .sync-pill {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: 2px 8px; border-radius: var(--radius-full);
+    background: var(--c-bg-deep); color: var(--c-muted);
+  }
+  .sync-section--secondary { opacity: .92; }
+  .sync-pat {
+    display:flex; gap:8px; align-items:center; margin-bottom: 10px;
+  }
+  .sync-pat-input {
+    flex:1; padding: 10px 12px; border:1px solid var(--c-line);
+    border-radius: var(--radius-md); background: var(--c-surface);
+    font: 500 13px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: var(--c-ink);
+  }
+  .sync-pat-input:focus { outline:none; border-color: var(--c-primary); box-shadow: var(--shadow-focus); }
+  .sync-btn-ghost {
+    padding: 8px 12px; border-radius: var(--radius-md);
+    background: var(--c-bg-deep); color: var(--c-ink-2); border: 0;
+    font: 600 12.5px/1 var(--font-body); cursor: pointer;
+  }
+  .sync-btn-ghost:hover { background: var(--c-surface-hover); }
+  .sync-btn--secondary {
+    background: var(--c-ink-2); color: #fff;
+    box-shadow: 0 6px 14px -6px rgba(11,15,44,.4);
+  }
+  .sync-btn--secondary:hover:not(:disabled) { background: var(--c-ink); }
 
   /* Secoes de conteudo SEO */
   .seo-section {
@@ -987,30 +1032,72 @@
     </div>
 
     <div id="view-sync" hidden>
-      <div class="sync-panel" role="region" aria-label="Sincronização local">
-        <h2>Sincronização local</h2>
-        <p>Roda o build no seu PC (que a Cordial não bloqueia), commita o <code>schedules.json</code> e dá push. O site atualiza em seguida.</p>
-        <div class="sync-status" id="sync-status">
-          <span class="sync-dot" aria-hidden="true"></span>
-          <span id="sync-status-text">checando servidor local…</span>
-        </div>
-        <div class="sync-actions">
-          <button class="sync-btn" id="sync-btn" type="button" disabled>
-            <span id="sync-btn-label">Sincronizar agora</span>
-          </button>
+      <div class="sync-panel" role="region" aria-label="Sincronização">
+        <div class="sync-head">
+          <h2>Sincronização</h2>
           <a class="sync-back" href="#mode=search">← voltar</a>
         </div>
-        <div class="sync-output" id="sync-output" hidden></div>
-        <details class="sync-help">
-          <summary>Servidor local não está rodando?</summary>
-          <ol>
-            <li>Abra a pasta <code>cordial-horarios</code> no seu PC.</li>
-            <li>Dê duplo-clique em <code>scripts\sync-server.bat</code> (Windows) ou rode <code>scripts/sync-server.sh</code> (WSL/Linux/macOS).</li>
-            <li>Mantenha a janela aberta enquanto quiser usar essa página.</li>
-            <li>Volte aqui — o status deve virar verde sozinho.</li>
-          </ol>
-          <p style="font-size:12.5px;color:var(--c-muted)">Pra disparar 1x sem deixar janela aberta, use <code>scripts\sync-once.bat</code>. Pra autostart no boot do Windows, coloque um atalho do <code>sync-server.bat</code> em <code>shell:startup</code>.</p>
-        </details>
+        <p>Roda o build com seu IP residencial (que a Cordial não bloqueia) e atualiza o site.</p>
+
+        <section class="sync-section">
+          <h3>Via GitHub Actions</h3>
+          <p class="sync-sub">Dispara o workflow no GitHub; seu PC (com runner registrado) executa.</p>
+          <div class="sync-status" id="gh-status">
+            <span class="sync-dot" aria-hidden="true"></span>
+            <span id="gh-status-text">aguardando configuração…</span>
+          </div>
+          <div class="sync-pat" id="gh-pat-row">
+            <input type="password" id="gh-pat" class="field-input sync-pat-input" placeholder="cole seu PAT (github_pat_...)" autocomplete="off" spellcheck="false" />
+            <button class="sync-btn-ghost" id="gh-pat-save" type="button">salvar</button>
+          </div>
+          <div class="sync-actions">
+            <button class="sync-btn" id="gh-dispatch-btn" type="button" disabled>
+              <span id="gh-btn-label">Disparar build</span>
+            </button>
+            <button class="sync-btn-ghost" id="gh-pat-clear" type="button" hidden>trocar PAT</button>
+          </div>
+          <div class="sync-output" id="gh-output" hidden></div>
+          <details class="sync-help">
+            <summary>Como obter um PAT e instalar o runner</summary>
+            <p style="margin-top:10px"><b>1) Gerar o PAT</b> (token de acesso pessoal):</p>
+            <ol>
+              <li>Vá em <a href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener">github.com/settings/personal-access-tokens</a> e clique em <code>Generate new token (Fine-grained)</code>.</li>
+              <li>Repository access → Only select repositories → <code>cordial-horarios</code>.</li>
+              <li>Repository permissions → <b>Actions: Read &amp; write</b>.</li>
+              <li>Copie o token <code>github_pat_…</code> e cole aqui em cima.</li>
+            </ol>
+            <p><b>2) Instalar o runner</b> (1 vez):</p>
+            <ol>
+              <li>Vá em <a href="https://github.com/denerbatista/cordial-horarios/settings/actions/runners/new" target="_blank" rel="noopener">Settings → Actions → Runners → New self-hosted runner</a>.</li>
+              <li>Escolha <b>Linux x64</b> (recomendado rodar no WSL Ubuntu) e siga os comandos exibidos.</li>
+              <li>Quando perguntar <code>Enter additional labels</code>, digite <code>cordial</code>.</li>
+              <li>Instale como serviço: <code>sudo ./svc.sh install &amp;&amp; sudo ./svc.sh start</code> (Linux/WSL) ou rode <code>install.cmd</code> (Windows).</li>
+            </ol>
+          </details>
+        </section>
+
+        <section class="sync-section sync-section--secondary">
+          <h3>Via servidor local <span class="sync-pill">fallback</span></h3>
+          <p class="sync-sub">Sem PAT: roda direto no <code>localhost:8765</code> se você abriu o <code>sync-server</code>.</p>
+          <div class="sync-status" id="sync-status">
+            <span class="sync-dot" aria-hidden="true"></span>
+            <span id="sync-status-text">checando servidor local…</span>
+          </div>
+          <div class="sync-actions">
+            <button class="sync-btn sync-btn--secondary" id="sync-btn" type="button" disabled>
+              <span id="sync-btn-label">Sincronizar agora</span>
+            </button>
+          </div>
+          <div class="sync-output" id="sync-output" hidden></div>
+          <details class="sync-help">
+            <summary>Como rodar o servidor local</summary>
+            <ol>
+              <li>Abra a pasta <code>cordial-horarios</code> no seu PC.</li>
+              <li>Dê duplo-clique em <code>scripts\sync-server.bat</code> (Windows) ou rode <code>scripts/sync-server.sh</code> (WSL).</li>
+              <li>Mantenha a janela aberta. Volta aqui — o status deve virar verde.</li>
+            </ol>
+          </details>
+        </section>
       </div>
     </div>
   </section>
@@ -1228,10 +1315,15 @@ async function load(){
   startUpdateWatcher();
 }
 
-// ---- Painel oculto de sync local (#mode=sync) ----
+// ---- Painel oculto de sync (#mode=sync) ----
 const SYNC_BASE = "http://127.0.0.1:8765";
+const GH_REPO = "denerbatista/cordial-horarios";
+const GH_WORKFLOW = "update-schedules.yml";
+const GH_PAT_KEY = "cordial_gh_pat";
 let _syncHealthTimer = null;
 let _syncBusy = false;
+let _ghBusy = false;
+let _ghPollTimer = null;
 
 async function syncHealth(){
   try {
@@ -1268,6 +1360,180 @@ function initSyncPanel(){
   if (btn && !btn._wired){
     btn._wired = true;
     btn.addEventListener("click", runSync);
+  }
+
+  initGhDispatchPanel();
+}
+
+// ---- GitHub Actions dispatch (Fase B) ----
+function setGhStatus(state, text){
+  const el = document.getElementById("gh-status");
+  if (!el) return;
+  el.classList.remove("is-up","is-down");
+  if (state === "up")   el.classList.add("is-up");
+  if (state === "down") el.classList.add("is-down");
+  document.getElementById("gh-status-text").textContent = text;
+}
+function ghPat(){ return localStorage.getItem(GH_PAT_KEY) || ""; }
+function saveGhPat(v){
+  if (v) localStorage.setItem(GH_PAT_KEY, v);
+  else localStorage.removeItem(GH_PAT_KEY);
+}
+async function ghFetch(path, opts = {}){
+  const headers = {
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "Authorization": "Bearer " + ghPat(),
+    ...(opts.headers || {}),
+  };
+  return fetch("https://api.github.com" + path, { ...opts, headers });
+}
+async function ghValidatePat(){
+  if (!ghPat()) return false;
+  try {
+    const r = await ghFetch(`/repos/${GH_REPO}`);
+    return r.ok;
+  } catch (_) { return false; }
+}
+function initGhDispatchPanel(){
+  const input = document.getElementById("gh-pat");
+  const saveBtn = document.getElementById("gh-pat-save");
+  const clearBtn = document.getElementById("gh-pat-clear");
+  const patRow = document.getElementById("gh-pat-row");
+  const dispatchBtn = document.getElementById("gh-dispatch-btn");
+
+  function renderState(){
+    const hasPat = !!ghPat();
+    patRow.hidden = hasPat;
+    clearBtn.hidden = !hasPat;
+    dispatchBtn.disabled = !hasPat || _ghBusy;
+    if (!hasPat){
+      setGhStatus("down", "PAT não configurado");
+    } else {
+      setGhStatus("checking", "validando PAT…");
+      ghValidatePat().then(ok => {
+        if (!ok) setGhStatus("down", "PAT inválido ou sem permissão");
+        else fetchLatestRun();
+      });
+    }
+  }
+  if (!saveBtn._wired){
+    saveBtn._wired = true;
+    saveBtn.addEventListener("click", () => {
+      const v = (input.value || "").trim();
+      if (!v) return;
+      saveGhPat(v);
+      input.value = "";
+      renderState();
+    });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") { e.preventDefault(); saveBtn.click(); }
+    });
+  }
+  if (!clearBtn._wired){
+    clearBtn._wired = true;
+    clearBtn.addEventListener("click", () => {
+      if (!confirm("Apagar o PAT salvo neste navegador?")) return;
+      saveGhPat("");
+      renderState();
+    });
+  }
+  if (!dispatchBtn._wired){
+    dispatchBtn._wired = true;
+    dispatchBtn.addEventListener("click", runGhDispatch);
+  }
+  renderState();
+}
+async function fetchLatestRun(){
+  try {
+    const r = await ghFetch(`/repos/${GH_REPO}/actions/workflows/${GH_WORKFLOW}/runs?per_page=1`);
+    if (!r.ok) {
+      setGhStatus("down", "falha ao listar runs · HTTP " + r.status);
+      return null;
+    }
+    const j = await r.json();
+    const run = j.workflow_runs && j.workflow_runs[0];
+    if (!run) { setGhStatus("up", "PAT OK · nenhum run ainda"); return null; }
+    const fmt = new Date(run.created_at).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+    const concl = run.conclusion || run.status;
+    setGhStatus(concl === "success" ? "up" : (run.status === "completed" ? "down" : "up"),
+      `último run · ${concl} · ${fmt}`);
+    return run;
+  } catch (e) {
+    setGhStatus("down", "erro de rede: " + e.message);
+    return null;
+  }
+}
+async function runGhDispatch(){
+  if (_ghBusy) return;
+  _ghBusy = true;
+  const btn = document.getElementById("gh-dispatch-btn");
+  const lbl = document.getElementById("gh-btn-label");
+  const out = document.getElementById("gh-output");
+  btn.classList.add("is-loading"); btn.disabled = true;
+  lbl.textContent = "Disparando…";
+  out.hidden = false; out.classList.remove("is-ok","is-err");
+  out.textContent = "Enviando dispatch ao GitHub…";
+
+  try {
+    const r = await ghFetch(`/repos/${GH_REPO}/actions/workflows/${GH_WORKFLOW}/dispatches`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ref: "main" }),
+    });
+    if (r.status !== 204) {
+      const txt = await r.text();
+      throw new Error("HTTP " + r.status + " · " + txt.slice(0, 200));
+    }
+    out.textContent = "Dispatch aceito. Aguardando o runner pegar o job…";
+    // Poll por ~3 min: até run aparecer e completar
+    const t0 = Date.now();
+    if (_ghPollTimer) clearInterval(_ghPollTimer);
+    let lastRunId = null;
+    _ghPollTimer = setInterval(async () => {
+      if (Date.now() - t0 > 4 * 60 * 1000){
+        clearInterval(_ghPollTimer); _ghPollTimer = null;
+        out.classList.add("is-err");
+        out.textContent = "Timeout esperando o runner. Conferir Actions no GitHub.";
+        finishGh();
+        return;
+      }
+      const run = await fetchLatestRun();
+      if (!run) return;
+      if (lastRunId === null) lastRunId = run.id;
+      if (run.id !== lastRunId){
+        // novo run apareceu (provavelmente o nosso)
+        lastRunId = run.id;
+      }
+      if (run.status === "in_progress"){
+        out.textContent = `Rodando no runner… ${new Date(run.run_started_at || run.created_at).toLocaleTimeString("pt-BR")}`;
+      } else if (run.status === "queued"){
+        out.textContent = "Job na fila. Seu PC com o runner está ligado e conectado?";
+      } else if (run.status === "completed"){
+        clearInterval(_ghPollTimer); _ghPollTimer = null;
+        if (run.conclusion === "success"){
+          out.classList.add("is-ok");
+          out.textContent = `OK · run #${run.run_number} (${run.conclusion}) — site recarrega quando o Pages publicar.`;
+          setTimeout(checkForUpdates, 8000);
+          setTimeout(checkForUpdates, 25000);
+          setTimeout(checkForUpdates, 60000);
+        } else {
+          out.classList.add("is-err");
+          out.textContent = `Falhou · ${run.conclusion} · ver detalhes em ${run.html_url}`;
+        }
+        finishGh();
+      }
+    }, 5000);
+  } catch (e) {
+    out.classList.add("is-err");
+    out.textContent = "Erro: " + e.message;
+    finishGh();
+  }
+
+  function finishGh(){
+    _ghBusy = false;
+    btn.classList.remove("is-loading"); btn.disabled = false;
+    lbl.textContent = "Disparar build";
   }
 }
 async function runSync(){
