@@ -135,6 +135,42 @@ def _assemble(sectors_out: dict, all_trips: list[dict], *, source: str,
     }
 
 
+def write_sitemap(payload: dict, site_dir: Path) -> Path:
+    """Regenera site/sitemap.xml a partir do payload."""
+    sitemap_path = site_dir / "sitemap.xml"
+    base = "https://denerbatista.github.io/cordial-horarios/"
+    lastmod = payload["generatedAt"][:10]
+    urls = [
+        (base, "1.0", "daily"),
+        (base + "#mode=search", "0.9", "daily"),
+        (base + "#mode=next",   "0.9", "daily"),
+        (base + "#mode=lines",  "0.8", "weekly"),
+        (base + "#mode=info",   "0.5", "monthly"),
+    ]
+    seen_lines = set()
+    for t in payload.get("trips", []):
+        if t.get("line") and t["line"] not in seen_lines:
+            seen_lines.add(t["line"])
+            urls.append((base + f"#mode=lines&line={t['line']}", "0.6", "weekly"))
+    for sec in payload.get("sectors", {}):
+        urls.append((base + f"#mode=search&sector={sec}", "0.7", "weekly"))
+
+    parts = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for loc, prio, freq in urls:
+        parts.append("  <url>")
+        parts.append(f"    <loc>{loc}</loc>")
+        parts.append(f"    <lastmod>{lastmod}</lastmod>")
+        parts.append(f"    <changefreq>{freq}</changefreq>")
+        parts.append(f"    <priority>{prio}</priority>")
+        parts.append("  </url>")
+    parts.append("</urlset>")
+    sitemap_path.write_text("\n".join(parts) + "\n", encoding="utf-8")
+    return sitemap_path
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--from-fixtures", action="store_true",
@@ -157,43 +193,9 @@ def main():
     print(f"   trips:   {payload['totalTrips']}")
     print(f"   places:  {len(payload['places'])}")
 
-    # --- Sitemap dinâmico ---
-    site_dir = out_path.parent.parent  # site/
-    sitemap_path = site_dir / "sitemap.xml"
-    base = "https://denerbatista.github.io/cordial-horarios/"
-    lastmod = payload["generatedAt"][:10]  # YYYY-MM-DD
-    urls = [
-        (base, "1.0", "daily"),
-        (base + "#mode=search", "0.9", "daily"),
-        (base + "#mode=next",   "0.9", "daily"),
-        (base + "#mode=lines",  "0.8", "weekly"),
-    ]
-    # Adiciona uma URL por linha existente (deep-link)
-    seen_lines = set()
-    for t in payload.get("trips", []):
-        if t.get("line") and t["line"] not in seen_lines:
-            seen_lines.add(t["line"])
-            urls.append((base + f"#mode=lines&line={t['line']}", "0.6", "weekly"))
-    # Setores
-    for sec in payload.get("sectors", {}):
-        urls.append((base + f"#mode=search&sector={sec}", "0.7", "weekly"))
-
-    parts = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ]
-    for loc, prio, freq in urls:
-        parts.append("  <url>")
-        parts.append(f"    <loc>{loc}</loc>")
-        parts.append(f"    <lastmod>{lastmod}</lastmod>")
-        parts.append(f"    <changefreq>{freq}</changefreq>")
-        parts.append(f"    <priority>{prio}</priority>")
-        parts.append("  </url>")
-    parts.append("</urlset>")
-    sitemap_path.write_text("\n".join(parts) + "\n", encoding="utf-8")
-    print(f"OK -> {sitemap_path} ({len(urls)} URLs, lastmod={lastmod})")
+    sitemap_path = write_sitemap(payload, out_path.parent.parent)
+    print(f"OK -> {sitemap_path} (lastmod={payload['generatedAt'][:10]})")
     if payload["totalTrips"] == 0:
-        # se nada foi parseado, sinaliza falha mas mantém o JSON parcial
         print("AVISO: nenhuma viagem extraída", file=sys.stderr)
         sys.exit(3)
 

@@ -660,6 +660,87 @@
     main.is-info .search-card { display: none; }
   }
 
+  /* Modo Sync (oculto): #mode=sync — painel pra disparar build local */
+  main.is-sync .results-head,
+  main.is-sync #results { display: none; }
+  main.is-sync .search-card > div[id^="view-"] { display: none; }
+  main.is-sync #view-sync { display: block; }
+  main.is-sync .modes { display: none !important; }
+  main.is-sync ~ .bnav { display: none !important; }
+  .sync-panel {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-lg);
+    padding: 18px 16px;
+    margin-top: 8px;
+  }
+  .sync-panel h2 {
+    font-family: var(--font-display);
+    font-size: 18px; font-weight: 600;
+    margin: 0 0 6px;
+    letter-spacing: -.01em;
+  }
+  .sync-panel p { margin: 0 0 14px; color: var(--c-muted); font-size: 13.5px; }
+  .sync-status {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    background: var(--c-bg-deep);
+    font-size: 12.5px; font-weight: 600;
+    color: var(--c-muted);
+    margin-bottom: 12px;
+  }
+  .sync-status .sync-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--c-muted-2);
+  }
+  .sync-status.is-up   { background: var(--c-success-100); color: var(--c-success-600); }
+  .sync-status.is-up   .sync-dot { background: var(--c-success); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-success) 25%, transparent); }
+  .sync-status.is-down { background: var(--c-warning-100); color: var(--c-warning-600); }
+  .sync-status.is-down .sync-dot { background: var(--c-warning); }
+  .sync-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .sync-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 18px; border-radius: var(--radius-full);
+    background: var(--c-primary); color: #fff; border: 0;
+    font: 600 14px/1 var(--font-body); cursor: pointer;
+    box-shadow: 0 6px 14px -6px rgba(0,36,248,.55);
+    transition: transform var(--ease) 120ms, background var(--ease) 120ms;
+  }
+  .sync-btn:hover:not(:disabled) { transform: translateY(-1px); background: var(--c-primary-600); }
+  .sync-btn:disabled { background: var(--c-muted-2); box-shadow: none; cursor: not-allowed; }
+  .sync-btn.is-loading::after {
+    content: ""; width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,.4); border-top-color: #fff;
+    border-radius: 50%; animation: sync-spin .8s linear infinite;
+  }
+  @keyframes sync-spin { to { transform: rotate(360deg); } }
+  .sync-back {
+    color: var(--c-muted); font-size: 13px; text-decoration: none;
+    padding: 6px 10px; border-radius: var(--radius-md);
+  }
+  .sync-back:hover { color: var(--c-ink); background: var(--c-bg-deep); }
+  .sync-output {
+    margin-top: 14px;
+    background: var(--c-bg-deep);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: var(--c-ink-2);
+    white-space: pre-wrap; word-break: break-word;
+    max-height: 300px; overflow: auto;
+  }
+  .sync-output.is-ok { background: var(--c-success-100); color: var(--c-success-600); }
+  .sync-output.is-err { background: var(--c-warning-100); color: var(--c-warning-600); }
+  .sync-help { margin-top: 14px; }
+  .sync-help summary { cursor: pointer; font-weight: 600; font-size: 13px; color: var(--c-ink-2); }
+  .sync-help ol { margin: 10px 0; padding-left: 18px; font-size: 13px; color: var(--c-ink-2); }
+  .sync-help li { margin-bottom: 4px; }
+  .sync-help code {
+    background: var(--c-bg-deep); padding: 1px 6px; border-radius: 4px;
+    font-size: 12px;
+  }
+
   /* Secoes de conteudo SEO */
   .seo-section {
     margin-top: 32px;
@@ -904,6 +985,34 @@
         </div>
       </div>
     </div>
+
+    <div id="view-sync" hidden>
+      <div class="sync-panel" role="region" aria-label="Sincronização local">
+        <h2>Sincronização local</h2>
+        <p>Roda o build no seu PC (que a Cordial não bloqueia), commita o <code>schedules.json</code> e dá push. O site atualiza em seguida.</p>
+        <div class="sync-status" id="sync-status">
+          <span class="sync-dot" aria-hidden="true"></span>
+          <span id="sync-status-text">checando servidor local…</span>
+        </div>
+        <div class="sync-actions">
+          <button class="sync-btn" id="sync-btn" type="button" disabled>
+            <span id="sync-btn-label">Sincronizar agora</span>
+          </button>
+          <a class="sync-back" href="#mode=search">← voltar</a>
+        </div>
+        <div class="sync-output" id="sync-output" hidden></div>
+        <details class="sync-help">
+          <summary>Servidor local não está rodando?</summary>
+          <ol>
+            <li>Abra a pasta <code>cordial-horarios</code> no seu PC.</li>
+            <li>Dê duplo-clique em <code>scripts\sync-server.bat</code> (Windows) ou rode <code>scripts/sync-server.sh</code> (WSL/Linux/macOS).</li>
+            <li>Mantenha a janela aberta enquanto quiser usar essa página.</li>
+            <li>Volte aqui — o status deve virar verde sozinho.</li>
+          </ol>
+          <p style="font-size:12.5px;color:var(--c-muted)">Pra disparar 1x sem deixar janela aberta, use <code>scripts\sync-once.bat</code>. Pra autostart no boot do Windows, coloque um atalho do <code>sync-server.bat</code> em <code>shell:startup</code>.</p>
+        </details>
+      </div>
+    </div>
   </section>
 
   <div class="results-head">
@@ -1119,6 +1228,89 @@ async function load(){
   startUpdateWatcher();
 }
 
+// ---- Painel oculto de sync local (#mode=sync) ----
+const SYNC_BASE = "http://127.0.0.1:8765";
+let _syncHealthTimer = null;
+let _syncBusy = false;
+
+async function syncHealth(){
+  try {
+    const r = await fetch(SYNC_BASE + "/health", { method: "GET", cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const j = await r.json();
+    return j && j.ok === true;
+  } catch (_) { return false; }
+}
+function setSyncStatus(state, text){
+  const el = document.getElementById("sync-status");
+  if (!el) return;
+  el.classList.remove("is-up","is-down");
+  if (state === "up")   el.classList.add("is-up");
+  if (state === "down") el.classList.add("is-down");
+  document.getElementById("sync-status-text").textContent = text;
+  document.getElementById("sync-btn").disabled = (state !== "up") || _syncBusy;
+}
+async function pingSyncOnce(){
+  const up = await syncHealth();
+  setSyncStatus(up ? "up" : "down",
+                up ? "servidor local ativo · 127.0.0.1:8765" : "servidor local offline");
+}
+function initSyncPanel(){
+  setSyncStatus("checking", "checando servidor local…");
+  pingSyncOnce();
+  if (_syncHealthTimer) clearInterval(_syncHealthTimer);
+  _syncHealthTimer = setInterval(() => {
+    if (currentMode() === "sync") pingSyncOnce();
+    else { clearInterval(_syncHealthTimer); _syncHealthTimer = null; }
+  }, 5000);
+
+  const btn = document.getElementById("sync-btn");
+  if (btn && !btn._wired){
+    btn._wired = true;
+    btn.addEventListener("click", runSync);
+  }
+}
+async function runSync(){
+  if (_syncBusy) return;
+  _syncBusy = true;
+  const btn = document.getElementById("sync-btn");
+  const lbl = document.getElementById("sync-btn-label");
+  const out = document.getElementById("sync-output");
+  btn.classList.add("is-loading");
+  btn.disabled = true;
+  lbl.textContent = "Rodando…";
+  out.hidden = false; out.classList.remove("is-ok","is-err");
+  out.textContent = "Disparando build no seu PC… isso leva ~30-60s.";
+  try {
+    const r = await fetch(SYNC_BASE + "/sync", { method: "POST" });
+    const j = await r.json();
+    if (j.ok){
+      out.classList.add("is-ok");
+      out.textContent =
+        `OK · ${j.totalTrips} viagens · ${j.generatedAt}\n` +
+        `${j.changed ? (j.pushed ? "commit + push enviados ✓" : "commit local (sem push)") : "nada mudou no schedules.json"}\n` +
+        `(em ${j.duration_s}s)\nO site recarrega em alguns segundos quando o GitHub Pages publicar.`;
+      // Força check de update em alguns segundos pra recarregar quando o site for atualizado
+      setTimeout(checkForUpdates, 8000);
+      setTimeout(checkForUpdates, 25000);
+      setTimeout(checkForUpdates, 60000);
+    } else {
+      out.classList.add("is-err");
+      out.textContent = "Falhou · " + (j.phase || "?") + " · " + (j.error || "erro desconhecido") +
+                        (j.sectors ? "\nsetores: " + JSON.stringify(j.sectors) : "");
+    }
+  } catch (e) {
+    out.classList.add("is-err");
+    out.textContent = "Não consegui falar com o servidor local. Ele caiu? Erro: " + e.message;
+  } finally {
+    _syncBusy = false;
+    btn.classList.remove("is-loading");
+    btn.disabled = false;
+    lbl.textContent = "Sincronizar agora";
+    pingSyncOnce();
+  }
+}
+
 // Detecta atualizacao dos dados e recarrega o site para nao ficar defasado.
 // Roda quando o app fica visivel e periodicamente em background.
 async function checkForUpdates(){
@@ -1283,17 +1475,24 @@ function hydrateUI(){
   });
 }
 
+let _CURRENT_MODE = "search";
 function setMode(mode){
+  if (!["search","next","lines","info","sync"].includes(mode)) mode = "search";
+  _CURRENT_MODE = mode;
   document.querySelectorAll("#modes .mode").forEach(t => t.setAttribute("aria-selected", String(t.dataset.mode === mode)));
   document.querySelectorAll("#bnav .bnav-item").forEach(t => t.setAttribute("aria-selected", String(t.dataset.mode === mode)));
   document.getElementById("view-search").hidden = mode !== "search";
   document.getElementById("view-next").hidden   = mode !== "next";
   document.getElementById("view-lines").hidden  = mode !== "lines";
   document.getElementById("view-info").hidden   = mode !== "info";
-  document.querySelector("main").classList.toggle("is-info", mode === "info");
+  document.getElementById("view-sync").hidden   = mode !== "sync";
+  const main = document.querySelector("main");
+  main.classList.toggle("is-info", mode === "info");
+  main.classList.toggle("is-sync", mode === "sync");
   writeURLState(); doSearch();
+  if (mode === "sync") initSyncPanel();
 }
-function currentMode(){ return document.querySelector("#modes .mode[aria-selected='true']")?.dataset.mode || "search"; }
+function currentMode(){ return _CURRENT_MODE; }
 function currentDay(){ return document.querySelector("#day-strip .day-chip[aria-pressed='true']")?.dataset.day || ""; }
 function setDay(value){ document.querySelectorAll("#day-strip .day-chip").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.day === value))); }
 
@@ -1310,6 +1509,11 @@ function applyURLState(){
   const di = document.getElementById("next-date");
   if (di && (!di.value || di.value < di.min)) di.value = di.min || todayISO();
 }
+window.addEventListener("hashchange", () => {
+  const params = new URLSearchParams(location.hash.slice(1));
+  const m = params.get("mode");
+  if (m && m !== currentMode()) setMode(m);
+});
 function writeURLState(){
   const params = new URLSearchParams();
   params.set("mode", currentMode());
