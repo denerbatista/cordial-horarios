@@ -28,7 +28,7 @@ jobs:
   update:
     name: Build no PC e commitar schedules.json
     if: github.event_name != 'push'
-    runs-on: [self-hosted, cordial]
+    runs-on: self-hosted
     timeout-minutes: 30
     defaults:
       run:
