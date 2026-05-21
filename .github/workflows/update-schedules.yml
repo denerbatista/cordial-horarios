@@ -15,6 +15,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  issues: write
 
 concurrency:
   group: "update-schedules"
@@ -42,12 +43,18 @@ jobs:
           pip install -r requirements.txt
 
       - name: Rodar build
+        id: build
         env:
           PYTHONUNBUFFERED: "1"
         run: |
+          set +e
           python scripts/build.py --out site/data/schedules.json
-          echo "--- resumo ---"
-          python - <<'PY'
+          status=$?
+          set -e
+          if [ -f site/data/schedules.json ]; then
+            trips=$(python -c "import json; print(json.load(open('site/data/schedules.json'))['totalTrips'])")
+            echo "--- resumo ---"
+            python - <<'PY'
           import json
           d = json.load(open("site/data/schedules.json"))
           print(f"trips: {d['totalTrips']}")
@@ -55,9 +62,15 @@ jobs:
           for s, info in d["sectors"].items():
               print(f"  {s}: {info['trip_count']} viagens (url={info['source_url']})")
           PY
+          else
+            trips=0
+          fi
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          echo "total_trips=$trips" >> "$GITHUB_OUTPUT"
 
       - name: Commit (se houver mudança)
         id: commit
+        if: steps.build.outputs.total_trips != '0'
         run: |
           git config user.name  "cordial-horarios-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -71,6 +84,73 @@ jobs:
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Abrir/atualizar issue em caso de falha
+        if: steps.build.outputs.exit_code != '0' || steps.build.outputs.total_trips == '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const exitCode = '${{ steps.build.outputs.exit_code }}';
+            const totalTrips = '${{ steps.build.outputs.total_trips }}';
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const title = "⚠️ Build dos horários falhou (Cordial PDFs)";
+            const label = "build-failed";
+
+            // Garante que a label existe
+            try { await github.rest.issues.getLabel({ ...context.repo, name: label }); }
+            catch (e) {
+              if (e.status === 404) {
+                await github.rest.issues.createLabel({ ...context.repo, name: label, color: "d73a4a",
+                  description: "build do schedules.json falhou (provavelmente extração da Cordial)" });
+              }
+            }
+
+            const body = [
+              `O workflow "Atualizar horários" não conseguiu gerar um \`schedules.json\` válido.`,
+              ``,
+              `- exit_code do build.py: \`${exitCode}\``,
+              `- total_trips extraído: \`${totalTrips}\``,
+              `- run: ${runUrl}`,
+              ``,
+              `**Causa mais provável:** servidor da Cordial Turismo passou a bloquear o IP do runner do GitHub Actions (\`x-deny-reason: host_not_allowed\`). O cron diário continuará tentando até o problema ser resolvido.`,
+              ``,
+              `**Próximos passos sugeridos:**`,
+              `1. Conferir os logs da step "Rodar build" no run acima.`,
+              `2. Se for 403 da Cordial, considerar self-hosted runner ou proxy de IP brasileiro.`,
+              `3. Quando o build voltar a ter sucesso, esta issue é fechada automaticamente.`,
+            ].join("\n");
+
+            // Procura issue aberta existente com a label
+            const open = await github.rest.issues.listForRepo({
+              ...context.repo, state: "open", labels: label, per_page: 5,
+            });
+            if (open.data.length) {
+              const num = open.data[0].number;
+              await github.rest.issues.createComment({ ...context.repo, issue_number: num,
+                body: `Falha novamente em ${new Date().toISOString()}.\nrun: ${runUrl}\nexit_code=\`${exitCode}\` total_trips=\`${totalTrips}\`` });
+              core.notice(`Comentário adicionado na issue #${num}.`);
+            } else {
+              const created = await github.rest.issues.create({ ...context.repo, title, body, labels: [label] });
+              core.notice(`Issue criada: #${created.data.number}.`);
+            }
+            core.setFailed(`Build falhou (exit=${exitCode}, trips=${totalTrips})`);
+
+      - name: Fechar issue de falha se voltou a funcionar
+        if: steps.build.outputs.exit_code == '0' && steps.build.outputs.total_trips != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const label = "build-failed";
+            const open = await github.rest.issues.listForRepo({
+              ...context.repo, state: "open", labels: label, per_page: 10,
+            });
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            for (const it of open.data) {
+              await github.rest.issues.createComment({ ...context.repo, issue_number: it.number,
+                body: `✅ Build voltou a ter sucesso em ${new Date().toISOString()}.\nrun: ${runUrl}` });
+              await github.rest.issues.update({ ...context.repo, issue_number: it.number, state: "closed" });
+              core.notice(`Issue #${it.number} fechada.`);
+            }
 
   deploy:
     name: Publicar GitHub Pages
