@@ -73,18 +73,18 @@
     },
     {
       "@type": "Service",
-      "name": "Consulta de horarios de onibus - Cordial Turismo",
+      "name": "Consulta de horários de ônibus - Cordial Turismo",
       "serviceType": "BusSchedule",
       "areaServed": [
         { "@type": "City", "name": "Aracruz", "addressRegion": "ES" },
-        { "@type": "City", "name": "Sao Mateus", "addressRegion": "ES" },
+        { "@type": "City", "name": "São Mateus", "addressRegion": "ES" },
         { "@type": "City", "name": "Domingos Martins", "addressRegion": "ES" },
-        { "@type": "City", "name": "Joao Neiva", "addressRegion": "ES" },
+        { "@type": "City", "name": "João Neiva", "addressRegion": "ES" },
         { "@type": "City", "name": "Marechal Floriano", "addressRegion": "ES" }
       ],
       "provider": { "@id": "https://denerbatista.github.io/cordial-horarios/#person" },
       "url": "https://denerbatista.github.io/cordial-horarios/",
-      "audience": { "@type": "Audience", "audienceType": "passageiros de onibus" },
+      "audience": { "@type": "Audience", "audienceType": "passageiros de ônibus" },
       "isRelatedTo": {
         "@type": "Organization",
         "name": "Cordial Transportes e Turismo Ltda",
@@ -94,10 +94,11 @@
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Cordial Horarios", "item": "https://denerbatista.github.io/cordial-horarios/" },
+        { "@type": "ListItem", "position": 1, "name": "Cordial Horários", "item": "https://denerbatista.github.io/cordial-horarios/" },
         { "@type": "ListItem", "position": 2, "name": "Buscar", "item": "https://denerbatista.github.io/cordial-horarios/#mode=search" },
-        { "@type": "ListItem", "position": 3, "name": "Proximos onibus", "item": "https://denerbatista.github.io/cordial-horarios/#mode=next" },
-        { "@type": "ListItem", "position": 4, "name": "Linhas", "item": "https://denerbatista.github.io/cordial-horarios/#mode=lines" }
+        { "@type": "ListItem", "position": 3, "name": "Próximos ônibus", "item": "https://denerbatista.github.io/cordial-horarios/#mode=next" },
+        { "@type": "ListItem", "position": 4, "name": "Linhas", "item": "https://denerbatista.github.io/cordial-horarios/#mode=lines" },
+        { "@type": "ListItem", "position": 5, "name": "Sobre", "item": "https://denerbatista.github.io/cordial-horarios/#mode=info" }
       ]
     },
     {
@@ -105,34 +106,34 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Como consultar o horario do onibus da Cordial Turismo?",
+          "name": "Como consultar o horário do ônibus da Cordial Turismo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Escolha a cidade de origem e o destino na busca, ou use o modo Proximos onibus para ver o que sai a partir do horario atual. Os filtros por dia da semana mostram os horarios validos para utiltis, sabado, domingo ou feriado."
+            "text": "Escolha a localidade de origem e o destino na busca, ou use o modo Próximos ônibus para ver o que sai a partir do horário atual. Os filtros por dia da semana mostram os horários válidos para dias úteis, sábado, domingo ou feriado."
           }
         },
         {
           "@type": "Question",
-          "name": "Quais cidades e bairros estao no site?",
+          "name": "Quais cidades e bairros estão no site?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Cobertura dos PDFs oficiais da Cordial: setor Aracruz (Coqueiral, Santa Cruz, Itaparica, Praia Formosa, Mar Azul, Saue, Iraja, Barra do Sahy, Barra do Riacho, Vila do Riacho, Jacupemba, Guarana, Pau Brasil, entre outros), setor Sao Mateus (Boa Esperanca, Sobradinho, Sao Joao do Sobrado) e setor Domingos Martins (Marechal Floriano, Araguaia, Perobas, Biriricas, Santa Isabel). Tambem inclui a linha intermunicipal Aracruz x Joao Neiva."
+            "text": "Cobertura dos PDFs oficiais da Cordial: setor Aracruz (Coqueiral, Santa Cruz, Itaparica, Praia Formosa, Mar Azul, Sauê, Irajá, Barra do Sahy, Barra do Riacho, Vila do Riacho, Jacupemba, Guaraná, Pau Brasil, entre outros), setor São Mateus (Boa Esperança, Sobradinho, São João do Sobrado) e setor Domingos Martins (Marechal Floriano, Araguaia, Perobas, Biriricas, Santa Isabel). Também inclui a linha intermunicipal Aracruz x João Neiva."
           }
         },
         {
           "@type": "Question",
-          "name": "Os horarios sao oficiais?",
+          "name": "Os horários são oficiais?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "O site nao e oficial. Os dados sao extraidos automaticamente dos PDFs publicados pela Cordial Turismo todos os dias. Em caso de divergencia, sempre confira a pagina oficial da empresa."
+            "text": "O site não é oficial. Os dados são extraídos automaticamente dos PDFs publicados pela Cordial Turismo todos os dias. Em caso de divergência, sempre confira a página oficial da empresa."
           }
         },
         {
           "@type": "Question",
-          "name": "Com que frequencia os horarios sao atualizados?",
+          "name": "Com que frequência os horários são atualizados?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Diariamente, durante a madrugada. Quando a Cordial publica um PDF novo, o site captura e atualiza o banco de horarios sozinho."
+            "text": "Diariamente, durante a madrugada. Quando a Cordial publica um PDF novo, o site captura e atualiza o banco de horários sozinho."
           }
         },
         {
@@ -140,15 +141,15 @@
           "name": "O site funciona no celular?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim, foi feito mobile-first. Voce pode adicionar a tela inicial para usar como um aplicativo (PWA), com icone e abertura em tela cheia."
+            "text": "Sim, foi feito mobile-first. Você pode adicionar à tela inicial para usar como um aplicativo (PWA), com ícone e abertura em tela cheia."
           }
         },
         {
           "@type": "Question",
-          "name": "O que significam os horarios marcados com asterisco?",
+          "name": "O que significam os horários marcados com asterisco?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sao horarios que circulam apenas em dias letivos (escola aberta). O site mostra essa observacao em cada viagem com a tag 'so dias letivos'."
+            "text": "São horários que circulam apenas em dias letivos (escola aberta). O site mostra essa observação em cada viagem com a tag 'só dias letivos'."
           }
         }
       ]
@@ -281,7 +282,7 @@
   @media (min-width:640px) { .search-card { padding:20px; } }
 
   .modes {
-    display:grid; grid-template-columns:repeat(3,1fr); gap:4px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:4px;
     background:var(--c-bg-deep); border-radius:var(--radius-md);
     padding:4px; margin-bottom:16px;
   }
@@ -532,7 +533,7 @@
     .modes { display:none; }
     .bnav {
       position:fixed; left:0; right:0; bottom:0; z-index:60;
-      display:grid; grid-template-columns:repeat(3,1fr);
+      display:grid; grid-template-columns:repeat(4,1fr);
       background:color-mix(in srgb, var(--c-surface) 92%, transparent);
       backdrop-filter:saturate(180%) blur(20px);
       -webkit-backdrop-filter:saturate(180%) blur(20px);
@@ -649,6 +650,142 @@
     clip: rect(0,0,0,0); white-space: nowrap; border: 0;
   }
 
+  /* Modo Sobre: esconde busca/resultados, mostra apenas conteudo informativo */
+  main.is-info .results-head,
+  main.is-info #results { display: none; }
+  main.is-info .search-card > div[id^="view-"] { display: none; }
+  main.is-info #view-info { display: block; }
+  main.is-info #view-info .seo-section:first-of-type { margin-top: 4px; }
+  @media (max-width:640px) {
+    main.is-info .search-card { display: none; }
+  }
+
+  /* Modo Sync (oculto): #mode=sync — painel pra disparar build local */
+  main.is-sync .results-head,
+  main.is-sync #results { display: none; }
+  main.is-sync .search-card > div[id^="view-"] { display: none; }
+  main.is-sync #view-sync { display: block; }
+  main.is-sync .modes { display: none !important; }
+  main.is-sync ~ .bnav { display: none !important; }
+  .sync-panel {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-lg);
+    padding: 18px 16px;
+    margin-top: 8px;
+  }
+  .sync-panel h2 {
+    font-family: var(--font-display);
+    font-size: 18px; font-weight: 600;
+    margin: 0 0 6px;
+    letter-spacing: -.01em;
+  }
+  .sync-panel p { margin: 0 0 14px; color: var(--c-muted); font-size: 13.5px; }
+  .sync-status {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    background: var(--c-bg-deep);
+    font-size: 12.5px; font-weight: 600;
+    color: var(--c-muted);
+    margin-bottom: 12px;
+  }
+  .sync-status .sync-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--c-muted-2);
+  }
+  .sync-status.is-up   { background: var(--c-success-100); color: var(--c-success-600); }
+  .sync-status.is-up   .sync-dot { background: var(--c-success); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-success) 25%, transparent); }
+  .sync-status.is-down { background: var(--c-warning-100); color: var(--c-warning-600); }
+  .sync-status.is-down .sync-dot { background: var(--c-warning); }
+  .sync-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .sync-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 18px; border-radius: var(--radius-full);
+    background: var(--c-primary); color: #fff; border: 0;
+    font: 600 14px/1 var(--font-body); cursor: pointer;
+    box-shadow: 0 6px 14px -6px rgba(0,36,248,.55);
+    transition: transform var(--ease) 120ms, background var(--ease) 120ms;
+  }
+  .sync-btn:hover:not(:disabled) { transform: translateY(-1px); background: var(--c-primary-600); }
+  .sync-btn:disabled { background: var(--c-muted-2); box-shadow: none; cursor: not-allowed; }
+  .sync-btn.is-loading::after {
+    content: ""; width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,.4); border-top-color: #fff;
+    border-radius: 50%; animation: sync-spin .8s linear infinite;
+  }
+  @keyframes sync-spin { to { transform: rotate(360deg); } }
+  .sync-back {
+    color: var(--c-muted); font-size: 13px; text-decoration: none;
+    padding: 6px 10px; border-radius: var(--radius-md);
+  }
+  .sync-back:hover { color: var(--c-ink); background: var(--c-bg-deep); }
+  .sync-output {
+    margin-top: 14px;
+    background: var(--c-bg-deep);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: var(--c-ink-2);
+    white-space: pre-wrap; word-break: break-word;
+    max-height: 300px; overflow: auto;
+  }
+  .sync-output.is-ok { background: var(--c-success-100); color: var(--c-success-600); }
+  .sync-output.is-err { background: var(--c-warning-100); color: var(--c-warning-600); }
+  .sync-help { margin-top: 14px; }
+  .sync-help summary { cursor: pointer; font-weight: 600; font-size: 13px; color: var(--c-ink-2); }
+  .sync-help ol { margin: 10px 0; padding-left: 18px; font-size: 13px; color: var(--c-ink-2); }
+  .sync-help li { margin-bottom: 4px; }
+  .sync-help code {
+    background: var(--c-bg-deep); padding: 1px 6px; border-radius: 4px;
+    font-size: 12px;
+  }
+  .sync-head {
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    margin-bottom: 4px;
+  }
+  .sync-section {
+    margin-top: 18px; padding-top: 18px;
+    border-top: 1px solid var(--c-line);
+  }
+  .sync-section:first-of-type {
+    margin-top: 8px; padding-top: 12px; border-top: 0;
+  }
+  .sync-section h3 {
+    font-family: var(--font-display);
+    font-size: 14.5px; font-weight: 600; margin: 0 0 4px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .sync-section .sync-sub { margin: 0 0 12px; font-size: 12.5px; color: var(--c-muted); }
+  .sync-pill {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: 2px 8px; border-radius: var(--radius-full);
+    background: var(--c-bg-deep); color: var(--c-muted);
+  }
+  .sync-section--secondary { opacity: .92; }
+  .sync-pat {
+    display:flex; gap:8px; align-items:center; margin-bottom: 10px;
+  }
+  .sync-pat-input {
+    flex:1; padding: 10px 12px; border:1px solid var(--c-line);
+    border-radius: var(--radius-md); background: var(--c-surface);
+    font: 500 13px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: var(--c-ink);
+  }
+  .sync-pat-input:focus { outline:none; border-color: var(--c-primary); box-shadow: var(--shadow-focus); }
+  .sync-btn-ghost {
+    padding: 8px 12px; border-radius: var(--radius-md);
+    background: var(--c-bg-deep); color: var(--c-ink-2); border: 0;
+    font: 600 12.5px/1 var(--font-body); cursor: pointer;
+  }
+  .sync-btn-ghost:hover { background: var(--c-surface-hover); }
+  .sync-btn--secondary {
+    background: var(--c-ink-2); color: #fff;
+    box-shadow: 0 6px 14px -6px rgba(11,15,44,.4);
+  }
+  .sync-btn--secondary:hover:not(:disabled) { background: var(--c-ink); }
+
   /* Secoes de conteudo SEO */
   .seo-section {
     margin-top: 32px;
@@ -744,7 +881,7 @@
 </header>
 
 <main>
-  <h1 class="sr-only">Cordial Horarios - consulta de horarios de onibus da Cordial Turismo (ES)</h1>
+  <h1 class="sr-only">Cordial Horários - consulta de horários de ônibus da Cordial Turismo (ES)</h1>
 
   <div class="notice" role="note">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
@@ -766,6 +903,10 @@
       <button class="mode" role="tab" aria-selected="false" data-mode="lines">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h12"/></svg>
         <span class="label-long">Linhas</span><span class="label-short">Linhas</span>
+      </button>
+      <button class="mode" role="tab" aria-selected="false" data-mode="info">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        <span class="label-long">Sobre</span><span class="label-short">Sobre</span>
       </button>
     </div>
 
@@ -833,12 +974,20 @@
     </div>
 
     <div id="view-next" hidden>
-      <div class="single-field">
+      <div class="route-picker">
         <div class="field">
           <span class="field-dot" aria-hidden="true"></span>
           <div class="field-body">
             <label for="from-next" class="field-label">Saindo de</label>
             <select id="from-next" class="field-input"></select>
+          </div>
+          <svg class="field-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+        <div class="field">
+          <span class="field-dot dot-dest" aria-hidden="true"></span>
+          <div class="field-body">
+            <label for="to-next" class="field-label">Destino (opcional)</label>
+            <select id="to-next" class="field-input"></select>
           </div>
           <svg class="field-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </div>
@@ -849,8 +998,8 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
           </span>
           <div class="field-body">
-            <label for="from-time" class="field-label">A partir de</label>
-            <input type="text" id="from-time" class="field-input" placeholder="agora" inputmode="numeric" autocomplete="off" />
+            <label for="from-time" class="field-label">A partir das</label>
+            <input type="time" id="from-time" class="field-input" autocomplete="off" />
           </div>
         </div>
         <div class="field">
@@ -858,18 +1007,8 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
           </span>
           <div class="field-body">
-            <label for="next-day" class="field-label">Dia</label>
-            <select id="next-day" class="field-input">
-              <option value="today">Hoje</option>
-              <option value="mon">Segunda</option>
-              <option value="tue">Terça</option>
-              <option value="wed">Quarta</option>
-              <option value="thu">Quinta</option>
-              <option value="fri">Sexta</option>
-              <option value="sat">Sábado</option>
-              <option value="sun">Domingo</option>
-              <option value="holiday">Feriado</option>
-            </select>
+            <label for="next-date" class="field-label">Dia</label>
+            <input type="date" id="next-date" class="field-input" autocomplete="off" />
           </div>
         </div>
       </div>
@@ -891,6 +1030,76 @@
         </div>
       </div>
     </div>
+
+    <div id="view-sync" hidden>
+      <div class="sync-panel" role="region" aria-label="Sincronização">
+        <div class="sync-head">
+          <h2>Sincronização</h2>
+          <a class="sync-back" href="#mode=search">← voltar</a>
+        </div>
+        <p>Roda o build com seu IP residencial (que a Cordial não bloqueia) e atualiza o site.</p>
+
+        <section class="sync-section">
+          <h3>Via GitHub Actions</h3>
+          <p class="sync-sub">Dispara o workflow no GitHub; seu PC (com runner registrado) executa.</p>
+          <div class="sync-status" id="gh-status">
+            <span class="sync-dot" aria-hidden="true"></span>
+            <span id="gh-status-text">aguardando configuração…</span>
+          </div>
+          <div class="sync-pat" id="gh-pat-row">
+            <input type="password" id="gh-pat" class="field-input sync-pat-input" placeholder="cole seu PAT (github_pat_...)" autocomplete="off" spellcheck="false" />
+            <button class="sync-btn-ghost" id="gh-pat-save" type="button">salvar</button>
+          </div>
+          <div class="sync-actions">
+            <button class="sync-btn" id="gh-dispatch-btn" type="button" disabled>
+              <span id="gh-btn-label">Disparar build</span>
+            </button>
+            <button class="sync-btn-ghost" id="gh-pat-clear" type="button" hidden>trocar PAT</button>
+          </div>
+          <div class="sync-output" id="gh-output" hidden></div>
+          <details class="sync-help">
+            <summary>Como obter um PAT e instalar o runner</summary>
+            <p style="margin-top:10px"><b>1) Gerar o PAT</b> (token de acesso pessoal):</p>
+            <ol>
+              <li>Vá em <a href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener">github.com/settings/personal-access-tokens</a> e clique em <code>Generate new token (Fine-grained)</code>.</li>
+              <li>Repository access → Only select repositories → <code>cordial-horarios</code>.</li>
+              <li>Repository permissions → <b>Actions: Read &amp; write</b>.</li>
+              <li>Copie o token <code>github_pat_…</code> e cole aqui em cima.</li>
+            </ol>
+            <p><b>2) Instalar o runner</b> (1 vez):</p>
+            <ol>
+              <li>Vá em <a href="https://github.com/denerbatista/cordial-horarios/settings/actions/runners/new" target="_blank" rel="noopener">Settings → Actions → Runners → New self-hosted runner</a>.</li>
+              <li>Escolha <b>Linux x64</b> (recomendado rodar no WSL Ubuntu) e siga os comandos exibidos.</li>
+              <li>Quando perguntar <code>Enter additional labels</code>, digite <code>cordial</code>.</li>
+              <li>Instale como serviço: <code>sudo ./svc.sh install &amp;&amp; sudo ./svc.sh start</code> (Linux/WSL) ou rode <code>install.cmd</code> (Windows).</li>
+            </ol>
+          </details>
+        </section>
+
+        <section class="sync-section sync-section--secondary">
+          <h3>Via servidor local <span class="sync-pill">fallback</span></h3>
+          <p class="sync-sub">Sem PAT: roda direto no <code>localhost:8765</code> se você abriu o <code>sync-server</code>.</p>
+          <div class="sync-status" id="sync-status">
+            <span class="sync-dot" aria-hidden="true"></span>
+            <span id="sync-status-text">checando servidor local…</span>
+          </div>
+          <div class="sync-actions">
+            <button class="sync-btn sync-btn--secondary" id="sync-btn" type="button" disabled>
+              <span id="sync-btn-label">Sincronizar agora</span>
+            </button>
+          </div>
+          <div class="sync-output" id="sync-output" hidden></div>
+          <details class="sync-help">
+            <summary>Como rodar o servidor local</summary>
+            <ol>
+              <li>Abra a pasta <code>cordial-horarios</code> no seu PC.</li>
+              <li>Dê duplo-clique em <code>scripts\sync-server.bat</code> (Windows) ou rode <code>scripts/sync-server.sh</code> (WSL).</li>
+              <li>Mantenha a janela aberta. Volta aqui — o status deve virar verde.</li>
+            </ol>
+          </details>
+        </section>
+      </div>
+    </div>
   </section>
 
   <div class="results-head">
@@ -904,81 +1113,83 @@
     </div>
   </div>
 
-  <section class="seo-section" aria-labelledby="about-title">
-    <h2 id="about-title">Sobre a consulta</h2>
-    <p>Este site agrega os horarios dos onibus da <strong>Cordial Transportes e Turismo</strong> (Espirito Santo) em um unico lugar pesquisavel. Os PDFs oficiais sao baixados todos os dias e o conteudo eh estruturado em um banco de horarios consultavel por origem, destino, dia da semana e linha. Voce pode ver os <strong>proximos onibus saindo agora</strong> de qualquer cidade ou bairro coberto, sem precisar abrir o PDF da empresa.</p>
-  </section>
+  <div id="view-info" hidden>
+    <section class="seo-section" aria-labelledby="about-title">
+      <h2 id="about-title">Sobre a consulta</h2>
+      <p>Este site agrega os horários dos ônibus da <strong>Cordial Transportes e Turismo</strong> (Espírito Santo) em um único lugar pesquisável. Os PDFs oficiais são baixados todos os dias e o conteúdo é estruturado em um banco de horários consultável por origem, destino, dia da semana e linha. Você pode ver os <strong>próximos ônibus saindo agora</strong> de qualquer cidade ou bairro coberto, sem precisar abrir o PDF da empresa.</p>
+    </section>
 
-  <section class="seo-section" aria-labelledby="cities-title">
-    <h2 id="cities-title">Cidades e bairros atendidos</h2>
-    <p>Cobertura completa dos PDFs da Cordial Turismo, divididos em tres setores:</p>
-    <div class="cities-grid">
-      <div class="city-card">Aracruz</div>
-      <div class="city-card">Coqueiral</div>
-      <div class="city-card">Santa Cruz</div>
-      <div class="city-card">Praia Formosa</div>
-      <div class="city-card">Itaparica</div>
-      <div class="city-card">Mar Azul</div>
-      <div class="city-card">Saue</div>
-      <div class="city-card">Iraja</div>
-      <div class="city-card">Barra do Sahy</div>
-      <div class="city-card">Barra do Riacho</div>
-      <div class="city-card">Vila do Riacho</div>
-      <div class="city-card">Jacupemba</div>
-      <div class="city-card">Guarana</div>
-      <div class="city-card">Pau Brasil</div>
-      <div class="city-card">Joao Neiva</div>
-      <div class="city-card">Sao Mateus</div>
-      <div class="city-card">Boa Esperanca</div>
-      <div class="city-card">Sobradinho</div>
-      <div class="city-card">Sao Joao do Sobrado</div>
-      <div class="city-card">Domingos Martins</div>
-      <div class="city-card">Marechal Floriano</div>
-      <div class="city-card">Araguaia</div>
-      <div class="city-card">Perobas</div>
-      <div class="city-card">Biriricas</div>
-      <div class="city-card">Santa Isabel</div>
-    </div>
-  </section>
+    <section class="seo-section" aria-labelledby="cities-title">
+      <h2 id="cities-title">Cidades e bairros atendidos</h2>
+      <p>Cobertura completa dos PDFs da Cordial Turismo, divididos em três setores:</p>
+      <div class="cities-grid">
+        <div class="city-card">Aracruz</div>
+        <div class="city-card">Coqueiral</div>
+        <div class="city-card">Santa Cruz</div>
+        <div class="city-card">Praia Formosa</div>
+        <div class="city-card">Itaparica</div>
+        <div class="city-card">Mar Azul</div>
+        <div class="city-card">Sauê</div>
+        <div class="city-card">Irajá</div>
+        <div class="city-card">Barra do Sahy</div>
+        <div class="city-card">Barra do Riacho</div>
+        <div class="city-card">Vila do Riacho</div>
+        <div class="city-card">Jacupemba</div>
+        <div class="city-card">Guaraná</div>
+        <div class="city-card">Pau Brasil</div>
+        <div class="city-card">João Neiva</div>
+        <div class="city-card">São Mateus</div>
+        <div class="city-card">Boa Esperança</div>
+        <div class="city-card">Sobradinho</div>
+        <div class="city-card">São João do Sobrado</div>
+        <div class="city-card">Domingos Martins</div>
+        <div class="city-card">Marechal Floriano</div>
+        <div class="city-card">Araguaia</div>
+        <div class="city-card">Perobas</div>
+        <div class="city-card">Biriricas</div>
+        <div class="city-card">Santa Isabel</div>
+      </div>
+    </section>
 
-  <section class="seo-section" aria-labelledby="faq-title">
-    <h2 id="faq-title">Perguntas frequentes</h2>
+    <section class="seo-section" aria-labelledby="faq-title">
+      <h2 id="faq-title">Perguntas frequentes</h2>
 
-    <details>
-      <summary>Como consultar o horario do onibus da Cordial?</summary>
-      <p>Escolha a cidade de origem e o destino no formulario do topo. Para ver o que sai agora, troque para a aba <em>Proximos onibus</em>. O filtro de dia da semana ajusta a lista para dias uteis, sabado, domingo ou feriado.</p>
-    </details>
+      <details>
+        <summary>Como consultar o horário do ônibus da Cordial?</summary>
+        <p>Escolha a localidade de origem e o destino no formulário do topo. Para ver o que sai agora, troque para a aba <em>Próximos ônibus</em>. O filtro de dia da semana ajusta a lista para dias úteis, sábado, domingo ou feriado.</p>
+      </details>
 
-    <details>
-      <summary>Os horarios sao oficiais?</summary>
-      <p>Este site eh independente. Os dados sao extraidos automaticamente dos PDFs publicados pela Cordial Turismo. Em caso de divergencia, sempre confira a <a href="http://www.cordialturismo.com.br/portal/horarios_geral/" target="_blank" rel="noopener">pagina oficial</a>.</p>
-    </details>
+      <details>
+        <summary>Os horários são oficiais?</summary>
+        <p>Este site é independente. Os dados são extraídos automaticamente dos PDFs publicados pela Cordial Turismo. Em caso de divergência, sempre confira a <a href="http://www.cordialturismo.com.br/portal/horarios_geral/" target="_blank" rel="noopener">página oficial</a>.</p>
+      </details>
 
-    <details>
-      <summary>Com que frequencia os horarios sao atualizados?</summary>
-      <p>Todos os dias, durante a madrugada (cerca de 03h horario de Brasilia). Quando a Cordial publica um PDF novo, o site captura e atualiza o banco de horarios sozinho.</p>
-    </details>
+      <details>
+        <summary>Com que frequência os horários são atualizados?</summary>
+        <p>Todos os dias, durante a madrugada (cerca de 03h horário de Brasília). Quando a Cordial publica um PDF novo, o site captura e atualiza o banco de horários sozinho.</p>
+      </details>
 
-    <details>
-      <summary>O site funciona no celular?</summary>
-      <p>Sim, foi desenhado primeiro para celular. Voce pode salvar como aplicativo na tela inicial (PWA) para abrir mais rapido, sem precisar do navegador.</p>
-    </details>
+      <details>
+        <summary>O site funciona no celular?</summary>
+        <p>Sim, foi desenhado primeiro para celular. Você pode salvar como aplicativo na tela inicial (PWA) para abrir mais rápido, sem precisar do navegador.</p>
+      </details>
 
-    <details>
-      <summary>O que significam os horarios marcados com asterisco?</summary>
-      <p>Sao horarios que circulam apenas em <strong>dias letivos</strong> (com aulas). No site, essas viagens recebem a etiqueta <em>so dias letivos</em>.</p>
-    </details>
+      <details>
+        <summary>O que significam os horários marcados com asterisco?</summary>
+        <p>São horários que circulam apenas em <strong>dias letivos</strong> (com aulas). No site, essas viagens recebem a etiqueta <em>só dias letivos</em>.</p>
+      </details>
 
-    <details>
-      <summary>Posso saber qual linha passa em determinado lugar?</summary>
-      <p>Sim. Use a aba <em>Linhas</em> para ver todas as linhas em operacao (001, 002, 003 e assim por diante) com os bairros que cada uma cobre.</p>
-    </details>
+      <details>
+        <summary>Posso saber qual linha passa em determinado lugar?</summary>
+        <p>Sim. Use a aba <em>Linhas</em> para ver todas as linhas em operação (001, 002, 003 e assim por diante) com os bairros que cada uma cobre.</p>
+      </details>
 
-    <details>
-      <summary>Por que algumas opcoes de destino somem quando escolho a origem?</summary>
-      <p>O formulario filtra automaticamente os destinos para mostrar apenas pares <strong>validos</strong>. Se um onibus nao sai de X para Y nos PDFs oficiais, a opcao nem aparece para evitar confusao.</p>
-    </details>
-  </section>
+      <details>
+        <summary>Por que algumas opções de destino somem quando escolho a origem?</summary>
+        <p>O formulário filtra automaticamente os destinos para mostrar apenas pares <strong>válidos</strong>. Se um ônibus não sai de X para Y nos PDFs oficiais, a opção nem aparece para evitar confusão.</p>
+      </details>
+    </section>
+  </div>
 
   <section class="support-card" aria-label="Apoie o projeto">
     <div class="support-emoji" aria-hidden="true">☕</div>
@@ -1028,6 +1239,10 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h12"/></svg>
     <span>Linhas</span>
   </button>
+  <button class="bnav-item" role="tab" aria-selected="false" data-mode="info" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+    <span>Sobre</span>
+  </button>
 </nav>
 
 <script>
@@ -1040,6 +1255,16 @@ let DATA = null;
 
 function todayKey(){ return JS_DAY_TO_KEY[new Date().getDay()]; }
 function timeNow(){ const d = new Date(); return d.getHours()*60 + d.getMinutes(); }
+function todayISO(){
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+}
+function dayKeyFromISO(s){
+  if (!s) return todayKey();
+  const m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return todayKey();
+  return JS_DAY_TO_KEY[new Date(+m[1], +m[2]-1, +m[3]).getDay()];
+}
 function timeToMin(t){ const [h,m] = t.split(":").map(Number); return h*60 + m; }
 function sortByTime(a,b){ return timeToMin(a.time) - timeToMin(b.time); }
 function uniqueSorted(arr){ return Array.from(new Set(arr)).sort((a,b)=>a.localeCompare(b,"pt-BR")); }
@@ -1076,6 +1301,7 @@ async function load(){
     const r = await fetch("data/schedules.json", { cache: "no-cache" });
     if (!r.ok) throw new Error("HTTP " + r.status);
     DATA = await r.json();
+    INITIAL_GENERATED_AT = DATA.generatedAt || null;
   } catch (e) {
     document.getElementById("results").innerHTML =
       `<div class="empty">
@@ -1086,13 +1312,299 @@ async function load(){
     return;
   }
   hydrateUI(); renderMeta(); applyURLState(); doSearch();
+  startUpdateWatcher();
+}
+
+// ---- Painel oculto de sync (#mode=sync) ----
+const SYNC_BASE = "http://127.0.0.1:8765";
+const GH_REPO = "denerbatista/cordial-horarios";
+const GH_WORKFLOW = "update-schedules.yml";
+const GH_PAT_KEY = "cordial_gh_pat";
+let _syncHealthTimer = null;
+let _syncBusy = false;
+let _ghBusy = false;
+let _ghPollTimer = null;
+
+async function syncHealth(){
+  try {
+    const r = await fetch(SYNC_BASE + "/health", { method: "GET", cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const j = await r.json();
+    return j && j.ok === true;
+  } catch (_) { return false; }
+}
+function setSyncStatus(state, text){
+  const el = document.getElementById("sync-status");
+  if (!el) return;
+  el.classList.remove("is-up","is-down");
+  if (state === "up")   el.classList.add("is-up");
+  if (state === "down") el.classList.add("is-down");
+  document.getElementById("sync-status-text").textContent = text;
+  document.getElementById("sync-btn").disabled = (state !== "up") || _syncBusy;
+}
+async function pingSyncOnce(){
+  const up = await syncHealth();
+  setSyncStatus(up ? "up" : "down",
+                up ? "servidor local ativo · 127.0.0.1:8765" : "servidor local offline");
+}
+function initSyncPanel(){
+  setSyncStatus("checking", "checando servidor local…");
+  pingSyncOnce();
+  if (_syncHealthTimer) clearInterval(_syncHealthTimer);
+  _syncHealthTimer = setInterval(() => {
+    if (currentMode() === "sync") pingSyncOnce();
+    else { clearInterval(_syncHealthTimer); _syncHealthTimer = null; }
+  }, 5000);
+
+  const btn = document.getElementById("sync-btn");
+  if (btn && !btn._wired){
+    btn._wired = true;
+    btn.addEventListener("click", runSync);
+  }
+
+  initGhDispatchPanel();
+}
+
+// ---- GitHub Actions dispatch (Fase B) ----
+function setGhStatus(state, text){
+  const el = document.getElementById("gh-status");
+  if (!el) return;
+  el.classList.remove("is-up","is-down");
+  if (state === "up")   el.classList.add("is-up");
+  if (state === "down") el.classList.add("is-down");
+  document.getElementById("gh-status-text").textContent = text;
+}
+function ghPat(){ return localStorage.getItem(GH_PAT_KEY) || ""; }
+function saveGhPat(v){
+  if (v) localStorage.setItem(GH_PAT_KEY, v);
+  else localStorage.removeItem(GH_PAT_KEY);
+}
+async function ghFetch(path, opts = {}){
+  const headers = {
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "Authorization": "Bearer " + ghPat(),
+    ...(opts.headers || {}),
+  };
+  return fetch("https://api.github.com" + path, { ...opts, headers });
+}
+async function ghValidatePat(){
+  if (!ghPat()) return false;
+  try {
+    const r = await ghFetch(`/repos/${GH_REPO}`);
+    return r.ok;
+  } catch (_) { return false; }
+}
+function initGhDispatchPanel(){
+  const input = document.getElementById("gh-pat");
+  const saveBtn = document.getElementById("gh-pat-save");
+  const clearBtn = document.getElementById("gh-pat-clear");
+  const patRow = document.getElementById("gh-pat-row");
+  const dispatchBtn = document.getElementById("gh-dispatch-btn");
+
+  function renderState(){
+    const hasPat = !!ghPat();
+    patRow.hidden = hasPat;
+    clearBtn.hidden = !hasPat;
+    dispatchBtn.disabled = !hasPat || _ghBusy;
+    if (!hasPat){
+      setGhStatus("down", "PAT não configurado");
+    } else {
+      setGhStatus("checking", "validando PAT…");
+      ghValidatePat().then(ok => {
+        if (!ok) setGhStatus("down", "PAT inválido ou sem permissão");
+        else fetchLatestRun();
+      });
+    }
+  }
+  if (!saveBtn._wired){
+    saveBtn._wired = true;
+    saveBtn.addEventListener("click", () => {
+      const v = (input.value || "").trim();
+      if (!v) return;
+      saveGhPat(v);
+      input.value = "";
+      renderState();
+    });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") { e.preventDefault(); saveBtn.click(); }
+    });
+  }
+  if (!clearBtn._wired){
+    clearBtn._wired = true;
+    clearBtn.addEventListener("click", () => {
+      if (!confirm("Apagar o PAT salvo neste navegador?")) return;
+      saveGhPat("");
+      renderState();
+    });
+  }
+  if (!dispatchBtn._wired){
+    dispatchBtn._wired = true;
+    dispatchBtn.addEventListener("click", runGhDispatch);
+  }
+  renderState();
+}
+async function fetchLatestRun(){
+  try {
+    const r = await ghFetch(`/repos/${GH_REPO}/actions/workflows/${GH_WORKFLOW}/runs?per_page=1`);
+    if (!r.ok) {
+      setGhStatus("down", "falha ao listar runs · HTTP " + r.status);
+      return null;
+    }
+    const j = await r.json();
+    const run = j.workflow_runs && j.workflow_runs[0];
+    if (!run) { setGhStatus("up", "PAT OK · nenhum run ainda"); return null; }
+    const fmt = new Date(run.created_at).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+    const concl = run.conclusion || run.status;
+    setGhStatus(concl === "success" ? "up" : (run.status === "completed" ? "down" : "up"),
+      `último run · ${concl} · ${fmt}`);
+    return run;
+  } catch (e) {
+    setGhStatus("down", "erro de rede: " + e.message);
+    return null;
+  }
+}
+async function runGhDispatch(){
+  if (_ghBusy) return;
+  _ghBusy = true;
+  const btn = document.getElementById("gh-dispatch-btn");
+  const lbl = document.getElementById("gh-btn-label");
+  const out = document.getElementById("gh-output");
+  btn.classList.add("is-loading"); btn.disabled = true;
+  lbl.textContent = "Disparando…";
+  out.hidden = false; out.classList.remove("is-ok","is-err");
+  out.textContent = "Enviando dispatch ao GitHub…";
+
+  try {
+    const r = await ghFetch(`/repos/${GH_REPO}/actions/workflows/${GH_WORKFLOW}/dispatches`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ref: "main" }),
+    });
+    if (r.status !== 204) {
+      const txt = await r.text();
+      throw new Error("HTTP " + r.status + " · " + txt.slice(0, 200));
+    }
+    out.textContent = "Dispatch aceito. Aguardando o runner pegar o job…";
+    // Poll por ~3 min: até run aparecer e completar
+    const t0 = Date.now();
+    if (_ghPollTimer) clearInterval(_ghPollTimer);
+    let lastRunId = null;
+    _ghPollTimer = setInterval(async () => {
+      if (Date.now() - t0 > 4 * 60 * 1000){
+        clearInterval(_ghPollTimer); _ghPollTimer = null;
+        out.classList.add("is-err");
+        out.textContent = "Timeout esperando o runner. Conferir Actions no GitHub.";
+        finishGh();
+        return;
+      }
+      const run = await fetchLatestRun();
+      if (!run) return;
+      if (lastRunId === null) lastRunId = run.id;
+      if (run.id !== lastRunId){
+        // novo run apareceu (provavelmente o nosso)
+        lastRunId = run.id;
+      }
+      if (run.status === "in_progress"){
+        out.textContent = `Rodando no runner… ${new Date(run.run_started_at || run.created_at).toLocaleTimeString("pt-BR")}`;
+      } else if (run.status === "queued"){
+        out.textContent = "Job na fila. Seu PC com o runner está ligado e conectado?";
+      } else if (run.status === "completed"){
+        clearInterval(_ghPollTimer); _ghPollTimer = null;
+        if (run.conclusion === "success"){
+          out.classList.add("is-ok");
+          out.textContent = `OK · run #${run.run_number} (${run.conclusion}) — site recarrega quando o Pages publicar.`;
+          setTimeout(checkForUpdates, 8000);
+          setTimeout(checkForUpdates, 25000);
+          setTimeout(checkForUpdates, 60000);
+        } else {
+          out.classList.add("is-err");
+          out.textContent = `Falhou · ${run.conclusion} · ver detalhes em ${run.html_url}`;
+        }
+        finishGh();
+      }
+    }, 5000);
+  } catch (e) {
+    out.classList.add("is-err");
+    out.textContent = "Erro: " + e.message;
+    finishGh();
+  }
+
+  function finishGh(){
+    _ghBusy = false;
+    btn.classList.remove("is-loading"); btn.disabled = false;
+    lbl.textContent = "Disparar build";
+  }
+}
+async function runSync(){
+  if (_syncBusy) return;
+  _syncBusy = true;
+  const btn = document.getElementById("sync-btn");
+  const lbl = document.getElementById("sync-btn-label");
+  const out = document.getElementById("sync-output");
+  btn.classList.add("is-loading");
+  btn.disabled = true;
+  lbl.textContent = "Rodando…";
+  out.hidden = false; out.classList.remove("is-ok","is-err");
+  out.textContent = "Disparando build no seu PC… isso leva ~30-60s.";
+  try {
+    const r = await fetch(SYNC_BASE + "/sync", { method: "POST" });
+    const j = await r.json();
+    if (j.ok){
+      out.classList.add("is-ok");
+      out.textContent =
+        `OK · ${j.totalTrips} viagens · ${j.generatedAt}\n` +
+        `${j.changed ? (j.pushed ? "commit + push enviados ✓" : "commit local (sem push)") : "nada mudou no schedules.json"}\n` +
+        `(em ${j.duration_s}s)\nO site recarrega em alguns segundos quando o GitHub Pages publicar.`;
+      // Força check de update em alguns segundos pra recarregar quando o site for atualizado
+      setTimeout(checkForUpdates, 8000);
+      setTimeout(checkForUpdates, 25000);
+      setTimeout(checkForUpdates, 60000);
+    } else {
+      out.classList.add("is-err");
+      out.textContent = "Falhou · " + (j.phase || "?") + " · " + (j.error || "erro desconhecido") +
+                        (j.sectors ? "\nsetores: " + JSON.stringify(j.sectors) : "");
+    }
+  } catch (e) {
+    out.classList.add("is-err");
+    out.textContent = "Não consegui falar com o servidor local. Ele caiu? Erro: " + e.message;
+  } finally {
+    _syncBusy = false;
+    btn.classList.remove("is-loading");
+    btn.disabled = false;
+    lbl.textContent = "Sincronizar agora";
+    pingSyncOnce();
+  }
+}
+
+// Detecta atualizacao dos dados e recarrega o site para nao ficar defasado.
+// Roda quando o app fica visivel e periodicamente em background.
+async function checkForUpdates(){
+  if (!INITIAL_GENERATED_AT) return;
+  try {
+    const r = await fetch("data/schedules.json?_=" + Date.now(), { cache: "no-store" });
+    if (!r.ok) return;
+    const j = await r.json();
+    if (j && j.generatedAt && j.generatedAt !== INITIAL_GENERATED_AT){
+      location.reload();
+    }
+  } catch (_) { /* offline ou erro de rede: tenta de novo depois */ }
+}
+function startUpdateWatcher(){
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") checkForUpdates();
+  });
+  window.addEventListener("focus", checkForUpdates);
+  // chega cedo: 5min e depois a cada 15min
+  setTimeout(checkForUpdates, 5 * 60 * 1000);
+  setInterval(checkForUpdates, 15 * 60 * 1000);
 }
 
 function renderMeta(){
   const u = new Date(DATA.generatedAt);
   document.getElementById("updated-date").textContent = fmtDateShort(u);
   const chip = document.getElementById("status-chip");
-  if (chip) chip.title = `Ultima atualizacao: ${fmtDateLong(u)} (${fmtDateRelative(u)})`;
+  if (chip) chip.title = `Última atualização: ${fmtDateLong(u)} (${fmtDateRelative(u)})`;
   document.getElementById("updated-long").textContent = fmtDateLong(u);
   document.getElementById("foot-trips").textContent = DATA.totalTrips;
   document.getElementById("foot-places").textContent = DATA.places.length;
@@ -1105,6 +1617,7 @@ let ALL_DESTS = new Set();
 let DEST_BY_ORIGIN = new Map();   // origin -> Set(destinos)
 let ORIGIN_BY_DEST = new Map();   // destination -> Set(origens)
 let ORIGINS_NEXT = [];            // origens que aparecem como origem em alguma trip
+let INITIAL_GENERATED_AT = null;  // pra detectar atualizacoes do site
 
 function buildPairs(){
   ORIGINS_ALL = [];
@@ -1158,11 +1671,36 @@ function refreshFromTo(){
   fillSelectFromList("to",   validDests,   "Qualquer destino", to);
 }
 
+function refreshFromToNext(){
+  // Igual ao refreshFromTo mas pra aba Próximos (from-next + to-next).
+  const from = document.getElementById("from-next").value;
+  const to = document.getElementById("to-next").value;
+
+  const validOrigins = to
+    ? Array.from(ORIGIN_BY_DEST.get(to) || []).sort((a,b)=>a.localeCompare(b,"pt-BR"))
+    : ORIGINS_NEXT;
+  const validDests = from
+    ? Array.from(DEST_BY_ORIGIN.get(from) || []).sort((a,b)=>a.localeCompare(b,"pt-BR"))
+    : Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR"));
+
+  fillSelectFromList("from-next", validOrigins, "Escolha uma localidade", from);
+  fillSelectFromList("to-next",   validDests,   "Qualquer destino", to);
+}
+
 function hydrateUI(){
   buildPairs();
   fillSelectFromList("from", ORIGINS_ALL, "Qualquer origem", "");
   fillSelectFromList("to", Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR")), "Qualquer destino", "");
-  fillSelectFromList("from-next", ORIGINS_NEXT, "Escolha uma cidade", "");
+  fillSelectFromList("from-next", ORIGINS_NEXT, "Escolha uma localidade", "");
+  fillSelectFromList("to-next", Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR")), "Qualquer destino", "");
+
+  // Calendario da aba Proximos: padrao hoje, minimo hoje
+  const dateInput = document.getElementById("next-date");
+  if (dateInput){
+    const today = todayISO();
+    dateInput.min = today;
+    if (!dateInput.value) dateInput.value = today;
+  }
 
   const lines = uniqueSorted(DATA.trips.map(t => t.line).filter(Boolean));
   const lsel = document.getElementById("line");
@@ -1181,10 +1719,11 @@ function hydrateUI(){
     c.setAttribute("aria-pressed", "true");
     writeURLState(); doSearch();
   });
-  ["from","to","sector","q","from-next","from-time","next-day","line"].forEach(id => {
+  ["from","to","sector","q","from-next","to-next","from-time","next-date","line"].forEach(id => {
     const el = document.getElementById(id); if (!el) return;
     const handler = () => {
       if (id === "from" || id === "to") refreshFromTo();
+      if (id === "from-next" || id === "to-next") refreshFromToNext();
       writeURLState(); doSearch();
     };
     el.addEventListener("input",  handler);
@@ -1202,33 +1741,50 @@ function hydrateUI(){
   });
 }
 
+let _CURRENT_MODE = "search";
 function setMode(mode){
+  if (!["search","next","lines","info","sync"].includes(mode)) mode = "search";
+  _CURRENT_MODE = mode;
   document.querySelectorAll("#modes .mode").forEach(t => t.setAttribute("aria-selected", String(t.dataset.mode === mode)));
   document.querySelectorAll("#bnav .bnav-item").forEach(t => t.setAttribute("aria-selected", String(t.dataset.mode === mode)));
   document.getElementById("view-search").hidden = mode !== "search";
   document.getElementById("view-next").hidden   = mode !== "next";
   document.getElementById("view-lines").hidden  = mode !== "lines";
+  document.getElementById("view-info").hidden   = mode !== "info";
+  document.getElementById("view-sync").hidden   = mode !== "sync";
+  const main = document.querySelector("main");
+  main.classList.toggle("is-info", mode === "info");
+  main.classList.toggle("is-sync", mode === "sync");
   writeURLState(); doSearch();
+  if (mode === "sync") initSyncPanel();
 }
-function currentMode(){ return document.querySelector("#modes .mode[aria-selected='true']")?.dataset.mode || "search"; }
+function currentMode(){ return _CURRENT_MODE; }
 function currentDay(){ return document.querySelector("#day-strip .day-chip[aria-pressed='true']")?.dataset.day || ""; }
 function setDay(value){ document.querySelectorAll("#day-strip .day-chip").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.day === value))); }
 
 function applyURLState(){
   // garante que listas refletem state inicial da URL
-  setTimeout(()=>refreshFromTo(), 0);
+  setTimeout(()=>{ refreshFromTo(); refreshFromToNext(); }, 0);
   const params = new URLSearchParams(location.hash.slice(1));
   if (params.has("mode")) setMode(params.get("mode"));
   if (params.has("day")) setDay(params.get("day"));
-  for (const id of ["from","to","sector","q","from-next","from-time","next-day","line"]){
+  for (const id of ["from","to","sector","q","from-next","to-next","from-time","next-date","line"]){
     const v = params.get(id); if (v !== null) { const el = document.getElementById(id); if (el) el.value = v; }
   }
+  // garante que next-date nao fique no passado
+  const di = document.getElementById("next-date");
+  if (di && (!di.value || di.value < di.min)) di.value = di.min || todayISO();
 }
+window.addEventListener("hashchange", () => {
+  const params = new URLSearchParams(location.hash.slice(1));
+  const m = params.get("mode");
+  if (m && m !== currentMode()) setMode(m);
+});
 function writeURLState(){
   const params = new URLSearchParams();
   params.set("mode", currentMode());
   const d = currentDay(); if (d) params.set("day", d);
-  for (const id of ["from","to","sector","q","from-next","from-time","next-day","line"]){
+  for (const id of ["from","to","sector","q","from-next","to-next","from-time","next-date","line"]){
     const el = document.getElementById(id); if (el && el.value) params.set(id, el.value);
   }
   history.replaceState(null, "", "#" + params.toString());
@@ -1324,13 +1880,18 @@ function renderSearch(){
 
 function renderNext(){
   const from = document.getElementById("from-next").value;
+  const to   = document.getElementById("to-next").value;
   const timeStr = (document.getElementById("from-time").value || "").trim();
-  const dayKey = dayFromSelect(document.getElementById("next-day").value || "today");
+  const dateStr = (document.getElementById("next-date").value || "").trim();
+  const isToday = !dateStr || dateStr === todayISO();
+  const dayKey = dayKeyFromISO(dateStr || todayISO());
 
-  let baseTime = timeNow();
+  let baseTime;
   if (timeStr){
-    const m = timeStr.match(/^(\d{1,2}):?(\d{2})?$/);
-    if (m) baseTime = (+m[1]) * 60 + (m[2] ? +m[2] : 0);
+    const m = timeStr.match(/^(\d{1,2}):(\d{2})$/);
+    baseTime = m ? (+m[1]) * 60 + (+m[2]) : 0;
+  } else {
+    baseTime = isToday ? timeNow() : 0;
   }
 
   const root = document.getElementById("results");
@@ -1338,17 +1899,18 @@ function renderNext(){
     setResultsTitle("Próximos ônibus", null);
     root.innerHTML = emptyState({
       icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
-      title: "Escolha uma cidade",
-      sub: "Selecione a cidade de origem para ver os próximos ônibus."
+      title: "Escolha uma localidade",
+      sub: "Selecione a localidade de origem para ver os próximos ônibus."
     });
     return;
   }
-  const trips = filterTrips({ from, day: dayKey, originOnly: true })
+  const trips = filterTrips({ from, to, day: dayKey, originOnly: !to })
     .filter(t => timeToMin(t.time) >= baseTime)
     .slice().sort(sortByTime).slice(0, 30);
 
   const baseStr = `${String(Math.floor(baseTime/60)).padStart(2,"0")}:${String(baseTime%60).padStart(2,"0")}`;
-  setResultsTitle(`Saindo de ${from} a partir das ${baseStr}`, trips.length);
+  const destPart = to ? ` → ${to}` : "";
+  setResultsTitle(`Saindo de ${from}${destPart} a partir das ${baseStr}`, trips.length);
 
   if (!trips.length){
     root.innerHTML = emptyState({
