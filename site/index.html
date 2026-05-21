@@ -109,7 +109,7 @@
           "name": "Como consultar o horário do ônibus da Cordial Turismo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Escolha a cidade de origem e o destino na busca, ou use o modo Próximos ônibus para ver o que sai a partir do horário atual. Os filtros por dia da semana mostram os horários válidos para dias úteis, sábado, domingo ou feriado."
+            "text": "Escolha a localidade de origem e o destino na busca, ou use o modo Próximos ônibus para ver o que sai a partir do horário atual. Os filtros por dia da semana mostram os horários válidos para dias úteis, sábado, domingo ou feriado."
           }
         },
         {
@@ -960,7 +960,7 @@
 
       <details>
         <summary>Como consultar o horário do ônibus da Cordial?</summary>
-        <p>Escolha a cidade de origem e o destino no formulário do topo. Para ver o que sai agora, troque para a aba <em>Próximos ônibus</em>. O filtro de dia da semana ajusta a lista para dias úteis, sábado, domingo ou feriado.</p>
+        <p>Escolha a localidade de origem e o destino no formulário do topo. Para ver o que sai agora, troque para a aba <em>Próximos ônibus</em>. O filtro de dia da semana ajusta a lista para dias úteis, sábado, domingo ou feriado.</p>
       </details>
 
       <details>
@@ -1225,7 +1225,7 @@ function refreshFromToNext(){
     ? Array.from(DEST_BY_ORIGIN.get(from) || []).sort((a,b)=>a.localeCompare(b,"pt-BR"))
     : Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR"));
 
-  fillSelectFromList("from-next", validOrigins, "Escolha uma cidade", from);
+  fillSelectFromList("from-next", validOrigins, "Escolha uma localidade", from);
   fillSelectFromList("to-next",   validDests,   "Qualquer destino", to);
 }
 
@@ -1233,7 +1233,7 @@ function hydrateUI(){
   buildPairs();
   fillSelectFromList("from", ORIGINS_ALL, "Qualquer origem", "");
   fillSelectFromList("to", Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR")), "Qualquer destino", "");
-  fillSelectFromList("from-next", ORIGINS_NEXT, "Escolha uma cidade", "");
+  fillSelectFromList("from-next", ORIGINS_NEXT, "Escolha uma localidade", "");
   fillSelectFromList("to-next", Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR")), "Qualquer destino", "");
 
   // Calendario da aba Proximos: padrao hoje, minimo hoje
@@ -1429,8 +1429,8 @@ function renderNext(){
     setResultsTitle("Próximos ônibus", null);
     root.innerHTML = emptyState({
       icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
-      title: "Escolha uma cidade",
-      sub: "Selecione a cidade de origem para ver os próximos ônibus."
+      title: "Escolha uma localidade",
+      sub: "Selecione a localidade de origem para ver os próximos ônibus."
     });
     return;
   }
