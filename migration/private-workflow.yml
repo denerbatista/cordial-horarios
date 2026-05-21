@@ -18,7 +18,7 @@ name: Build, ofuscar e publicar
 
 on:
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "0 12 * * *"   # 09:00 BRT — PC provavelmente ligado
   workflow_dispatch: {}
   push:
     branches: [main]
@@ -30,9 +30,10 @@ permissions:
   contents: write
   issues: write
 
+# Cron novo cancela job queued antigo (se PC ficou off, só roda o mais recente)
 concurrency:
   group: "build-and-deploy"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:

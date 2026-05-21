@@ -2,7 +2,7 @@ name: Atualizar horários
 
 on:
   schedule:
-    - cron: "0 6 * * *"   # diariamente às 06:00 UTC (~03:00 BRT)
+    - cron: "0 12 * * *"  # diariamente às 12:00 UTC = 09:00 BRT (PC provavelmente ligado)
   workflow_dispatch: {}
   push:
     branches: [main]
@@ -17,9 +17,11 @@ permissions:
   id-token: write
   issues: write
 
+# cancel-in-progress: true → se já tem um job queued no runner (ex: PC ficou off
+# alguns dias e o cron disparou várias vezes), só o mais recente sobrevive.
 concurrency:
   group: "update-schedules"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   update:
