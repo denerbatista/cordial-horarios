@@ -425,6 +425,100 @@
   }
   .save-search.is-saved svg { fill:var(--c-warning); }
 
+  /* ===== Multi-select (saída/destino): campo com carrossel + folha de seleção ===== */
+  .msel-field { cursor:pointer; }
+  .msel-display {
+    display:flex; align-items:center; gap:6px;
+    overflow-x:auto; scrollbar-width:none; min-height:24px; padding:1px 0;
+  }
+  .msel-display::-webkit-scrollbar { display:none; }
+  .msel-ph { font:500 16px/1.4 var(--font-body); color:var(--c-muted); white-space:nowrap; }
+  .msel-chip {
+    display:inline-flex; align-items:center; gap:1px; flex-shrink:0;
+    height:27px; padding:0 3px 0 11px; border-radius:var(--radius-full);
+    background:var(--c-primary-100); color:var(--c-primary);
+    font:600 13px/1 var(--font-body); white-space:nowrap;
+  }
+  .msel-display.dest .msel-chip { background:var(--c-primary-100); }
+  .msel-chip-x {
+    display:grid; place-items:center; width:20px; height:20px;
+    border:0; border-radius:50%; background:transparent; color:inherit;
+    font-size:15px; line-height:1; cursor:pointer; padding:0;
+  }
+  .msel-chip-x:hover { background:color-mix(in srgb, var(--c-primary) 18%, transparent); }
+
+  /* Folha de seleção (modal no desktop, bottom-sheet no celular) */
+  body.msel-locked { overflow:hidden; }
+  .msel-sheet { position:fixed; inset:0; z-index:120; display:flex; }
+  .msel-sheet[hidden] { display:none !important; }
+  .msel-backdrop {
+    position:absolute; inset:0; background:rgba(11,15,44,.45);
+    -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px);
+  }
+  .msel-panel {
+    position:relative; margin:auto; width:100%; max-width:460px;
+    background:var(--c-surface); border:1px solid var(--c-line);
+    border-radius:var(--radius-xl); box-shadow:var(--shadow-lg);
+    display:flex; flex-direction:column; max-height:78vh; overflow:hidden;
+    transform:translateY(10px); opacity:0;
+    transition:transform .2s var(--ease), opacity .2s var(--ease);
+  }
+  .msel-sheet.open .msel-panel { transform:none; opacity:1; }
+  .msel-head {
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:14px 16px; border-bottom:1px solid var(--c-line); flex-shrink:0;
+  }
+  .msel-title { font-family:var(--font-display); font-weight:600; font-size:16px; color:var(--c-ink); }
+  .msel-done {
+    background:var(--c-primary); color:#fff; border:0; border-radius:var(--radius-full);
+    padding:9px 20px; font:600 14px/1 var(--font-body); cursor:pointer;
+    box-shadow:0 6px 14px -6px rgba(0,36,248,.55);
+    transition:background var(--ease) 120ms;
+  }
+  .msel-done:hover { background:var(--c-primary-600); }
+  .msel-searchbar {
+    display:flex; align-items:center; gap:8px; padding:10px 14px;
+    border-bottom:1px solid var(--c-line); flex-shrink:0;
+  }
+  .msel-searchbar svg { color:var(--c-muted); flex-shrink:0; }
+  #msel-search {
+    flex:1; min-width:0; border:0; background:transparent;
+    font:500 16px/1.3 var(--font-body); color:var(--c-ink); outline:none;
+  }
+  .msel-clearsel {
+    border:0; background:var(--c-bg-deep); color:var(--c-ink-2);
+    border-radius:var(--radius-full); padding:6px 11px;
+    font:600 12px/1 var(--font-body); cursor:pointer; flex-shrink:0;
+  }
+  .msel-clearsel:hover { background:var(--c-surface-hover); }
+  .msel-clearsel[hidden] { display:none; }
+  .msel-list { overflow-y:auto; -webkit-overflow-scrolling:touch; padding:6px; }
+  .msel-row {
+    display:flex; align-items:center; gap:12px; padding:11px 12px;
+    border-radius:var(--radius-md); cursor:pointer; -webkit-tap-highlight-color:transparent;
+  }
+  .msel-row:hover { background:var(--c-surface-hover); }
+  .msel-row.on { background:var(--c-primary-50); }
+  .msel-cb { position:absolute; opacity:0; width:0; height:0; pointer-events:none; }
+  .msel-box {
+    width:22px; height:22px; flex-shrink:0; border:2px solid var(--c-line-strong);
+    border-radius:6px; display:grid; place-items:center; color:#fff;
+    transition:background var(--ease) 120ms, border-color var(--ease) 120ms;
+  }
+  .msel-box svg { width:14px; height:14px; opacity:0; transition:opacity var(--ease) 120ms; }
+  .msel-row.on .msel-box { background:var(--c-primary); border-color:var(--c-primary); }
+  .msel-row.on .msel-box svg { opacity:1; }
+  .msel-row-label { font-size:15px; font-weight:500; color:var(--c-ink); }
+  .msel-empty { padding:30px 16px; text-align:center; color:var(--c-muted); font-size:14px; }
+  @media (max-width:640px) {
+    .msel-sheet { align-items:flex-end; }
+    .msel-panel {
+      max-width:none; margin:0; max-height:85vh;
+      border-radius:var(--radius-xl) var(--radius-xl) 0 0;
+      transform:translateY(100%); padding-bottom:var(--safe-bottom);
+    }
+  }
+
   /* Favoritos: titulos de secao e cards de buscas salvas */
   .fav-sec-title {
     font-family:var(--font-display); font-size:12px; font-weight:600;
@@ -1030,19 +1124,19 @@
 
     <div id="view-search">
       <div class="route-picker">
-        <div class="field">
+        <div class="field msel-field" data-msel="from">
           <span class="field-dot" aria-hidden="true"></span>
           <div class="field-body">
-            <label for="from" class="field-label">Saída(s)</label>
-            <select id="from" class="field-input"></select>
+            <span class="field-label">Saída(s)</span>
+            <div class="msel-display" id="from-display"></div>
           </div>
           <svg class="field-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </div>
-        <div class="field">
+        <div class="field msel-field" data-msel="to">
           <span class="field-dot dot-dest" aria-hidden="true"></span>
           <div class="field-body">
-            <label for="to" class="field-label">Destino(s)</label>
-            <select id="to" class="field-input"></select>
+            <span class="field-label">Destino(s)</span>
+            <div class="msel-display dest" id="to-display"></div>
           </div>
           <svg class="field-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </div>
@@ -1051,9 +1145,7 @@
         </button>
       </div>
 
-      <div class="dest-chips" id="origin-chips" hidden aria-label="Saídas selecionadas"></div>
-      <div class="dest-chips" id="dest-chips" hidden aria-label="Destinos selecionados"></div>
-      <div class="field-hint">Dá pra escolher mais de uma saída e mais de um destino — cada um vira uma etiqueta aqui.</div>
+      <div class="field-hint">Toque para escolher uma ou várias saídas e destinos — marque na lista e use a busca pra filtrar.</div>
       <button class="save-search" id="save-search" type="button" hidden>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 17.27-5.18 3.04 1.4-5.9-4.6-3.98 6.05-.5L12 4.5l2.33 5.43 6.05.5-4.6 3.98 1.4 5.9z"/></svg>
         <span id="save-search-label">Salvar esta busca</span>
@@ -1101,19 +1193,19 @@
 
     <div id="view-next" hidden>
       <div class="route-picker">
-        <div class="field">
+        <div class="field msel-field" data-msel="from-next">
           <span class="field-dot" aria-hidden="true"></span>
           <div class="field-body">
-            <label for="from-next" class="field-label">Saindo de</label>
-            <select id="from-next" class="field-input"></select>
+            <span class="field-label">Saindo de</span>
+            <div class="msel-display" id="from-next-display"></div>
           </div>
           <svg class="field-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </div>
-        <div class="field">
+        <div class="field msel-field" data-msel="to-next">
           <span class="field-dot dot-dest" aria-hidden="true"></span>
           <div class="field-body">
-            <label for="to-next" class="field-label">Destino (opcional)</label>
-            <select id="to-next" class="field-input"></select>
+            <span class="field-label">Destino (opcional)</span>
+            <div class="msel-display dest" id="to-next-display"></div>
           </div>
           <svg class="field-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </div>
@@ -1371,6 +1463,22 @@
   </footer>
 </main>
 
+<div class="msel-sheet" id="msel-sheet" hidden>
+  <div class="msel-backdrop" data-msel-close aria-hidden="true"></div>
+  <div class="msel-panel" role="dialog" aria-modal="true" aria-labelledby="msel-title">
+    <div class="msel-head">
+      <span class="msel-title" id="msel-title">Escolher</span>
+      <button type="button" class="msel-done" data-msel-close>OK</button>
+    </div>
+    <div class="msel-searchbar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" id="msel-search" placeholder="Buscar local…" autocomplete="off" spellcheck="false" />
+      <button type="button" class="msel-clearsel" id="msel-clearsel" hidden>Limpar</button>
+    </div>
+    <div class="msel-list" id="msel-list" role="listbox" aria-multiselectable="true"></div>
+  </div>
+</div>
+
 <nav class="bnav" id="bnav" role="tablist" aria-label="Navegação principal">
   <button class="bnav-item" role="tab" aria-selected="true" data-mode="search" type="button">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
@@ -1403,9 +1511,11 @@ const JS_DAY_TO_KEY = ["sun","mon","tue","wed","thu","fri","sat"];
 
 let DATA = null;
 
-// Multi origem/destino: listas escolhidas na aba Buscar
+// Multi origem/destino: listas escolhidas (aba Buscar e aba Próximos)
 let selectedOrigins = [];
 let selectedDests = [];
+let selectedOriginsNext = [];
+let selectedDestsNext = [];
 
 // Favoritos: ids das viagens salvas neste aparelho (localStorage)
 const FAV_KEY = "cordial_favs";
@@ -1898,86 +2008,130 @@ function fillSelectFromList(id, list, allLabel, currentValue){
   }
 }
 
-function refreshFromTo(){
-  // Multi origem/destino: saídas em selectedOrigins, destinos em selectedDests.
-  // Os selects "from"/"to" funcionam como "adicionar": mostram só os pares
-  // válidos (recíprocos) que ainda não foram escolhidos.
-  const pickableOrigins = selectedDests.length
-    ? uniqueSorted(selectedDests.flatMap(d => Array.from(ORIGIN_BY_DEST.get(d) || [])))
-    : ORIGINS_ALL;
-  const pickableDests = selectedOrigins.length
-    ? uniqueSorted(selectedOrigins.flatMap(o => Array.from(DEST_BY_ORIGIN.get(o) || [])))
+// ===== Multi-select reutilizável (saída/destino, abas Buscar e Próximos) =====
+function mselConf(id){
+  const C = {
+    "from":      { get:()=>selectedOrigins,     set:v=>{selectedOrigins=v;},     opp:()=>selectedDests,      side:"origin", ph:"Qualquer saída",   title:"Escolher saídas"   },
+    "to":        { get:()=>selectedDests,       set:v=>{selectedDests=v;},       opp:()=>selectedOrigins,    side:"dest",   ph:"Qualquer destino", title:"Escolher destinos" },
+    "from-next": { get:()=>selectedOriginsNext, set:v=>{selectedOriginsNext=v;}, opp:()=>selectedDestsNext,  side:"origin", ph:"Escolha a saída",  title:"Escolher saídas"   },
+    "to-next":   { get:()=>selectedDestsNext,   set:v=>{selectedDestsNext=v;},   opp:()=>selectedOriginsNext,side:"dest",   ph:"Qualquer destino", title:"Escolher destinos" },
+  };
+  return C[id];
+}
+function mselTab(id){ return (id === "from" || id === "to") ? "search" : "next"; }
+function tabPickers(tab){ return tab === "search" ? ["from","to"] : ["from-next","to-next"]; }
+
+// Conjunto válido (recíproco) de opções para um picker, dado o que está escolhido no outro lado.
+function mselOptions(id){
+  const c = mselConf(id), opp = c.opp();
+  if (c.side === "origin"){
+    return opp.length
+      ? uniqueSorted(opp.flatMap(d => Array.from(ORIGIN_BY_DEST.get(d) || [])))
+      : ORIGINS_ALL.slice();
+  }
+  return opp.length
+    ? uniqueSorted(opp.flatMap(o => Array.from(DEST_BY_ORIGIN.get(o) || [])))
     : Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR"));
-
-  // Remove seleções que deixaram de formar par válido com o outro lado.
-  selectedOrigins = selectedOrigins.filter(o => pickableOrigins.includes(o));
-  selectedDests   = selectedDests.filter(d => pickableDests.includes(d));
-
-  const pickOrigins = pickableOrigins.filter(o => !selectedOrigins.includes(o));
-  const pickDests   = pickableDests.filter(d => !selectedDests.includes(d));
-
-  fillSelectFromList("from", pickOrigins,
-    selectedOrigins.length ? "Adicionar outra saída…" : "Adicionar saída…", "");
-  fillSelectFromList("to",   pickDests,
-    selectedDests.length ? "Adicionar outro destino…" : "Adicionar destino…", "");
-  renderOriginChips();
-  renderDestChips();
-  updateSaveSearchBtn();
 }
 
-function renderChips(boxId, label, list, kind){
-  const box = document.getElementById(boxId);
-  if (!box) return;
-  if (!list.length){ box.hidden = true; box.innerHTML = ""; return; }
-  box.hidden = false;
-  box.innerHTML = `<span class="od-label">${label}</span>` + list.map(v =>
-    `<span class="dest-chip">${escapeHTML(v)}<button type="button" class="dest-chip-x" data-kind="${kind}" data-val="${escapeHTML(v)}" aria-label="Remover ${escapeHTML(v)}">×</button></span>`
+// Remove seleções que deixaram de formar par válido e atualiza os campos da aba.
+function refreshTab(tab){
+  for (const id of tabPickers(tab)){
+    const c = mselConf(id), valid = mselOptions(id);
+    c.set(c.get().filter(v => valid.includes(v)));
+  }
+  for (const id of tabPickers(tab)) renderMselDisplay(id);
+  if (tab === "search") updateSaveSearchBtn();
+}
+// Compatibilidade com chamadas antigas.
+function refreshFromTo(){ refreshTab("search"); }
+function refreshFromToNext(){ refreshTab("next"); }
+
+// Carrossel de etiquetas dentro do campo.
+function renderMselDisplay(id){
+  const wrap = document.getElementById(id + "-display");
+  if (!wrap) return;
+  const sel = mselConf(id).get();
+  if (!sel.length){
+    wrap.innerHTML = `<span class="msel-ph">${escapeHTML(mselConf(id).ph)}</span>`;
+    return;
+  }
+  wrap.innerHTML = sel.map(v =>
+    `<span class="msel-chip">${escapeHTML(v)}<button type="button" class="msel-chip-x" data-msel="${id}" data-val="${escapeHTML(v)}" aria-label="Remover ${escapeHTML(v)}">×</button></span>`
   ).join("");
 }
-function renderOriginChips(){ renderChips("origin-chips", "Saídas", selectedOrigins, "origin"); }
-function renderDestChips(){ renderChips("dest-chips", "Destinos", selectedDests, "dest"); }
 
-function addOrigin(o){
-  if (!o || selectedOrigins.includes(o)) return;
-  selectedOrigins.push(o);
-  refreshFromTo(); writeURLState(); doSearch();
+function mselRemove(id, val){
+  const c = mselConf(id);
+  c.set(c.get().filter(x => x !== val));
+  mselChanged(id);
 }
-function removeOrigin(o){
-  selectedOrigins = selectedOrigins.filter(x => x !== o);
-  refreshFromTo(); writeURLState(); doSearch();
+function mselToggle(id, val){
+  const c = mselConf(id), cur = c.get();
+  c.set(cur.includes(val) ? cur.filter(x => x !== val) : cur.concat([val]));
+  mselChanged(id);
 }
-function addDest(d){
-  if (!d || selectedDests.includes(d)) return;
-  selectedDests.push(d);
-  refreshFromTo(); writeURLState(); doSearch();
+function mselClear(id){
+  mselConf(id).set([]);
+  mselChanged(id);
 }
-function removeDest(d){
-  selectedDests = selectedDests.filter(x => x !== d);
-  refreshFromTo(); writeURLState(); doSearch();
+function mselChanged(id){
+  refreshTab(mselTab(id));
+  writeURLState();
+  doSearch();
 }
 
-function refreshFromToNext(){
-  // Igual ao refreshFromTo mas pra aba Próximos (from-next + to-next).
-  const from = document.getElementById("from-next").value;
-  const to = document.getElementById("to-next").value;
-
-  const validOrigins = to
-    ? Array.from(ORIGIN_BY_DEST.get(to) || []).sort((a,b)=>a.localeCompare(b,"pt-BR"))
-    : ORIGINS_NEXT;
-  const validDests = from
-    ? Array.from(DEST_BY_ORIGIN.get(from) || []).sort((a,b)=>a.localeCompare(b,"pt-BR"))
-    : Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR"));
-
-  fillSelectFromList("from-next", validOrigins, "Escolha uma localidade", from);
-  fillSelectFromList("to-next",   validDests,   "Qualquer destino", to);
+// ---- Folha de seleção (modal/bottom-sheet) ----
+let _mselOpen = null;
+function normalizeTxt(s){
+  return String(s).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+}
+function openMsel(id){
+  if (!mselConf(id)) return;
+  _mselOpen = id;
+  document.getElementById("msel-title").textContent = mselConf(id).title;
+  const search = document.getElementById("msel-search");
+  search.value = "";
+  renderMselList(id, "");
+  const sheet = document.getElementById("msel-sheet");
+  sheet.hidden = false;
+  document.body.classList.add("msel-locked");
+  requestAnimationFrame(() => sheet.classList.add("open"));
+  // Autofoco só no desktop pra não abrir o teclado por cima da lista no celular.
+  if (window.innerWidth > 640) setTimeout(() => search.focus(), 60);
+}
+function closeMsel(){
+  const sheet = document.getElementById("msel-sheet");
+  sheet.classList.remove("open");
+  sheet.hidden = true;
+  document.body.classList.remove("msel-locked");
+  _mselOpen = null;
+}
+function renderMselList(id, query){
+  const c = mselConf(id), sel = new Set(c.get());
+  const nq = normalizeTxt(query || "");
+  const rows = mselOptions(id).filter(v => !nq || normalizeTxt(v).includes(nq));
+  const list = document.getElementById("msel-list");
+  const clearBtn = document.getElementById("msel-clearsel");
+  if (clearBtn) clearBtn.hidden = !c.get().length;
+  if (!rows.length){
+    list.innerHTML = `<div class="msel-empty">Nada encontrado${query ? ` para “${escapeHTML(query)}”` : ""}.</div>`;
+    return;
+  }
+  const check = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>`;
+  list.innerHTML = rows.map(v => {
+    const on = sel.has(v);
+    return `<label class="msel-row ${on ? "on" : ""}">
+      <input type="checkbox" class="msel-cb" value="${escapeHTML(v)}" ${on ? "checked" : ""} />
+      <span class="msel-box" aria-hidden="true">${check}</span>
+      <span class="msel-row-label">${escapeHTML(v)}</span>
+    </label>`;
+  }).join("");
 }
 
 function hydrateUI(){
   buildPairs();
-  fillSelectFromList("from", ORIGINS_ALL, "Adicionar saída…", "");
-  fillSelectFromList("to", Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR")), "Adicionar destino…", "");
-  fillSelectFromList("from-next", ORIGINS_NEXT, "Escolha uma localidade", "");
-  fillSelectFromList("to-next", Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR")), "Qualquer destino", "");
+  ["from","to","from-next","to-next"].forEach(renderMselDisplay);
 
   // Calendario da aba Proximos: padrao hoje, minimo hoje
   const dateInput = document.getElementById("next-date");
@@ -2004,40 +2158,57 @@ function hydrateUI(){
     c.setAttribute("aria-pressed", "true");
     writeURLState(); doSearch();
   });
-  ["sector","q","from-next","to-next","from-time","next-date","line"].forEach(id => {
+  ["sector","q","from-time","next-date","line"].forEach(id => {
     const el = document.getElementById(id); if (!el) return;
-    const handler = () => {
-      if (id === "from-next" || id === "to-next") refreshFromToNext();
-      writeURLState(); doSearch();
-    };
+    const handler = () => { writeURLState(); doSearch(); };
     el.addEventListener("input",  handler);
     el.addEventListener("change", handler);
   });
 
-  // Saída e destino são multi: os selects "from"/"to" funcionam como "adicionar".
-  const fromSel = document.getElementById("from");
-  if (fromSel){
-    fromSel.addEventListener("change", () => {
-      const v = fromSel.value;
-      if (v){ fromSel.value = ""; addOrigin(v); }
+  // Campos multi (saída/destino, nas duas abas): abrir a folha de seleção;
+  // remover etiqueta clicando no × do carrossel.
+  document.querySelectorAll(".msel-field").forEach(f => {
+    f.addEventListener("click", (e) => {
+      if (e.target.closest(".msel-chip-x")) return;
+      openMsel(f.dataset.msel);
+    });
+  });
+  document.querySelectorAll(".msel-display").forEach(d => {
+    d.addEventListener("click", (e) => {
+      const x = e.target.closest(".msel-chip-x"); if (!x) return;
+      e.stopPropagation();
+      mselRemove(x.dataset.msel, x.dataset.val);
+    });
+  });
+  // Folha de seleção: busca instantânea, marcar/desmarcar, limpar, OK/fechar.
+  const mselSearch = document.getElementById("msel-search");
+  if (mselSearch){
+    mselSearch.addEventListener("input", () => { if (_mselOpen) renderMselList(_mselOpen, mselSearch.value); });
+  }
+  const mselList = document.getElementById("msel-list");
+  if (mselList){
+    mselList.addEventListener("change", (e) => {
+      const cb = e.target.closest(".msel-cb"); if (!cb || !_mselOpen) return;
+      mselToggle(_mselOpen, cb.value);
+      const row = cb.closest(".msel-row"); if (row) row.classList.toggle("on", cb.checked);
+      const clearBtn = document.getElementById("msel-clearsel");
+      if (clearBtn) clearBtn.hidden = !mselConf(_mselOpen).get().length;
     });
   }
-  const toSel = document.getElementById("to");
-  if (toSel){
-    toSel.addEventListener("change", () => {
-      const v = toSel.value;
-      if (v){ toSel.value = ""; addDest(v); }
+  const mselClearBtn = document.getElementById("msel-clearsel");
+  if (mselClearBtn){
+    mselClearBtn.addEventListener("click", () => {
+      if (!_mselOpen) return;
+      const id = _mselOpen;
+      mselClear(id);
+      renderMselList(id, mselSearch ? mselSearch.value : "");
     });
   }
-  // Remover uma saída/destino clicando no × do chip.
-  ["origin-chips","dest-chips"].forEach(boxId => {
-    const box = document.getElementById(boxId);
-    if (!box) return;
-    box.addEventListener("click", (e) => {
-      const x = e.target.closest(".dest-chip-x"); if (!x) return;
-      if (x.dataset.kind === "origin") removeOrigin(x.dataset.val);
-      else removeDest(x.dataset.val);
-    });
+  document.getElementById("msel-sheet").addEventListener("click", (e) => {
+    if (e.target.closest("[data-msel-close]")) closeMsel();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && _mselOpen) closeMsel();
   });
   // Salvar a busca atual (combinação de saídas + destinos) nos favoritos.
   const saveSearchBtn = document.getElementById("save-search");
@@ -2106,14 +2277,15 @@ function applyURLState(){
   const params = new URLSearchParams(location.hash.slice(1));
   if (params.has("mode")) setMode(params.get("mode"));
   if (params.has("day")) setDay(params.get("day"));
-  for (const id of ["sector","q","from-next","to-next","from-time","next-date","line"]){
+  for (const id of ["sector","q","from-time","next-date","line"]){
     const v = params.get(id); if (v !== null) { const el = document.getElementById(id); if (el) el.value = v; }
   }
   // Saídas e destinos (multi): vários separados por "," — compatível com links antigos de 1 valor.
-  const fromParam = params.get("from");
-  selectedOrigins = fromParam ? fromParam.split(",").map(s => s.trim()).filter(Boolean) : [];
-  const toParam = params.get("to");
-  selectedDests = toParam ? toParam.split(",").map(s => s.trim()).filter(Boolean) : [];
+  const splitParam = (k) => { const v = params.get(k); return v ? v.split(",").map(s => s.trim()).filter(Boolean) : []; };
+  selectedOrigins     = splitParam("from");
+  selectedDests       = splitParam("to");
+  selectedOriginsNext = splitParam("from-next");
+  selectedDestsNext   = splitParam("to-next");
   // garante que next-date nao fique no passado
   const di = document.getElementById("next-date");
   if (di && (!di.value || di.value < di.min)) di.value = di.min || todayISO();
@@ -2127,11 +2299,13 @@ function writeURLState(){
   const params = new URLSearchParams();
   params.set("mode", currentMode());
   const d = currentDay(); if (d) params.set("day", d);
-  for (const id of ["sector","q","from-next","to-next","from-time","next-date","line"]){
+  for (const id of ["sector","q","from-time","next-date","line"]){
     const el = document.getElementById(id); if (el && el.value) params.set(id, el.value);
   }
-  if (selectedOrigins.length) params.set("from", selectedOrigins.join(","));
-  if (selectedDests.length) params.set("to", selectedDests.join(","));
+  if (selectedOrigins.length)     params.set("from", selectedOrigins.join(","));
+  if (selectedDests.length)       params.set("to", selectedDests.join(","));
+  if (selectedOriginsNext.length) params.set("from-next", selectedOriginsNext.join(","));
+  if (selectedDestsNext.length)   params.set("to-next", selectedDestsNext.join(","));
   history.replaceState(null, "", "#" + params.toString());
 }
 
@@ -2237,8 +2411,8 @@ function renderSearch(){
 }
 
 function renderNext(){
-  const from = document.getElementById("from-next").value;
-  const to   = document.getElementById("to-next").value;
+  const origins = selectedOriginsNext.slice();
+  const dests   = selectedDestsNext.slice();
   const timeStr = (document.getElementById("from-time").value || "").trim();
   const dateStr = (document.getElementById("next-date").value || "").trim();
   const isToday = !dateStr || dateStr === todayISO();
@@ -2253,22 +2427,22 @@ function renderNext(){
   }
 
   const root = document.getElementById("results");
-  if (!from){
+  if (!origins.length){
     setResultsTitle("Próximos ônibus", null);
     root.innerHTML = emptyState({
       icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
       title: "Escolha uma localidade",
-      sub: "Selecione a localidade de origem para ver os próximos ônibus."
+      sub: "Selecione uma ou mais saídas para ver os próximos ônibus."
     });
     return;
   }
-  const trips = filterTrips({ from, to, day: dayKey, originOnly: !to })
+  const trips = filterTrips({ fromList: origins, toList: dests, day: dayKey })
     .filter(t => timeToMin(t.time) >= baseTime)
     .slice().sort(sortByTime).slice(0, 30);
 
   const baseStr = `${String(Math.floor(baseTime/60)).padStart(2,"0")}:${String(baseTime%60).padStart(2,"0")}`;
-  const destPart = to ? ` → ${to}` : "";
-  setResultsTitle(`Saindo de ${from}${destPart} a partir das ${baseStr}`, trips.length);
+  const destPart = dests.length ? ` → ${dests.join(", ")}` : "";
+  setResultsTitle(`Saindo de ${origins.join(", ")}${destPart} a partir das ${baseStr}`, trips.length);
 
   if (!trips.length){
     root.innerHTML = emptyState({
