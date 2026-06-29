@@ -282,7 +282,7 @@
   @media (min-width:640px) { .search-card { padding:20px; } }
 
   .modes {
-    display:grid; grid-template-columns:repeat(4,1fr); gap:4px;
+    display:grid; grid-template-columns:repeat(5,1fr); gap:4px;
     background:var(--c-bg-deep); border-radius:var(--radius-md);
     padding:4px; margin-bottom:16px;
   }
@@ -385,6 +385,66 @@
     content:""; width:6px; height:6px; border-radius:50%; background:var(--c-success);
   }
   .day-chip[aria-pressed="true"].today::before { background:var(--c-highlight); }
+
+  /* Multi-destino: chips de destinos selecionados */
+  .dest-chips {
+    display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;
+  }
+  .dest-chip {
+    display:inline-flex; align-items:center; gap:4px;
+    height:30px; padding:0 4px 0 12px; border-radius:var(--radius-full);
+    background:var(--c-primary-100); color:var(--c-primary);
+    font:600 13px/1 var(--font-body); white-space:nowrap;
+  }
+  .dest-chip-x {
+    display:grid; place-items:center; width:22px; height:22px;
+    border:0; border-radius:50%; background:transparent; color:inherit;
+    font-size:16px; line-height:1; cursor:pointer; padding:0;
+    transition:background var(--ease) 120ms;
+  }
+  .dest-chip-x:hover { background:color-mix(in srgb, var(--c-primary) 18%, transparent); }
+  .field-hint { margin-top:6px; font-size:11.5px; color:var(--c-muted); padding-left:2px; }
+
+  /* Botao de favoritar em cada viagem */
+  .fav-btn {
+    display:inline-grid; place-items:center; width:30px; height:30px;
+    border:1px solid var(--c-line); border-radius:50%;
+    background:var(--c-surface); color:var(--c-muted-2); cursor:pointer; padding:0;
+    transition:color var(--ease) 120ms, border-color var(--ease) 120ms, background var(--ease) 120ms, transform var(--ease) 120ms;
+    -webkit-tap-highlight-color:transparent; flex-shrink:0;
+  }
+  .fav-btn svg { width:16px; height:16px; }
+  .fav-btn:hover { color:var(--c-warning); border-color:var(--c-warning); }
+  .fav-btn:active { transform:scale(.9); }
+  .fav-btn.is-fav { color:var(--c-warning); border-color:var(--c-warning); background:var(--c-warning-100); }
+  .fav-btn.is-fav svg { fill:var(--c-warning); }
+
+  /* Contador de favoritos nas abas */
+  .fav-count {
+    display:inline-grid; place-items:center; min-width:16px; height:16px;
+    padding:0 4px; margin-left:2px; border-radius:var(--radius-full);
+    background:var(--c-warning); color:#fff;
+    font:700 10px/1 var(--font-body); font-variant-numeric:tabular-nums;
+  }
+  .bnav-item .fav-count {
+    position:absolute; top:6px; left:calc(50% + 8px);
+    margin-left:0;
+  }
+
+  /* Barra de ferramentas da aba Favoritos */
+  .fav-bar {
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .fav-bar p { margin:0; font-size:13px; color:var(--c-muted); }
+  .fav-bar p b { color:var(--c-ink-2); }
+  .fav-clear {
+    border:1px solid var(--c-line); border-radius:var(--radius-full);
+    background:var(--c-surface); color:var(--c-danger);
+    font:600 12.5px/1 var(--font-body); padding:8px 14px; cursor:pointer;
+    transition:background var(--ease) 120ms, border-color var(--ease) 120ms;
+  }
+  .fav-clear:hover:not(:disabled) { background:var(--c-surface-hover); border-color:var(--c-line-strong); }
+  .fav-clear:disabled { color:var(--c-muted-2); cursor:not-allowed; }
 
   /* Results */
   .results-head {
@@ -533,7 +593,7 @@
     .modes { display:none; }
     .bnav {
       position:fixed; left:0; right:0; bottom:0; z-index:60;
-      display:grid; grid-template-columns:repeat(4,1fr);
+      display:grid; grid-template-columns:repeat(5,1fr);
       background:color-mix(in srgb, var(--c-surface) 92%, transparent);
       backdrop-filter:saturate(180%) blur(20px);
       -webkit-backdrop-filter:saturate(180%) blur(20px);
@@ -904,6 +964,11 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h12"/></svg>
         <span class="label-long">Linhas</span><span class="label-short">Linhas</span>
       </button>
+      <button class="mode" role="tab" aria-selected="false" data-mode="fav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 17.27-5.18 3.04 1.4-5.9-4.6-3.98 6.05-.5L12 4.5l2.33 5.43 6.05.5-4.6 3.98 1.4 5.9z"/></svg>
+        <span class="label-long">Favoritos</span><span class="label-short">Favoritos</span>
+        <span class="fav-count" hidden>0</span>
+      </button>
       <button class="mode" role="tab" aria-selected="false" data-mode="info">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
         <span class="label-long">Sobre</span><span class="label-short">Sobre</span>
@@ -923,7 +988,7 @@
         <div class="field">
           <span class="field-dot dot-dest" aria-hidden="true"></span>
           <div class="field-body">
-            <label for="to" class="field-label">Destino</label>
+            <label for="to" class="field-label">Destino(s)</label>
             <select id="to" class="field-input"></select>
           </div>
           <svg class="field-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -932,6 +997,9 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 3 4 4-4 4"/><path d="M3 7h18"/><path d="m7 21-4-4 4-4"/><path d="M21 17H3"/></svg>
         </button>
       </div>
+
+      <div class="dest-chips" id="dest-chips" hidden aria-label="Destinos selecionados"></div>
+      <div class="field-hint">Dá pra escolher mais de um destino — selecione e ele vira uma etiqueta aqui.</div>
 
       <div class="day-strip" id="day-strip" role="tablist" aria-label="Filtrar por dia da semana">
         <button class="day-chip" data-day="" aria-pressed="false" type="button">Todos</button>
@@ -1028,6 +1096,13 @@
           </div>
           <svg class="field-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </div>
+      </div>
+    </div>
+
+    <div id="view-fav" hidden>
+      <div class="fav-bar">
+        <p>Seus horários favoritos ficam salvos neste aparelho. <b id="fav-bar-count">0 favoritos</b></p>
+        <button class="fav-clear" id="fav-clear" type="button" disabled>Limpar tudo</button>
       </div>
     </div>
 
@@ -1187,6 +1262,16 @@
         <summary>Por que algumas opções de destino somem quando escolho a origem?</summary>
         <p>O formulário filtra automaticamente os destinos para mostrar apenas pares <strong>válidos</strong>. Se um ônibus não sai de X para Y nos PDFs oficiais, a opção nem aparece para evitar confusão.</p>
       </details>
+
+      <details>
+        <summary>Posso comparar mais de um destino ao mesmo tempo?</summary>
+        <p>Sim. Na aba <em>Buscar</em>, o campo de destino aceita <strong>vários destinos</strong>: escolha um e ele vira uma etiqueta; adicione outros e a lista mostra os horários para todos eles juntos. Toque no × da etiqueta para remover um destino.</p>
+      </details>
+
+      <details>
+        <summary>Como salvar meus horários favoritos?</summary>
+        <p>Toque na <strong>estrela</strong> de qualquer horário para salvá-lo. Eles ficam reunidos na aba <em>Favoritos</em> e são guardados no próprio aparelho (sem precisar de cadastro). Útil para deixar à mão o ônibus que você pega todo dia.</p>
+      </details>
     </section>
   </div>
 
@@ -1241,6 +1326,11 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h12"/></svg>
     <span>Linhas</span>
   </button>
+  <button class="bnav-item" role="tab" aria-selected="false" data-mode="fav" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m12 17.27-5.18 3.04 1.4-5.9-4.6-3.98 6.05-.5L12 4.5l2.33 5.43 6.05.5-4.6 3.98 1.4 5.9z"/></svg>
+    <span>Favoritos</span>
+    <span class="fav-count" hidden>0</span>
+  </button>
   <button class="bnav-item" role="tab" aria-selected="false" data-mode="info" type="button">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
     <span>Sobre</span>
@@ -1254,6 +1344,47 @@ const SECTOR_LABELS = { aracruz:"Aracruz", sao_mateus:"S. Mateus", domingos_mart
 const JS_DAY_TO_KEY = ["sun","mon","tue","wed","thu","fri","sat"];
 
 let DATA = null;
+
+// Multi-destino: lista de destinos escolhidos na aba Buscar
+let selectedDests = [];
+
+// Favoritos: ids das viagens salvas neste aparelho (localStorage)
+const FAV_KEY = "cordial_favs";
+let FAVS = new Set();
+function loadFavs(){
+  try {
+    const a = JSON.parse(localStorage.getItem(FAV_KEY) || "[]");
+    if (Array.isArray(a)) FAVS = new Set(a.filter(x => typeof x === "string"));
+  } catch (_) { FAVS = new Set(); }
+}
+function saveFavs(){
+  try { localStorage.setItem(FAV_KEY, JSON.stringify(Array.from(FAVS))); } catch (_) {}
+}
+function toggleFav(id){
+  if (!id) return;
+  if (FAVS.has(id)) FAVS.delete(id); else FAVS.add(id);
+  saveFavs();
+  document.querySelectorAll(".fav-btn").forEach(b => {
+    if (b.dataset.favId === id) setFavBtnState(b, FAVS.has(id));
+  });
+  updateFavCount();
+  if (currentMode() === "fav") renderFav();
+}
+function setFavBtnState(btn, on){
+  btn.classList.toggle("is-fav", on);
+  btn.setAttribute("aria-pressed", String(on));
+  btn.title = on ? "Remover dos favoritos" : "Salvar nos favoritos";
+}
+function updateFavCount(){
+  const n = FAVS.size;
+  document.querySelectorAll(".fav-count").forEach(el => {
+    el.textContent = n; el.hidden = n === 0;
+  });
+  const barCount = document.getElementById("fav-bar-count");
+  if (barCount) barCount.textContent = `${n} ${n === 1 ? "favorito" : "favoritos"}`;
+  const clearBtn = document.getElementById("fav-clear");
+  if (clearBtn) clearBtn.disabled = n === 0;
+}
 
 function todayKey(){ return JS_DAY_TO_KEY[new Date().getDay()]; }
 function timeNow(){ const d = new Date(); return d.getHours()*60 + d.getMinutes(); }
@@ -1313,7 +1444,8 @@ async function load(){
        </div>`;
     return;
   }
-  hydrateUI(); renderMeta(); applyURLState(); doSearch();
+  loadFavs();
+  hydrateUI(); renderMeta(); applyURLState(); updateFavCount(); doSearch();
   startUpdateWatcher();
 }
 
@@ -1657,20 +1789,50 @@ function fillSelectFromList(id, list, allLabel, currentValue){
 }
 
 function refreshFromTo(){
-  // Reflete o estado: se "from" está setado, "to" mostra só destinos válidos.
-  // Se "to" está setado, "from" mostra só origens válidas.
+  // Multi-destino: "from" é único; os destinos ficam em selectedDests (chips).
+  // O select "to" funciona como "adicionar destino": mostra só pares válidos
+  // que ainda não foram escolhidos.
   const from = document.getElementById("from").value;
-  const to = document.getElementById("to").value;
 
-  const validOrigins = to
-    ? Array.from(ORIGIN_BY_DEST.get(to) || []).sort((a,b)=>a.localeCompare(b,"pt-BR"))
+  // Remove destinos que deixaram de ser válidos para a origem escolhida.
+  if (from){
+    const valid = DEST_BY_ORIGIN.get(from) || new Set();
+    selectedDests = selectedDests.filter(d => valid.has(d));
+  }
+
+  const validOrigins = selectedDests.length
+    ? uniqueSorted(selectedDests.flatMap(d => Array.from(ORIGIN_BY_DEST.get(d) || [])))
     : ORIGINS_ALL;
-  const validDests = from
-    ? Array.from(DEST_BY_ORIGIN.get(from) || []).sort((a,b)=>a.localeCompare(b,"pt-BR"))
-    : Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR"));
+  const baseDests = from
+    ? Array.from(DEST_BY_ORIGIN.get(from) || [])
+    : Array.from(ALL_DESTS);
+  const pickDests = baseDests
+    .filter(d => !selectedDests.includes(d))
+    .sort((a,b)=>a.localeCompare(b,"pt-BR"));
 
   fillSelectFromList("from", validOrigins, "Qualquer origem", from);
-  fillSelectFromList("to",   validDests,   "Qualquer destino", to);
+  fillSelectFromList("to",   pickDests,
+    selectedDests.length ? "Adicionar outro destino…" : "Adicionar destino…", "");
+  renderDestChips();
+}
+
+function renderDestChips(){
+  const box = document.getElementById("dest-chips");
+  if (!box) return;
+  if (!selectedDests.length){ box.hidden = true; box.innerHTML = ""; return; }
+  box.hidden = false;
+  box.innerHTML = selectedDests.map(d =>
+    `<span class="dest-chip">${escapeHTML(d)}<button type="button" class="dest-chip-x" data-dest="${escapeHTML(d)}" aria-label="Remover destino ${escapeHTML(d)}">×</button></span>`
+  ).join("");
+}
+function addDest(d){
+  if (!d || selectedDests.includes(d)) return;
+  selectedDests.push(d);
+  refreshFromTo(); writeURLState(); doSearch();
+}
+function removeDest(d){
+  selectedDests = selectedDests.filter(x => x !== d);
+  refreshFromTo(); writeURLState(); doSearch();
 }
 
 function refreshFromToNext(){
@@ -1692,7 +1854,7 @@ function refreshFromToNext(){
 function hydrateUI(){
   buildPairs();
   fillSelectFromList("from", ORIGINS_ALL, "Qualquer origem", "");
-  fillSelectFromList("to", Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR")), "Qualquer destino", "");
+  fillSelectFromList("to", Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR")), "Adicionar destino…", "");
   fillSelectFromList("from-next", ORIGINS_NEXT, "Escolha uma localidade", "");
   fillSelectFromList("to-next", Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR")), "Qualquer destino", "");
 
@@ -1721,22 +1883,57 @@ function hydrateUI(){
     c.setAttribute("aria-pressed", "true");
     writeURLState(); doSearch();
   });
-  ["from","to","sector","q","from-next","to-next","from-time","next-date","line"].forEach(id => {
+  ["from","sector","q","from-next","to-next","from-time","next-date","line"].forEach(id => {
     const el = document.getElementById(id); if (!el) return;
     const handler = () => {
-      if (id === "from" || id === "to") refreshFromTo();
+      if (id === "from") refreshFromTo();
       if (id === "from-next" || id === "to-next") refreshFromToNext();
       writeURLState(); doSearch();
     };
     el.addEventListener("input",  handler);
     el.addEventListener("change", handler);
   });
+
+  // Destino é multi: o select "to" funciona como "adicionar destino".
+  const toSel = document.getElementById("to");
+  if (toSel){
+    toSel.addEventListener("change", () => {
+      const v = toSel.value;
+      if (v){ toSel.value = ""; addDest(v); }
+    });
+  }
+  // Remover um destino clicando no × do chip.
+  const chipsBox = document.getElementById("dest-chips");
+  if (chipsBox){
+    chipsBox.addEventListener("click", (e) => {
+      const x = e.target.closest(".dest-chip-x"); if (!x) return;
+      removeDest(x.dataset.dest);
+    });
+  }
+  // Favoritar/desfavoritar a partir de qualquer card de viagem.
+  const resultsEl = document.getElementById("results");
+  if (resultsEl){
+    resultsEl.addEventListener("click", (e) => {
+      const fb = e.target.closest(".fav-btn"); if (!fb) return;
+      toggleFav(fb.dataset.favId);
+    });
+  }
+  // Limpar todos os favoritos.
+  const clearBtn = document.getElementById("fav-clear");
+  if (clearBtn){
+    clearBtn.addEventListener("click", () => {
+      if (!FAVS.size) return;
+      if (!confirm("Remover todos os favoritos deste aparelho?")) return;
+      FAVS.clear(); saveFavs(); updateFavCount(); renderFav();
+    });
+  }
   document.getElementById("swap").addEventListener("click", (e) => {
-    const a = document.getElementById("from").value;
-    const b = document.getElementById("to").value;
-    // popular listas como se ambos estivessem livres antes de trocar
-    fillSelectFromList("from", ORIGINS_ALL, "Qualquer origem", b);
-    fillSelectFromList("to", Array.from(ALL_DESTS).sort((a,b)=>a.localeCompare(b,"pt-BR")), "Qualquer destino", a);
+    // Inverte origem <-> destinos. A origem é única; se houver vários destinos,
+    // o primeiro vira a nova origem e a origem antiga vira o único destino.
+    const oldFrom = document.getElementById("from").value;
+    const newFrom = selectedDests[0] || "";
+    selectedDests = oldFrom ? [oldFrom] : [];
+    fillSelectFromList("from", ORIGINS_ALL, "Qualquer origem", newFrom);
     refreshFromTo();
     e.currentTarget.classList.toggle("spin");
     writeURLState(); doSearch();
@@ -1745,13 +1942,14 @@ function hydrateUI(){
 
 let _CURRENT_MODE = "search";
 function setMode(mode){
-  if (!["search","next","lines","info","sync"].includes(mode)) mode = "search";
+  if (!["search","next","lines","fav","info","sync"].includes(mode)) mode = "search";
   _CURRENT_MODE = mode;
   document.querySelectorAll("#modes .mode").forEach(t => t.setAttribute("aria-selected", String(t.dataset.mode === mode)));
   document.querySelectorAll("#bnav .bnav-item").forEach(t => t.setAttribute("aria-selected", String(t.dataset.mode === mode)));
   document.getElementById("view-search").hidden = mode !== "search";
   document.getElementById("view-next").hidden   = mode !== "next";
   document.getElementById("view-lines").hidden  = mode !== "lines";
+  document.getElementById("view-fav").hidden    = mode !== "fav";
   document.getElementById("view-info").hidden   = mode !== "info";
   document.getElementById("view-sync").hidden   = mode !== "sync";
   const main = document.querySelector("main");
@@ -1770,9 +1968,12 @@ function applyURLState(){
   const params = new URLSearchParams(location.hash.slice(1));
   if (params.has("mode")) setMode(params.get("mode"));
   if (params.has("day")) setDay(params.get("day"));
-  for (const id of ["from","to","sector","q","from-next","to-next","from-time","next-date","line"]){
+  for (const id of ["from","sector","q","from-next","to-next","from-time","next-date","line"]){
     const v = params.get(id); if (v !== null) { const el = document.getElementById(id); if (el) el.value = v; }
   }
+  // Destinos (multi): aceita vários separados por "," — compatível com links antigos de 1 destino.
+  const toParam = params.get("to");
+  selectedDests = toParam ? toParam.split(",").map(s => s.trim()).filter(Boolean) : [];
   // garante que next-date nao fique no passado
   const di = document.getElementById("next-date");
   if (di && (!di.value || di.value < di.min)) di.value = di.min || todayISO();
@@ -1786,9 +1987,10 @@ function writeURLState(){
   const params = new URLSearchParams();
   params.set("mode", currentMode());
   const d = currentDay(); if (d) params.set("day", d);
-  for (const id of ["from","to","sector","q","from-next","to-next","from-time","next-date","line"]){
+  for (const id of ["from","sector","q","from-next","to-next","from-time","next-date","line"]){
     const el = document.getElementById(id); if (el && el.value) params.set(id, el.value);
   }
+  if (selectedDests.length) params.set("to", selectedDests.join(","));
   history.replaceState(null, "", "#" + params.toString());
 }
 
@@ -1797,15 +1999,17 @@ function doSearch(){
   if (mode === "search") renderSearch();
   else if (mode === "next") renderNext();
   else if (mode === "lines") renderLines();
+  else if (mode === "fav") renderFav();
 }
 
 function dayFromSelect(v){ if (!v) return null; if (v === "today") return todayKey(); return v; }
 
-function filterTrips({ from, to, day, sector, line, q, originOnly = false }){
+function filterTrips({ from, to, toList, day, sector, line, q, originOnly = false }){
   const qn = (q || "").trim().toLowerCase();
+  const dests = (toList && toList.length) ? toList : (to ? [to] : null);
   return DATA.trips.filter(t => {
     if (originOnly){ if (from && t.origin !== from) return false; }
-    else { if (from && t.origin !== from) return false; if (to && t.destination !== to) return false; }
+    else { if (from && t.origin !== from) return false; if (dests && !dests.includes(t.destination)) return false; }
     if (day && !t.days.includes(day)) return false;
     if (sector && t.sector !== sector) return false;
     if (line && t.line !== line) return false;
@@ -1820,6 +2024,12 @@ function tripCard(t, opts = {}){
     return `<span class="day-pill ${on ? "on" : ""}" title="${DAY_LABELS_SHORT[k]}">${DAY_LABELS_SHORT[k][0]}</span>`;
   }).join("");
   const badges = [];
+  if (t.id){
+    const favOn = FAVS.has(t.id);
+    badges.push(`<button type="button" class="fav-btn ${favOn ? "is-fav" : ""}" data-fav-id="${escapeHTML(t.id)}" aria-pressed="${favOn}" title="${favOn ? "Remover dos favoritos" : "Salvar nos favoritos"}" aria-label="Favoritar este horário">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 17.27-5.18 3.04 1.4-5.9-4.6-3.98 6.05-.5L12 4.5l2.33 5.43 6.05.5-4.6 3.98 1.4 5.9z"/></svg>
+    </button>`);
+  }
   if (opts.nextLabel) badges.push(`<span class="badge badge-next">${escapeHTML(opts.nextLabel)}</span>`);
   if (t.line) badges.push(`<span class="badge badge-line">linha ${escapeHTML(t.line)}</span>`);
   badges.push(`<span class="badge">${SECTOR_LABELS[t.sector] || t.sector}</span>`);
@@ -1856,14 +2066,14 @@ function emptyState({ icon, title, sub }){
 
 function renderSearch(){
   const from = document.getElementById("from").value;
-  const to   = document.getElementById("to").value;
+  const dests = selectedDests.slice();
   const day  = dayFromSelect(currentDay());
   const sector = document.getElementById("sector").value;
   const q = document.getElementById("q").value;
 
-  const trips = filterTrips({ from, to, day, sector, q }).slice().sort(sortByTime);
+  const trips = filterTrips({ from, toList: dests, day, sector, q }).slice().sort(sortByTime);
   let title;
-  if (from || to) title = `${from || "Qualquer origem"} → ${to || "Qualquer destino"}`;
+  if (from || dests.length) title = `${from || "Qualquer origem"} → ${dests.length ? dests.join(", ") : "Qualquer destino"}`;
   else if (q) title = `Buscando "${q}"`;
   else title = "Todos os horários";
   setResultsTitle(title, trips.length);
@@ -1963,6 +2173,27 @@ function renderLines(){
   });
   setResultsTitle(`Linha ${line}`, trips.length);
   if (!trips.length){ root.innerHTML = emptyState({ title: "Sem viagens nesta linha" }); return; }
+  root.innerHTML = trips.map(t => tripCard(t)).join("");
+}
+
+function renderFav(){
+  updateFavCount();
+  const root = document.getElementById("results");
+  const trips = DATA.trips.filter(t => t.id && FAVS.has(t.id)).slice().sort((a, b) => {
+    if (a.sector !== b.sector) return a.sector.localeCompare(b.sector, "pt-BR");
+    if (a.origin !== b.origin) return a.origin.localeCompare(b.origin, "pt-BR");
+    if (a.destination !== b.destination) return a.destination.localeCompare(b.destination, "pt-BR");
+    return sortByTime(a, b);
+  });
+  setResultsTitle("Favoritos", trips.length);
+  if (!trips.length){
+    root.innerHTML = emptyState({
+      icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 17.27-5.18 3.04 1.4-5.9-4.6-3.98 6.05-.5L12 4.5l2.33 5.43 6.05.5-4.6 3.98 1.4 5.9z"/></svg>`,
+      title: "Nenhum favorito ainda",
+      sub: "Toque na estrela ☆ de qualquer horário para salvá-lo aqui."
+    });
+    return;
+  }
   root.innerHTML = trips.map(t => tripCard(t)).join("");
 }
 
