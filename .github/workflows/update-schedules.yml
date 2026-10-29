@@ -1,7 +1,8 @@
 name: Atualizar horários
 
 # Source code (parser, build, extractor) NÃO vive neste repo público.
-# Ele fica em ~/cordial-source/ no PC do dono, junto com o self-hosted runner.
+# Ele fica em ~/cordial-source/ (ou em $CORDIAL_SOURCE) na máquina do runner
+# self-hosted com o label "cordial": Linux/WSL ou Windows (Git Bash + Python).
 # Este workflow apenas orquestra: runner executa o build localmente e commita
 # só o resultado (schedules.json + sitemap.xml) de volta no repo.
 
@@ -28,11 +29,14 @@ jobs:
   update:
     name: Build no PC e commitar schedules.json
     if: github.event_name != 'push'
-    runs-on: [self-hosted, Linux, X64, cordial]
+    runs-on: [self-hosted, cordial]
     timeout-minutes: 30
     defaults:
       run:
         shell: bash
+    env:
+      # Windows: sem isto o Python grava o JSON em cp1252 e quebra os acentos.
+      PYTHONUTF8: "1"
     outputs:
       total_trips: ${{ steps.build.outputs.total_trips }}
       exit_code:   ${{ steps.build.outputs.exit_code }}
@@ -42,30 +46,39 @@ jobs:
 
       - name: Validar source local
         run: |
-          if [ -z "${HOME:-}" ] || [ ! -d "$HOME/cordial-source/scripts" ]; then
-            echo "::error::Faltando $HOME/cordial-source/scripts no PC. Clone seu source pra lá."
+          SRC="${CORDIAL_SOURCE:-$HOME/cordial-source}"
+          if [ ! -d "$SRC/scripts" ]; then
+            echo "::error::Faltando $SRC/scripts na máquina do runner. Clone seu source pra lá."
             exit 1
           fi
-          # symlink temporário pra build.py poder importar tudo
-          ln -sfn "$HOME/cordial-source/scripts" scripts
-          ln -sfn "$HOME/cordial-source/fixtures" fixtures
-          cp -f "$HOME/cordial-source/requirements.txt" .
-
-      - name: Setup Python venv (persistente em ~/cordial-source/venv)
-        run: |
-          VENV="$HOME/cordial-source/venv"
-          if [ ! -x "$VENV/bin/python3" ]; then
-            python3 -m venv "$VENV"
+          echo "SRC=$SRC" >> "$GITHUB_ENV"
+          # cópia/symlink temporário pra build.py poder importar tudo
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            rm -rf scripts fixtures
+            cp -r "$SRC/scripts" scripts
+            cp -r "$SRC/fixtures" fixtures
+          else
+            ln -sfn "$SRC/scripts" scripts
+            ln -sfn "$SRC/fixtures" fixtures
           fi
-          "$VENV/bin/pip" install --upgrade pip --quiet
-          "$VENV/bin/pip" install -r "$HOME/cordial-source/requirements.txt" --quiet
+          cp -f "$SRC/requirements.txt" .
+
+      - name: Setup Python venv (persistente em $SRC/venv)
+        run: |
+          VENV="$SRC/venv"
+          if [ "$RUNNER_OS" = "Windows" ]; then PYBIN="$VENV/Scripts/python.exe"; PYSYS=python; else PYBIN="$VENV/bin/python3"; PYSYS=python3; fi
+          if [ ! -x "$PYBIN" ]; then
+            "$PYSYS" -m venv "$VENV"
+          fi
+          "$PYBIN" -m pip install --upgrade pip --quiet
+          "$PYBIN" -m pip install -r "$SRC/requirements.txt" --quiet
+          echo "PYBIN=$PYBIN" >> "$GITHUB_ENV"
 
       - name: Rodar build (com IP residencial)
         id: build
         env:
           PYTHONUNBUFFERED: "1"
         run: |
-          PYBIN="$HOME/cordial-source/venv/bin/python3"
           set +e
           "$PYBIN" scripts/build.py --out site/data/schedules.json
           status=$?
@@ -89,7 +102,7 @@ jobs:
       - name: Limpar artefatos do source (não commitar)
         if: always()
         run: |
-          rm -f scripts fixtures requirements.txt
+          rm -rf scripts fixtures requirements.txt
 
       - name: Commit + push (se mudou)
         id: commit
