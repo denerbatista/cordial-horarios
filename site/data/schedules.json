@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T18:20:05+00:00",
+  "generatedAt": "2026-10-29T13:44:59+00:00",
   "source": "web",
   "sectors": {
     "aracruz": {
       "label": "Setor Aracruz",
-      "source_url": "http://www.cordialturismo.com.br/portal/downloads/temp/horario_cordial_26_09_2026.pdf",
+      "source_url": "https://www.cordialturismo.com.br/portal/downloads/temp/horario_cordial_26_09_2026.pdf",
       "trip_count": 680,
       "text_hash": "e561bc8d8a69",
       "trips": [
@@ -13409,7 +13409,7 @@
     },
     "sao_mateus": {
       "label": "Setor São Mateus",
-      "source_url": "http://www.cordialturismo.com.br/portal/downloads/temp/sm/horario_sao_mateus_27_11_2025.pdf",
+      "source_url": "https://www.cordialturismo.com.br/portal/downloads/temp/sm/horario_sao_mateus_27_11_2025.pdf",
       "trip_count": 16,
       "text_hash": "b72b8ff4cac9",
       "trips": [
@@ -13728,9 +13728,9 @@
     },
     "domingos_martins": {
       "label": "Setor Domingos Martins",
-      "source_url": "http://www.cordialturismo.com.br/portal/downloads/temp/dm/horarios_dm_17_09_2025.pdf",
-      "trip_count": 62,
-      "text_hash": "0f0ae0e10200",
+      "source_url": "https://www.cordialturismo.com.br/portal/downloads/temp/dm/horarios_dm_28_10_2026.pdf",
+      "trip_count": 43,
+      "text_hash": "bcbbc9eada52",
       "trips": [
         {
           "sector": "domingos_martins",
@@ -14263,7 +14263,7 @@
           "line": null,
           "origin": "Domingos Martins",
           "destination": "Peróbas",
-          "time": "09:30",
+          "time": "10:30",
           "days": [
             "mon",
             "tue",
@@ -14275,30 +14275,9 @@
           "school_only": false,
           "note": null,
           "raw_section": null,
-          "raw_line": "09:30 Domingos Martins X Peróbas Paraju/ Marechal",
+          "raw_line": "10:30 Domingos Martins X Peróbas Paraju/ Marechal",
           "sector_label": "Setor Domingos Martins",
           "id": "do-00722"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Peróbas",
-          "time": "12:10",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Paraju/marechal",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "12:10 Domingos Martins X Peróbas Paraju/Marechal",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00723"
         },
         {
           "sector": "domingos_martins",
@@ -14319,7 +14298,7 @@
           "raw_section": null,
           "raw_line": "16:10 Domingos Martins X Peróbas Paraju/Marechal",
           "sector_label": "Setor Domingos Martins",
-          "id": "do-00724"
+          "id": "do-00723"
         },
         {
           "sector": "domingos_martins",
@@ -14340,14 +14319,14 @@
           "raw_section": null,
           "raw_line": "18:00 Domingos Martins X Peróbas Paraju/Marechal",
           "sector_label": "Setor Domingos Martins",
-          "id": "do-00725"
+          "id": "do-00724"
         },
         {
           "sector": "domingos_martins",
           "line": null,
           "origin": "Peróbas",
           "destination": "Domingos Martins",
-          "time": "05:30",
+          "time": "05:50",
           "days": [
             "mon",
             "tue",
@@ -14359,7 +14338,28 @@
           "school_only": false,
           "note": null,
           "raw_section": null,
-          "raw_line": "05:30 Peróbas X Domingos Martins Paraju/ Marechal",
+          "raw_line": "05:50 Peróbas X Domingos Martins Paraju/ Marechal",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00725"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Peróbas",
+          "destination": "Domingos Martins",
+          "time": "06:30",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Paraju/marechal",
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "06:30 Peróbas X Domingos Martins Paraju/Marechal",
           "sector_label": "Setor Domingos Martins",
           "id": "do-00726"
         },
@@ -14368,7 +14368,7 @@
           "line": null,
           "origin": "Peróbas",
           "destination": "Domingos Martins",
-          "time": "06:30",
+          "time": "13:00",
           "days": [
             "mon",
             "tue",
@@ -14380,469 +14380,15 @@
           "school_only": false,
           "note": null,
           "raw_section": null,
-          "raw_line": "06:30 Peróbas X Domingos Martins Paraju/Marechal",
+          "raw_line": "13:00 Peróbas X Domingos Martins Paraju/Marechal",
           "sector_label": "Setor Domingos Martins",
           "id": "do-00727"
         },
         {
           "sector": "domingos_martins",
           "line": null,
-          "origin": "Peróbas",
-          "destination": "Domingos Martins",
-          "time": "10:50",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Paraju/marechal",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "10:50 Peróbas X Domingos Martins Paraju/Marechal",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00728"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Peróbas",
-          "destination": "Domingos Martins",
-          "time": "13:30",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Paraju/ Marechal",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "13:30 Peróbas X Domingos Martins Paraju/ Marechal",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00729"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
           "origin": "Domingos Martins",
           "destination": "Peróbas",
-          "time": "09:30",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Paraju/marechal",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "09:30 Domingos Martins X Peróbas Paraju/Marechal",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00730"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Peróbas",
-          "time": "12:10",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Paraju/marechal",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "12:10 Domingos Martins X Peróbas Paraju/Marechal",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00731"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Peróbas",
-          "time": "16:10",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Paraju/marechal",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "16:10 Domingos Martins X Peróbas Paraju/Marechal",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00732"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Peróbas",
-          "destination": "Domingos Martins",
-          "time": "05:30",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Paraju/marechal",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "05:30 Peróbas X Domingos Martins Paraju/Marechal",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00733"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Peróbas",
-          "destination": "Domingos Martins",
-          "time": "06:30",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Paraju/marechal",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "06:30 Peróbas X Domingos Martins Paraju/Marechal",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00734"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Peróbas",
-          "destination": "Domingos Martins",
-          "time": "10:50",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Paraju/marechal",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "10:50 Peróbas X Domingos Martins Paraju/Marechal",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00735"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Biriricas",
-          "time": "11:00",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Santa Isabel",
-          "school_only": false,
-          "note": null,
-          "raw_section": "DOMINGOS MARTINS X BIRIRICAS - SEGUNDA X SEXTA FEIRA",
-          "raw_line": "11:00 Domingos Martins X Biriricas Santa Isabel",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00736"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Biriricas",
-          "time": "17:10",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Santa Isabel",
-          "school_only": false,
-          "note": null,
-          "raw_section": "DOMINGOS MARTINS X BIRIRICAS - SEGUNDA X SEXTA FEIRA",
-          "raw_line": "17:10 Domingos Martins X Biriricas Santa Isabel",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00737"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Biriricas",
-          "destination": "Domingos Martins",
-          "time": "05:50",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Santa Isabel",
-          "school_only": false,
-          "note": null,
-          "raw_section": "BIRIRICAS X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
-          "raw_line": "05:50 Biriricas X Domingos Martins Santa Isabel",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00738"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Biriricas",
-          "destination": "Domingos Martins",
-          "time": "12:00",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Santa Isabel",
-          "school_only": false,
-          "note": null,
-          "raw_section": "BIRIRICAS X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
-          "raw_line": "12:00 Biriricas X Domingos Martins Santa Isabel",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00739"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Biriricas",
-          "time": "12:10",
-          "days": [
-            "sat"
-          ],
-          "via": "Santa Isabel",
-          "school_only": false,
-          "note": null,
-          "raw_section": "DOMINGOS MARTINS X BIRIRICAS - SÁBADO",
-          "raw_line": "12:10 Domingos Martins X Biriricas Santa Isabel",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00740"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Biriricas",
-          "destination": "Domingos Martins",
-          "time": "05:50",
-          "days": [
-            "sat"
-          ],
-          "via": "Santa Isabel",
-          "school_only": false,
-          "note": null,
-          "raw_section": "BIRIRICAS X DOMINGOS MARTINS - SÁBADO",
-          "raw_line": "05:50 Biriricas X Domingos Martins Santa Isabel",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00741"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Santa Isabel",
-          "time": "07:20",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Direto",
-          "school_only": false,
-          "note": null,
-          "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA",
-          "raw_line": "07:20 Domingos Martins X Santa Isabel Direto",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00742"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Santa Isabel",
-          "time": "09:00",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Marechal",
-          "school_only": false,
-          "note": null,
-          "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA",
-          "raw_line": "09:00 Domingos Martins X Santa Isabel Marechal",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00743"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Santa Isabel",
-          "time": "11:00",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Biriricas",
-          "school_only": false,
-          "note": null,
-          "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA",
-          "raw_line": "11:00 Domingos Martins X Santa Isabel Biriricas",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00744"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Santa Isabel",
-          "time": "16:10",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Direto",
-          "school_only": false,
-          "note": null,
-          "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA",
-          "raw_line": "16:10 Domingos Martins X Santa Isabel Direto",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00745"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Santa Isabel",
-          "time": "17:10",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Biriricas",
-          "school_only": false,
-          "note": null,
-          "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA",
-          "raw_line": "17:10 Domingos Martins X Santa Isabel Biriricas",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00746"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Santa Isabel",
-          "destination": "Domingos Martins",
-          "time": "06:20",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Biriricas",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "06:20 Santa Isabel X Domingos Martins Biriricas",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00747"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Santa Isabel",
-          "destination": "Domingos Martins",
-          "time": "07:30",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Direto",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "07:30 Santa Isabel X Domingos Martins Direto",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00748"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Santa Isabel",
-          "destination": "Domingos Martins",
-          "time": "10:10",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Direto",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "10:10 Santa Isabel X Domingos Martins Direto",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00749"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Santa Isabel",
-          "destination": "Domingos Martins",
           "time": "12:30",
           "days": [
             "mon",
@@ -14851,20 +14397,20 @@
             "thu",
             "fri"
           ],
-          "via": "Biriricas",
+          "via": "Paraju/marechal",
           "school_only": false,
           "note": null,
           "raw_section": null,
-          "raw_line": "12:30 Santa Isabel X Domingos Martins Biriricas",
+          "raw_line": "12:30 Domingos Martins X Peróbas Paraju/Marechal",
           "sector_label": "Setor Domingos Martins",
-          "id": "do-00750"
+          "id": "do-00728"
         },
         {
           "sector": "domingos_martins",
           "line": null,
-          "origin": "Santa Isabel",
+          "origin": "Peróbas",
           "destination": "Domingos Martins",
-          "time": "16:15",
+          "time": "05:50",
           "days": [
             "mon",
             "tue",
@@ -14872,30 +14418,13 @@
             "thu",
             "fri"
           ],
-          "via": "Direto",
+          "via": "Paraju/marechal",
           "school_only": false,
           "note": null,
           "raw_section": null,
-          "raw_line": "16:15 Santa Isabel X Domingos Martins Direto",
+          "raw_line": "05:50 Peróbas X Domingos Martins Paraju/Marechal",
           "sector_label": "Setor Domingos Martins",
-          "id": "do-00751"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Santa Isabel",
-          "time": "07:20",
-          "days": [
-            "sat"
-          ],
-          "via": "Direto",
-          "school_only": false,
-          "note": null,
-          "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SÁBADO",
-          "raw_line": "07:20 Domingos Martins X Santa Isabel Direto",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00752"
+          "id": "do-00729"
         },
         {
           "sector": "domingos_martins",
@@ -14904,74 +14433,19 @@
           "destination": "Santa Isabel",
           "time": "09:00",
           "days": [
-            "sat"
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
           ],
           "via": "Marechal",
           "school_only": false,
           "note": null,
-          "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SÁBADO",
+          "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA",
           "raw_line": "09:00 Domingos Martins X Santa Isabel Marechal",
           "sector_label": "Setor Domingos Martins",
-          "id": "do-00753"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Domingos Martins",
-          "destination": "Santa Isabel",
-          "time": "12:10",
-          "days": [
-            "sat"
-          ],
-          "via": "Biriricas",
-          "school_only": false,
-          "note": null,
-          "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SÁBADO",
-          "raw_line": "12:10 Domingos Martins X Santa Isabel Biriricas",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00754"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Santa Isabel",
-          "destination": "Domingos Martins",
-          "time": "06:20",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Biriricas",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "06:20 Santa Isabel X Domingos Martins Biriricas",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00755"
-        },
-        {
-          "sector": "domingos_martins",
-          "line": null,
-          "origin": "Santa Isabel",
-          "destination": "Domingos Martins",
-          "time": "07:30",
-          "days": [
-            "mon",
-            "tue",
-            "wed",
-            "thu",
-            "fri"
-          ],
-          "via": "Direto",
-          "school_only": false,
-          "note": null,
-          "raw_section": null,
-          "raw_line": "07:30 Santa Isabel X Domingos Martins Direto",
-          "sector_label": "Setor Domingos Martins",
-          "id": "do-00756"
+          "id": "do-00730"
         },
         {
           "sector": "domingos_martins",
@@ -14992,12 +14466,151 @@
           "raw_section": null,
           "raw_line": "10:10 Santa Isabel X Domingos Martins Direto",
           "sector_label": "Setor Domingos Martins",
-          "id": "do-00757"
+          "id": "do-00731"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Santa Isabel",
+          "time": "09:00",
+          "days": [
+            "sat"
+          ],
+          "via": "Marechal",
+          "school_only": false,
+          "note": null,
+          "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SÁBADO",
+          "raw_line": "09:00 Domingos Martins X Santa Isabel Marechal",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00732"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Santa Isabel",
+          "destination": "Domingos Martins",
+          "time": "10:10",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Direto",
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "10:10 Santa Isabel X Domingos Martins Direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00733"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Melgaço Direto",
+          "time": "11:00",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "11:00 Domingos Martins X Melgaço direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00734"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Melgaço Direto",
+          "time": "17:15",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "17:15 Domingos Martins X Melgaço direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00735"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Melgaço",
+          "destination": "Domingos Martins",
+          "time": "06:00",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": "Direto",
+          "school_only": false,
+          "note": null,
+          "raw_section": "MELGAÇO X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+          "raw_line": "06:00 Melgaço X Domingos Martins direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00736"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Domingos Martins",
+          "destination": "Melgaço Direto",
+          "time": "12:10",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "via": null,
+          "school_only": false,
+          "note": null,
+          "raw_section": null,
+          "raw_line": "12:10 Domingos Martins X Melgaço direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00737"
+        },
+        {
+          "sector": "domingos_martins",
+          "line": null,
+          "origin": "Melgaço",
+          "destination": "Domingos Martins",
+          "time": "06:00",
+          "days": [
+            "sat"
+          ],
+          "via": "Direto",
+          "school_only": false,
+          "note": null,
+          "raw_section": "MELGAÇO X DOMINGOS MARTINS - SÁBADO",
+          "raw_line": "06:00 Melgaço X Domingos Martins direto",
+          "sector_label": "Setor Domingos Martins",
+          "id": "do-00738"
         }
       ]
     }
   },
-  "totalTrips": 758,
+  "totalTrips": 739,
   "places": [
     "Aracruz",
     "Araguaia",
@@ -15024,6 +14637,8 @@
     "Limão",
     "Mar Azul",
     "Marechal Floriano",
+    "Melgaço",
+    "Melgaço Direto",
     "Nova Conquista",
     "Pau Brasil",
     "Peróbas",
@@ -29284,7 +28899,7 @@
       "line": null,
       "origin": "Domingos Martins",
       "destination": "Peróbas",
-      "time": "09:30",
+      "time": "10:30",
       "days": [
         "mon",
         "tue",
@@ -29296,30 +28911,9 @@
       "school_only": false,
       "note": null,
       "raw_section": null,
-      "raw_line": "09:30 Domingos Martins X Peróbas Paraju/ Marechal",
+      "raw_line": "10:30 Domingos Martins X Peróbas Paraju/ Marechal",
       "sector_label": "Setor Domingos Martins",
       "id": "do-00722"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Peróbas",
-      "time": "12:10",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Paraju/marechal",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "12:10 Domingos Martins X Peróbas Paraju/Marechal",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00723"
     },
     {
       "sector": "domingos_martins",
@@ -29340,7 +28934,7 @@
       "raw_section": null,
       "raw_line": "16:10 Domingos Martins X Peróbas Paraju/Marechal",
       "sector_label": "Setor Domingos Martins",
-      "id": "do-00724"
+      "id": "do-00723"
     },
     {
       "sector": "domingos_martins",
@@ -29361,14 +28955,14 @@
       "raw_section": null,
       "raw_line": "18:00 Domingos Martins X Peróbas Paraju/Marechal",
       "sector_label": "Setor Domingos Martins",
-      "id": "do-00725"
+      "id": "do-00724"
     },
     {
       "sector": "domingos_martins",
       "line": null,
       "origin": "Peróbas",
       "destination": "Domingos Martins",
-      "time": "05:30",
+      "time": "05:50",
       "days": [
         "mon",
         "tue",
@@ -29380,7 +28974,28 @@
       "school_only": false,
       "note": null,
       "raw_section": null,
-      "raw_line": "05:30 Peróbas X Domingos Martins Paraju/ Marechal",
+      "raw_line": "05:50 Peróbas X Domingos Martins Paraju/ Marechal",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00725"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Peróbas",
+      "destination": "Domingos Martins",
+      "time": "06:30",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Paraju/marechal",
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "06:30 Peróbas X Domingos Martins Paraju/Marechal",
       "sector_label": "Setor Domingos Martins",
       "id": "do-00726"
     },
@@ -29389,7 +29004,7 @@
       "line": null,
       "origin": "Peróbas",
       "destination": "Domingos Martins",
-      "time": "06:30",
+      "time": "13:00",
       "days": [
         "mon",
         "tue",
@@ -29401,469 +29016,15 @@
       "school_only": false,
       "note": null,
       "raw_section": null,
-      "raw_line": "06:30 Peróbas X Domingos Martins Paraju/Marechal",
+      "raw_line": "13:00 Peróbas X Domingos Martins Paraju/Marechal",
       "sector_label": "Setor Domingos Martins",
       "id": "do-00727"
     },
     {
       "sector": "domingos_martins",
       "line": null,
-      "origin": "Peróbas",
-      "destination": "Domingos Martins",
-      "time": "10:50",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Paraju/marechal",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "10:50 Peróbas X Domingos Martins Paraju/Marechal",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00728"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Peróbas",
-      "destination": "Domingos Martins",
-      "time": "13:30",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Paraju/ Marechal",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "13:30 Peróbas X Domingos Martins Paraju/ Marechal",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00729"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
       "origin": "Domingos Martins",
       "destination": "Peróbas",
-      "time": "09:30",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Paraju/marechal",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "09:30 Domingos Martins X Peróbas Paraju/Marechal",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00730"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Peróbas",
-      "time": "12:10",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Paraju/marechal",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "12:10 Domingos Martins X Peróbas Paraju/Marechal",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00731"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Peróbas",
-      "time": "16:10",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Paraju/marechal",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "16:10 Domingos Martins X Peróbas Paraju/Marechal",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00732"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Peróbas",
-      "destination": "Domingos Martins",
-      "time": "05:30",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Paraju/marechal",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "05:30 Peróbas X Domingos Martins Paraju/Marechal",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00733"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Peróbas",
-      "destination": "Domingos Martins",
-      "time": "06:30",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Paraju/marechal",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "06:30 Peróbas X Domingos Martins Paraju/Marechal",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00734"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Peróbas",
-      "destination": "Domingos Martins",
-      "time": "10:50",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Paraju/marechal",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "10:50 Peróbas X Domingos Martins Paraju/Marechal",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00735"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Biriricas",
-      "time": "11:00",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Santa Isabel",
-      "school_only": false,
-      "note": null,
-      "raw_section": "DOMINGOS MARTINS X BIRIRICAS - SEGUNDA X SEXTA FEIRA",
-      "raw_line": "11:00 Domingos Martins X Biriricas Santa Isabel",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00736"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Biriricas",
-      "time": "17:10",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Santa Isabel",
-      "school_only": false,
-      "note": null,
-      "raw_section": "DOMINGOS MARTINS X BIRIRICAS - SEGUNDA X SEXTA FEIRA",
-      "raw_line": "17:10 Domingos Martins X Biriricas Santa Isabel",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00737"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Biriricas",
-      "destination": "Domingos Martins",
-      "time": "05:50",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Santa Isabel",
-      "school_only": false,
-      "note": null,
-      "raw_section": "BIRIRICAS X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
-      "raw_line": "05:50 Biriricas X Domingos Martins Santa Isabel",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00738"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Biriricas",
-      "destination": "Domingos Martins",
-      "time": "12:00",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Santa Isabel",
-      "school_only": false,
-      "note": null,
-      "raw_section": "BIRIRICAS X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
-      "raw_line": "12:00 Biriricas X Domingos Martins Santa Isabel",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00739"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Biriricas",
-      "time": "12:10",
-      "days": [
-        "sat"
-      ],
-      "via": "Santa Isabel",
-      "school_only": false,
-      "note": null,
-      "raw_section": "DOMINGOS MARTINS X BIRIRICAS - SÁBADO",
-      "raw_line": "12:10 Domingos Martins X Biriricas Santa Isabel",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00740"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Biriricas",
-      "destination": "Domingos Martins",
-      "time": "05:50",
-      "days": [
-        "sat"
-      ],
-      "via": "Santa Isabel",
-      "school_only": false,
-      "note": null,
-      "raw_section": "BIRIRICAS X DOMINGOS MARTINS - SÁBADO",
-      "raw_line": "05:50 Biriricas X Domingos Martins Santa Isabel",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00741"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Santa Isabel",
-      "time": "07:20",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Direto",
-      "school_only": false,
-      "note": null,
-      "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA",
-      "raw_line": "07:20 Domingos Martins X Santa Isabel Direto",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00742"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Santa Isabel",
-      "time": "09:00",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Marechal",
-      "school_only": false,
-      "note": null,
-      "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA",
-      "raw_line": "09:00 Domingos Martins X Santa Isabel Marechal",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00743"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Santa Isabel",
-      "time": "11:00",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Biriricas",
-      "school_only": false,
-      "note": null,
-      "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA",
-      "raw_line": "11:00 Domingos Martins X Santa Isabel Biriricas",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00744"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Santa Isabel",
-      "time": "16:10",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Direto",
-      "school_only": false,
-      "note": null,
-      "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA",
-      "raw_line": "16:10 Domingos Martins X Santa Isabel Direto",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00745"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Santa Isabel",
-      "time": "17:10",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Biriricas",
-      "school_only": false,
-      "note": null,
-      "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA",
-      "raw_line": "17:10 Domingos Martins X Santa Isabel Biriricas",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00746"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Santa Isabel",
-      "destination": "Domingos Martins",
-      "time": "06:20",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Biriricas",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "06:20 Santa Isabel X Domingos Martins Biriricas",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00747"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Santa Isabel",
-      "destination": "Domingos Martins",
-      "time": "07:30",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Direto",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "07:30 Santa Isabel X Domingos Martins Direto",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00748"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Santa Isabel",
-      "destination": "Domingos Martins",
-      "time": "10:10",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Direto",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "10:10 Santa Isabel X Domingos Martins Direto",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00749"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Santa Isabel",
-      "destination": "Domingos Martins",
       "time": "12:30",
       "days": [
         "mon",
@@ -29872,20 +29033,20 @@
         "thu",
         "fri"
       ],
-      "via": "Biriricas",
+      "via": "Paraju/marechal",
       "school_only": false,
       "note": null,
       "raw_section": null,
-      "raw_line": "12:30 Santa Isabel X Domingos Martins Biriricas",
+      "raw_line": "12:30 Domingos Martins X Peróbas Paraju/Marechal",
       "sector_label": "Setor Domingos Martins",
-      "id": "do-00750"
+      "id": "do-00728"
     },
     {
       "sector": "domingos_martins",
       "line": null,
-      "origin": "Santa Isabel",
+      "origin": "Peróbas",
       "destination": "Domingos Martins",
-      "time": "16:15",
+      "time": "05:50",
       "days": [
         "mon",
         "tue",
@@ -29893,30 +29054,13 @@
         "thu",
         "fri"
       ],
-      "via": "Direto",
+      "via": "Paraju/marechal",
       "school_only": false,
       "note": null,
       "raw_section": null,
-      "raw_line": "16:15 Santa Isabel X Domingos Martins Direto",
+      "raw_line": "05:50 Peróbas X Domingos Martins Paraju/Marechal",
       "sector_label": "Setor Domingos Martins",
-      "id": "do-00751"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Santa Isabel",
-      "time": "07:20",
-      "days": [
-        "sat"
-      ],
-      "via": "Direto",
-      "school_only": false,
-      "note": null,
-      "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SÁBADO",
-      "raw_line": "07:20 Domingos Martins X Santa Isabel Direto",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00752"
+      "id": "do-00729"
     },
     {
       "sector": "domingos_martins",
@@ -29925,74 +29069,19 @@
       "destination": "Santa Isabel",
       "time": "09:00",
       "days": [
-        "sat"
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
       ],
       "via": "Marechal",
       "school_only": false,
       "note": null,
-      "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SÁBADO",
+      "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SEGUNDA X SEXTA FEIRA",
       "raw_line": "09:00 Domingos Martins X Santa Isabel Marechal",
       "sector_label": "Setor Domingos Martins",
-      "id": "do-00753"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Domingos Martins",
-      "destination": "Santa Isabel",
-      "time": "12:10",
-      "days": [
-        "sat"
-      ],
-      "via": "Biriricas",
-      "school_only": false,
-      "note": null,
-      "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SÁBADO",
-      "raw_line": "12:10 Domingos Martins X Santa Isabel Biriricas",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00754"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Santa Isabel",
-      "destination": "Domingos Martins",
-      "time": "06:20",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Biriricas",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "06:20 Santa Isabel X Domingos Martins Biriricas",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00755"
-    },
-    {
-      "sector": "domingos_martins",
-      "line": null,
-      "origin": "Santa Isabel",
-      "destination": "Domingos Martins",
-      "time": "07:30",
-      "days": [
-        "mon",
-        "tue",
-        "wed",
-        "thu",
-        "fri"
-      ],
-      "via": "Direto",
-      "school_only": false,
-      "note": null,
-      "raw_section": null,
-      "raw_line": "07:30 Santa Isabel X Domingos Martins Direto",
-      "sector_label": "Setor Domingos Martins",
-      "id": "do-00756"
+      "id": "do-00730"
     },
     {
       "sector": "domingos_martins",
@@ -30013,12 +29102,151 @@
       "raw_section": null,
       "raw_line": "10:10 Santa Isabel X Domingos Martins Direto",
       "sector_label": "Setor Domingos Martins",
-      "id": "do-00757"
+      "id": "do-00731"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Santa Isabel",
+      "time": "09:00",
+      "days": [
+        "sat"
+      ],
+      "via": "Marechal",
+      "school_only": false,
+      "note": null,
+      "raw_section": "DOMINGOS MARTINS X SANTA ISABEL - SÁBADO",
+      "raw_line": "09:00 Domingos Martins X Santa Isabel Marechal",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00732"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Santa Isabel",
+      "destination": "Domingos Martins",
+      "time": "10:10",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Direto",
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "10:10 Santa Isabel X Domingos Martins Direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00733"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Melgaço Direto",
+      "time": "11:00",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "11:00 Domingos Martins X Melgaço direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00734"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Melgaço Direto",
+      "time": "17:15",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "17:15 Domingos Martins X Melgaço direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00735"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Melgaço",
+      "destination": "Domingos Martins",
+      "time": "06:00",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": "Direto",
+      "school_only": false,
+      "note": null,
+      "raw_section": "MELGAÇO X DOMINGOS MARTINS - SEGUNDA X SEXTA FEIRA",
+      "raw_line": "06:00 Melgaço X Domingos Martins direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00736"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Domingos Martins",
+      "destination": "Melgaço Direto",
+      "time": "12:10",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "via": null,
+      "school_only": false,
+      "note": null,
+      "raw_section": null,
+      "raw_line": "12:10 Domingos Martins X Melgaço direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00737"
+    },
+    {
+      "sector": "domingos_martins",
+      "line": null,
+      "origin": "Melgaço",
+      "destination": "Domingos Martins",
+      "time": "06:00",
+      "days": [
+        "sat"
+      ],
+      "via": "Direto",
+      "school_only": false,
+      "note": null,
+      "raw_section": "MELGAÇO X DOMINGOS MARTINS - SÁBADO",
+      "raw_line": "06:00 Melgaço X Domingos Martins direto",
+      "sector_label": "Setor Domingos Martins",
+      "id": "do-00738"
     }
   ],
   "sourceUrls": {
-    "aracruz": "http://www.cordialturismo.com.br/portal/downloads/temp/horario_cordial_26_09_2026.pdf",
-    "sao_mateus": "http://www.cordialturismo.com.br/portal/downloads/temp/sm/horario_sao_mateus_27_11_2025.pdf",
-    "domingos_martins": "http://www.cordialturismo.com.br/portal/downloads/temp/dm/horarios_dm_17_09_2025.pdf"
+    "aracruz": "https://www.cordialturismo.com.br/portal/downloads/temp/horario_cordial_26_09_2026.pdf",
+    "sao_mateus": "https://www.cordialturismo.com.br/portal/downloads/temp/sm/horario_sao_mateus_27_11_2025.pdf",
+    "domingos_martins": "https://www.cordialturismo.com.br/portal/downloads/temp/dm/horarios_dm_28_10_2026.pdf"
   }
 }
